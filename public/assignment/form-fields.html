@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="first website">
+    <meta name="author" content="Ellen Tao">
+    
+    <title>Form Maker</title>
+	<!-- Bootstrap core CSS -->
+    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="home.html">Ellen's Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="profile.html">Username</a></li>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="home.html">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li class="active"><a href="forms.html">Forms</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="container">
+                <h2>Forms: Registration Form</h2>
+                <ul class="nav nav-tabs">
+                    <li role="presentation"><a href="forms.html">Forms</a></li>
+                    <li role="presentation" class="active"><a href="form-fields.html">Fields</a></li>
+                </ul>
+                <h3></h3>
+				<div class="container">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                        <label for="firstName">First Name:</label>
+                                        <input type="firstname" class="form-control" id="firstName" placeholder="First Name">
+                                        </div>
+                                    </td>
+                                    <td style="white-space: nowrap">
+                                    <a href="#" class="btn btn-success">
+                                        <scan class="glyphicon glyphicon-ok"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-primary">
+                                        <scan class="glyphicon glyphicon-plus"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name:</label>
+                                            <input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-warning">
+                                        <scan class="glyphicon glyphicon-pencil"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-danger">
+                                        <scan class="glyphicon glyphicon-remove"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="dateOfBirth">Date Of Birth:</label>
+                                            <input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-warning">
+                                        <scan class="glyphicon glyphicon-pencil"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-danger">
+                                        <scan class="glyphicon glyphicon-remove"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="gender">Gender:</label>
+                                            <select class="form-control" type="text" id="gender">
+                                                <option value="FEMALE">Female</option>
+                                                <option value="GENDER">Gender</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-warning">
+                                        <scan class="glyphicon glyphicon-pencil"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-danger">
+                                        <scan class="glyphicon glyphicon-remove"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="role">Roles:</label>
+                                            <div class="checkbox" id="role">
+                                                <label>
+                                                    <input type="checkbox">Admin
+                                                </label>
+                                            </div>
+                                            <div class="checkbox" id="role">
+                                                <label>
+                                                    <input type="checkbox">Student
+                                                </label>
+                                            </div>
+                                            <div class="checkbox" id="role">
+                                                <label>
+                                                    <input type="checkbox">User
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-warning">
+                                        <scan class="glyphicon glyphicon-pencil"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-danger">
+                                        <scan class="glyphicon glyphicon-remove"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="license">License Agreement:</label>
+                                            <div class="radio" id="license">
+                                                <label><input id="licenseyes" type="radio" name="bool"/>Yes</label>
+                                            </div>
+                                            <div class="radio" id="license">
+                                                <label><input id="licenseno" type="radio" name="bool"/>No</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-warning">
+                                        <scan class="glyphicon glyphicon-pencil"></scan>
+                                    </a>
+                                    <a href="#" class="btn btn-danger">
+                                        <scan class="glyphicon glyphicon-remove"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="addNewField">Add New Field:</label>
+                                            <select id="addNewField" class="form-control" type="text" name="field">
+                                                <option value="SINGLELINE">Single Line Text</option>
+                                                <option value="DATE">Date</option>
+                                                <option value="DROPDOWN">Dropdown</option>
+                                                <option value="CHECKBOX">Checkboxes</option>
+                                                <option value="RADIO">Radio Buttons</option>
+                                                <option value="GRAPH">Paragraph Text Field</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-primary">
+                                        <scan class="glyphicon glyphicon-plus"></scan>
+                                    </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>              
+            </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
