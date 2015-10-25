@@ -17,23 +17,33 @@
     
     return service;
     
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+    }
+    
     function createFormForUser(userId, form, callback)
     {
       var newForm = {
-        id: Guid.create(),
-        userid: userId,
-        formname: form.formname
+        id: guid(),
+        userId: userId,
+        formName: form.formName
       };
       forms.push(newForm);
-      callback(forms);
+      callback(newForm);
     }
     
     function findAllFormsForUser(userId, callback)
     {
       var formsForUser = [];
       for (var i = 0; i < forms.length; i++) {
-        if (forms[i].userid == userId) {
-          formsForUser.add(forms[i]);
+        if (forms[i].userId == userId) {
+          formsForUser.push(forms[i]);
         }
       }
       callback(formsForUser);
@@ -42,27 +52,27 @@
     function deleteFormById(formId, callback)
     {
       for (var i = 0; i < forms.length; i++) {
-        if (forms[i] == formId) {
-          var form = forms[i];
-          var index = forms.indexOf(form);
-          forms.splice(index, 1);
+        if (forms[i].id == formId) {
+          forms.splice(i, 1);
+          callback(forms);
         }
       }
-      callback(forms);
     }
     
     function updateFormById(formId, newForm, callback)
     {
+      var updatedForm;
       for (var i = 0; i < forms.length; i++) {
-        if (forms[i] == formId) {
+        if (forms[i].id == formId) {
           forms[i] = {
             id: newForm.id,
-            userid: newForm.userid,
-            formname: newForm.formname
-          };        
+            userId: newForm.userId,
+            formName: newForm.formName
+          };
+          updatedForm = forms[i];        
         }
       }
-      callback(forms);
+      callback(updatedForm);
     }   
   }
 })();

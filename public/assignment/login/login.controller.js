@@ -6,12 +6,13 @@
     
   function LoginController($scope, $rootScope, $location, UserService)
   { 
-    function login()
+    $scope.$location = $location;
+    $scope.login = function ()
     {
       UserService.findUserByUsernameAndPassword($scope.username, $scope.password, function (user) {
         if (user != null) {
           $rootScope.user = user;
-          $location.href("#/profile");
+          $location.url("/profile");
       }
       });
     }

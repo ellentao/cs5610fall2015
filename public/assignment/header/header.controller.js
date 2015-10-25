@@ -2,9 +2,9 @@
 {
   angular
     .module("FormBuilderApp")
-    .controller("HeadController", HeadController);
+    .controller("HeaderController", HeaderController);
     
-  function HeadController($scope, $location)
+  function HeaderController($scope, $location)
   {
     $scope.$location = $location;
     console.log($location.url());

@@ -1,3 +1,4 @@
+<div ng-controller="FormController">
 <h2>Forms</h2>
 <ul class="nav nav-tabs">
 <li role="presentation" class="active"><a href="forms.html">Forms</a></li>
@@ -22,12 +23,12 @@
 	</th>
 </tr>
 <tr>
-	<td><input ng-model="formName" class="form-control" type="text" name="formname" placeholder="name"/></td>
+	<td><input ng-model="form.formName" class="form-control" type="text" name="formname" placeholder="name"/></td>
 	<td style="white-space: nowrap">
-	<a href="#" class="btn btn-primary">
+	<a ng-click="addForm()" class="btn btn-primary">
 		<scan class="glyphicon glyphicon-plus"></scan>
 	</a>
-	<a href="#" class="btn btn-success">
+	<a ng-click="selectForm()" class="btn btn-success">
 		<scan class="glyphicon glyphicon-ok"></scan>
 	</a>
 	</td>
@@ -35,37 +36,18 @@
 </thead>
 <tbody>
 <tr>
-	<td><a href="form-fields.html">Registration Form</a></td>
-	<td>
-	<a href="#" class="btn btn-danger">
-		<scan class="glyphicon glyphicon-remove"></scan>
-	</a>
-	<a href="#" class="btn btn-warning">
-		<scan class="glyphicon glyphicon-pencil"></scan>
-	</a>
-	</td>
-</tr>
-<tr>
-	<td><a href="form-fields.html">Contact List</a></td>
-	<td>
-	<a href="#" class="btn btn-danger">
-		<scan class="glyphicon glyphicon-remove"></scan>
-	</a>
-	<a href="#" class="btn btn-warning">
-		<scan class="glyphicon glyphicon-pencil"></scan>
-	</a>
-	</td>
-</tr>
-<tr>
-	<td><a href="form-fields.html">To Do List</a></td>
-	<td>
-	<a href="#" class="btn btn-danger">
-		<scan class="glyphicon glyphicon-remove"></scan>
-	</a>
-	<a href="#" class="btn btn-warning">
-		<scan class="glyphicon glyphicon-pencil"></scan>
-	</a>
-	</td>
+	<tr ng-repeat="form in forms track by $index">
+		<td>{{form.formName}}</td>
+		<td>
+			<a ng-click="deleteForm($index)" class="btn btn-danger">
+				<scan class="glyphicon glyphicon-remove"></scan>
+			</a>
+			<a ng-click="updateForm($index)" class="btn btn-warning">
+				<scan class="glyphicon glyphicon-pencil"></scan>
+			</a>
+		</td>
+	</tr>
 </tr>
 </tbody>
 </table>
+</div>
