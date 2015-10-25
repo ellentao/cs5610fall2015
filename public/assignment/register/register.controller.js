@@ -11,18 +11,13 @@
       $scope.id = $rootScope.user.id;
     }
     
-    var newUser = {
-        username : $scope.username,
-        password : $scope.password,
-        firstName : $scope.firstName,
-        lastName : $scope.lastName,
-        email : $scope.email
-    };
     $scope.register = function () {
-      if ($scope.password == $scope.passwordVerify) {
-        UserService.createUser(newUser, function (user) {
+      if ($scope.user.username != null && $scope.user.password == $scope.user.password2) {
+        UserService.createUser($scope.user, function (user) {
           $rootScope.user = user;
           $location.url("/profile");
+          console.log("current register user is ");
+          console.log($rootScope.user);
         });
       }
     }

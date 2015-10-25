@@ -6,18 +6,19 @@
     
   function FormController($scope, $location, $rootScope, FormService)
   {
+    var current_user = $rootScope.user;
     $scope.$location = $location;
     $scope.forms = [];
     if ($rootScope.user != null) {
-      FormService.findAllFormsForUser($rootScope.user.id, function(forms) {
+      FormService.findAllFormsForUser(current_user.id, function(forms) {
         $scope.forms = forms;
       });
     }
     
     $scope.addForm = function ()
     {
-      if ($rootScope.user != null) {
-        FormService.createFormForUser($rootScope.user.id, $scope.form, function (form) {
+      if ($rootScope.user != null && $scope.form.formName != null) {
+        FormService.createFormForUser(current_user.id, $scope.form, function (form) {
           $scope.forms.push(form);
           console.log("successfully added form");
           console.log($scope.forms);

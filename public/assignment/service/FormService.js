@@ -36,6 +36,8 @@
       };
       forms.push(newForm);
       callback(newForm);
+      console.log("added in forms");
+      console.log(forms);
     }
     
     function findAllFormsForUser(userId, callback)
@@ -47,6 +49,8 @@
         }
       }
       callback(formsForUser);
+      console.log("find all forms");
+      console.log(forms);
     }
     
     function deleteFormById(formId, callback)
@@ -57,6 +61,8 @@
           callback(forms);
         }
       }
+      console.log("deleted in forms");
+      console.log(forms);
     }
     
     function updateFormById(formId, newForm, callback)
