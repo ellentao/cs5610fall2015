@@ -51,8 +51,6 @@
         id: guid(),
         username : user.username,
         password : user.password,
-        firstName : user.firstName,
-        lastName : user.lastName,
         email : user.email
       };
       users.push(newUser);
