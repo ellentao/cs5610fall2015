@@ -23,12 +23,12 @@
 	</th>
 </tr>
 <tr>
-	<td><input ng-model="form.formName" class="form-control" type="text" name="formname" placeholder="name"/></td>
+	<td><input ng-model="form.formName" id="formname" class="form-control" type="text" name="formname" placeholder="name"/></td>
 	<td style="white-space: nowrap">
 	<a ng-click="addForm()" class="btn btn-primary">
 		<scan class="glyphicon glyphicon-plus"></scan>
 	</a>
-	<a ng-click="selectForm()" class="btn btn-success">
+	<a ng-click="updateForm()" class="btn btn-success">
 		<scan class="glyphicon glyphicon-ok"></scan>
 	</a>
 	</td>
@@ -42,7 +42,7 @@
 			<a ng-click="deleteForm($index)" class="btn btn-danger">
 				<scan class="glyphicon glyphicon-remove"></scan>
 			</a>
-			<a ng-click="updateForm($index)" class="btn btn-warning">
+			<a ng-click="selectForm($index)" class="btn btn-warning">
 				<scan class="glyphicon glyphicon-pencil"></scan>
 			</a>
 		</td>

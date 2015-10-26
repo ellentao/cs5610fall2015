@@ -70,11 +70,9 @@
       var updatedForm;
       for (var i = 0; i < forms.length; i++) {
         if (forms[i].id == formId) {
-          forms[i] = {
-            id: newForm.id,
-            userId: newForm.userId,
-            formName: newForm.formName
-          };
+          console.log("found form id");
+          forms[i] = newForm;
+          console.log(newForm);
           updatedForm = forms[i];        
         }
       }
