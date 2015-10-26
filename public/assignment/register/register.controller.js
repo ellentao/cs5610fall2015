@@ -9,8 +9,8 @@
     $scope.$location = $location;
     
     $scope.register = function () {      
-      if ($scope.user.password == $scope.user.password2) {
-        UserService.createUser($scope.user, function (user) {
+      if ($scope.registerUser.username != null && $scope.registerUser.password == $scope.registerUser.password2) {
+        UserService.createUser($scope.registerUser, function (user) {
           $rootScope.user = user;
           $location.url("/profile");
           console.log("current register user is ");

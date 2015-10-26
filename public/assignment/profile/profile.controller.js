@@ -9,9 +9,11 @@
     $scope.$location = $location;
 
     $scope.update = function () {
-      UserService.updateUser($rootScope.id, $scope.user, function (user) {
+      UserService.updateUser($rootScope.user.id, $scope.profileUser, function (user) {
         $rootScope.user = user;
         $location.url("/profile");
+        console.log("updated profile");
+        console.log(user);
       });
     }
   }

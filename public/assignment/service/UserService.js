@@ -72,6 +72,7 @@
       var updateUser;
       for (var i = 0; i < users.length; i++) {
         if (users[i].id == id) {
+          console.log("found this id");
           users[i] = {
             id: id,
             username: user.username,

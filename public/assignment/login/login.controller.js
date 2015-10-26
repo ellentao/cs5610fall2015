@@ -9,7 +9,7 @@
     $scope.$location = $location;
     $scope.login = function ()
     {
-      UserService.findUserByUsernameAndPassword($scope.username, $scope.password, function (user) {
+      UserService.findUserByUsernameAndPassword($scope.loginUser.username, $scope.loginUser.password, function (user) {
         if (user != null) {
           $rootScope.user = user;
           $location.url("/profile");
