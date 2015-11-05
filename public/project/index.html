@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="first website">
+    <meta name="author" content="Ellen Tao">
+    
+    <title>Form Maker</title>
+	<!-- Bootstrap core CSS -->
+    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="client/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="client/home/home.view.html">Panda Music</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="client/register/register.view.html">Register</a></li>
+            <li><a href="client/login/login.view.html">Login</a></li>
+            <li><a href="client/user/user.view.html">Username</a></li>
+            <li><a href="client/profile/profile.view.html">Profile</a></li>
+            <li><a href="client/login/login.view.html">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search the album/artist/song you love!">
+            </div>
+            <a href="client/search/search.view.html">
+                <scan class="glyphicon glyphicon-search"></scan>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+            <form class="form-inline">
+                <div class="form-group">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="client/home/home.view.html">Home</a></li>
+                        <li role="presentation"><a href="client/popular-artist/popular-artist.view.html">Popular artists</a></li>
+                        <li role="presentation"><a href="client/new-releases/new-releases.view.html">New releases</a></li>
+                        <li role="presentation"><a href="client/genres/genres.view.html">Genres</a></li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <div class="text-right">
+                    <button class="btn-info btn"><a href="client/login/login.view.html">Guess you like</a></button>
+                    </div>
+                </div>
+            </form>
+                <a href="#">
+                    <scan class="glyphicon glyphicon-chevron-left"></scan>
+                </a>
+                <!--hard coded currently, will replace by js -->
+                <img src="client/img/img1.jpg" class="img-thumbnail" alt="Rock and Roll" width="800" height="220">
+                <a href="#">
+                    <scan class="glyphicon glyphicon-chevron-right"></scan>
+                </a>
+          
+                <nav>
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            <div>
+                <h2>People to follow</h2>
+                <!--hard coded currently, will replace by js -->
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user1" width="100" height="100"></a>
+                        <a href="client/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>                  
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user2" width="100" height="100"></a>
+                        <a href="client/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user3" width="100" height="100"></a>
+                        <a href="client/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user4" width="100" height="100"></a>
+                        <a href="/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>                  
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user5" width="100" height="100"></a>
+                        <a href="client/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="client/user/user.view.html"><img src="client/img/user.jpg" class="img-thumbnail" alt="user6" width="100" height="100"></a>
+                        <a href="client/login/login.view.html"><button type="button" class="btn btn-default">follow</button></a>
+                    </div>
+                </div>
+                
+            </div>
+                 
+        </div>
+      </div>
+    </div>
+</body>
+</html>
