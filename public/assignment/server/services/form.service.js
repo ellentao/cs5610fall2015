@@ -1,4 +1,8 @@
 module.exports = function(app, model) {
+	app.get('/api/assignment/form', function (req, res) {
+		res.json(model.findAllForms());
+	});
+	
 	app.get('/api/assignment/user/:userId/form', function (req, res) {
 		var userId = req.params.userId;
 		var newForm = model.createFormForUser(userId, form);

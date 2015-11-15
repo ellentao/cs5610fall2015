@@ -4,7 +4,7 @@
 	.module("FormBuilderApp")
 	.factory("FormService", formService);
 
-	function formService($http)
+	function formService($http, $q)
 	{ 
 		var service = {
 		  createFormForUser : createFormForUser,

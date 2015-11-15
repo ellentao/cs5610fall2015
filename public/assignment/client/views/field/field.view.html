@@ -1,41 +1,34 @@
 <div ng-controller="FieldController">
 <h2>Forms: Registration Form</h2>
 	<ul class="nav nav-tabs">
-			<li role="presentation"><a href="../form/form.view.html">Forms</a></li>
-			<li role="presentation" class="active"><a href="field.view.html">Fields</a></li>
+			<li role="presentation"><a href="#/form">Forms</a></li>
+			<li role="presentation" class="active"><a href="#">Fields</a></li>
 	</ul>
 	<div class="container">
 	<div class="table-responsive">
 			<table class="table table-hover">
 					<tbody>
-						<div ng-repeat="field in model.fields">
-							<div ng-switch="fieldType">	
-							<tr ng-switch-when="singleLineTextField">									
-									<td>
+						<tr ng-repeat="field in model.fields">
+							<div ng-switch="fieldType">									
+									<td ng-switch-when="singleLineTextField">
 											<div class="form-group">
 											<label for="firstName">First Name:</label>
 											<input type="firstname" class="form-control" id="firstName" placeholder="First Name">
 											</div>
 									</td>
-							</tr>
-							<tr ng-switch-when="singleLineTextField">	
-									<td>
+									<td ng-switch-when="singleLineTextField">
 											<div class="form-group">
 													<label for="lastName">Last Name:</label>
 													<input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
 											</div>
 									</td>
-							</tr>
-							<tr ng-switch-when="dateField">
-									<td>
+									<td ng-switch-when="dateField">
 											<div class="form-group">
 													<label for="dateOfBirth">Date Of Birth:</label>
 													<input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
 											</div>
 									</td>
-							</tr>
-							<tr ng-switch-when="dropdownField">
-									<td>
+									<td ng-switch-when="dropdownField">
 											<div class="form-group">
 													<label for="gender">Gender:</label>
 													<select class="form-control" type="text" id="gender">
@@ -44,9 +37,7 @@
 													</select>
 											</div>
 									</td>
-							</tr>
-							<tr ng-switch-when="checkboxesField">
-									<td>
+									<td ng-switch-when="checkboxesField">
 											<div class="form-group">
 													<label for="role">Roles:</label>
 													<div class="checkbox" id="role">
@@ -66,9 +57,7 @@
 													</div>
 											</div>
 									</td>
-							</tr>
-							<tr ng-switch-when="radioButtonsField">
-									<td>
+									<td ng-switch-when="radioButtonsField">
 											<div class="form-group">
 													<label for="license">License Agreement:</label>
 													<div class="radio" id="license">
@@ -79,24 +68,22 @@
 													</div>
 											</div>
 									</td>
-							</tr>
-							</div>
-									<td>
-									<a href="#" class="btn btn-warning">
-											<scan class="glyphicon glyphicon-pencil"></scan>
-									</a>
-									<a href="#" class="btn btn-warning">
-											<scan class="glyphicon glyphicon-ok"></scan>
-									</a>
-									<a ng-click="removeField(field)" class="btn btn-danger">
-											<scan class="glyphicon glyphicon-remove"></scan>
-									</a>
-									<a href="#" class="btn btn-warning">
-											<scan class="glyphicon glyphicon-align-justify"></scan>
-									</a>
-									</td>
-						</div>
-							<tr>
+								</div>
+											<td>
+											<a href="#" class="btn btn-warning">
+													<scan class="glyphicon glyphicon-pencil"></scan>
+											</a>
+											<a href="#" class="btn btn-warning">
+													<scan class="glyphicon glyphicon-ok"></scan>
+											</a>
+											<a ng-click="removeField(field)" class="btn btn-danger">
+													<scan class="glyphicon glyphicon-remove"></scan>
+											</a>
+											<a href="#" class="btn btn-warning">
+													<scan class="glyphicon glyphicon-align-justify"></scan>
+											</a>
+											</td>
+									</tr>
 									<td>
 											<div class="form-group">
 													<label ng-click="addField(model.fieldType)"for="addNewField">Add New Field:</label>

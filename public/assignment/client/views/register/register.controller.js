@@ -18,7 +18,7 @@
         });
       }
       
-      UserService.findAllUsers.then(function (users){
+      UserService.findAllUsers().then(function (users){
         console.log("All registered users are: ")
         console.log(users);
       });

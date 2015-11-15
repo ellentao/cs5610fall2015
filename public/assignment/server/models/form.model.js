@@ -1,5 +1,5 @@
 var forms = require("./form.mock.json");
-var Guid = require("guid");
+var Guid = require('guid');
 module.exports = function(app){
 	var api = {
 		createFormForUser: createFormForUser,
@@ -12,10 +12,16 @@ module.exports = function(app){
 		createFieldForForm: createFieldForForm,
 		findAllFieldsForForm: findAllFieldsForForm,
 		findFieldById: findFieldById,
-		updateFieldById: updateFieldById
+		updateFieldById: updateFieldById,
+		findAllForms: findAllForms
 	};
 
 //CRUD
+	function findAllForms()
+	{
+		return forms;
+	}
+	
 	function createFormForUser(userId, form)
 	{
 		var newForm = {

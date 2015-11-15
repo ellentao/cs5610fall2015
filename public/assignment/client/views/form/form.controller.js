@@ -18,11 +18,12 @@
     $scope.addForm = function ()
     {
       if ($rootScope.user != null && $scope.form.formName != null) {
-        FormService.createFormForUser(current_user.id, $scope.form).then(function (form) {
-          $scope.forms.push(form);
-          console.log("successfully added form");
-          console.log($scope.forms);
-        });
+        FormService.createFormForUser(current_user.id, $scope.form)
+					.then(function (form) {
+						$scope.forms.push(form);
+						console.log("successfully added form");
+						console.log($scope.forms);
+					});
       }
     }
     

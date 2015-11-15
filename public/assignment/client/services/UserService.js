@@ -4,7 +4,7 @@
 	.module("FormBuilderApp")
 	.factory("UserService", userService);
 
-	function userService($http)
+	function userService($http, $q)
 	{ 
 		var service = {
 		  findUserByUsernameAndPassword : findUserByUsernameAndPassword,
