@@ -24,7 +24,7 @@
 	</th>
 </tr>
 <tr>
-	<td><input ng-model="form.formName" id="formname" class="form-control" type="text" name="formname" placeholder="name"/></td>
+	<td><input ng-model="form.title" id="title" class="form-control" type="text" name="title" placeholder="name"/></td>
 	<td style="white-space: nowrap">
 	<a ng-click="addForm()" class="btn btn-primary">
 		<scan class="glyphicon glyphicon-plus"></scan>
@@ -38,7 +38,7 @@
 <tbody>
 <tr>
 	<tr ng-repeat="form in forms">
-		<td>{{form.formName}}</td>
+		<td>{{form.title}}</td>
 		<td>
 			<a ng-click="deleteForm($index)" class="btn btn-danger">
 				<scan class="glyphicon glyphicon-remove"></scan>

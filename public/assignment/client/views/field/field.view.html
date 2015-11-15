@@ -8,7 +8,7 @@
 	<div class="table-responsive">
 			<table class="table table-hover">
 					<tbody>
-						<tr ng-repeat="field in model.fields">
+						<tr ng-repeat="field in fields">
 							<div ng-switch="fieldType">									
 									<td ng-switch-when="singleLineTextField">
 											<div class="form-group">
@@ -86,8 +86,8 @@
 									</tr>
 									<td>
 											<div class="form-group">
-													<label ng-click="addField(model.fieldType)"for="addNewField">Add New Field:</label>
-													<select id="addNewField" class="form-control" type="text" name="field" ng-model="model.fieldType">
+													<label ng-click="addField(fieldType)"for="addNewField">Add New Field:</label>
+													<select id="addNewField" class="form-control" type="text" name="field" ng-model="fieldType">
 															<option value="SINGLELINE">Single Line Text</option>
 															<option value="DATE">Date</option>
 															<option value="DROPDOWN">Dropdown</option>

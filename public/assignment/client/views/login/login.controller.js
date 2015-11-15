@@ -9,7 +9,8 @@
     $scope.$location = $location;
     $scope.login = function ()
     {
-      UserService.findUserByUsernameAndPassword($scope.loginUser.username, $scope.loginUser.password).then(function (user) {
+      UserService.findUserByUsernameAndPassword($scope.loginUser.username, $scope.loginUser.password)
+				.then(function (user) {
         if (user != null) {
           $rootScope.user = user;
           $location.url("/profile");
@@ -17,7 +18,7 @@
           console.log($rootScope.user);
       }
       });
-      UserService.findAllUsers.then(function(users){
+      UserService.findAllUsers().then(function(users){
         console.log("All registered users are: ")
         console.log(users);
       });

@@ -4,10 +4,10 @@
 	.module("FormBuilderApp")
 	.controller("FieldController", FieldController);
 
-	function FieldController($scope, FieldService, $routeParams, $http)
+	function FieldController($scope, $rootScope, FieldService, $routeParams, $http)
 	{
 		var current_user = $rootScope.user;
-		$scope.model.fields = [];
+		$scope.fields = [];
 		var userId = $routeParams.userId;
 		var formId = $routeParams.formId;
 
@@ -15,20 +15,20 @@
 		{
 		  if (userId != null && formId != null) {
 			FieldService.createFieldForForm(userId, field).then(function (field) {
-			  $scope.model.fields.push(field);
+			  $scope.fields.push(field);
 			  console.log("successfully added field");
-			  console.log($scope.model.fields);
+			  console.log($scope.fields);
 			});
 		  }
 		}
 
 		$scope.removeField = function (field)
 		{
-		  var formId = $scope.model.fields[index].id;
+		  var formId = $scope.fields[index].id;
 		  $scope.forms.splice(index, 1);
 		  FieldService.deleteFieldFromForm(formId, fieldId).then(function (field) {
 			console.log("successfully deleted field");
-			console.log($scope.model.fields);
+			console.log($scope.fields);
 		  });
 		}
 	}

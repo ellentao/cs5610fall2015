@@ -5,8 +5,8 @@ module.exports = function(app, model) {
 	
 	app.get('/api/assignment/user/:userId/form', function (req, res) {
 		var userId = req.params.userId;
-		var newForm = model.createFormForUser(userId, form);
-		res.json(newForm);
+		var forms = model.findAllFormsForUser(userId);
+		res.json(forms);
 	});
 
 	app.get('/api/assignment/form/:formId', function (req, res) {
@@ -24,6 +24,8 @@ module.exports = function(app, model) {
 	app.post('/api/assignment/user/:userId/form', function (req, res) {
 		var userId = req.params.userId;
 		var form = req.body;
+		console.log("go to model");
+		console.log(form);
 		var newForm = model.createFormForUser(userId, form);
 		res.json(newForm);
 	});

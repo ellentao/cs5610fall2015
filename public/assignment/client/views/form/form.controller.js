@@ -8,7 +8,13 @@
   {
     var current_user = $rootScope.user;
     $scope.$location = $location;
-    $scope.forms = [];
+		if (current_user != null) {
+			$scope.forms = FormService.findAllFormsForUser(current_user.id);
+			console.log("current user id is: ");
+			console.log(current_user.id);
+		} else {
+			$scope.forms = [];
+		}
     if ($rootScope.user != null) {
       FormService.findAllFormsForUser(current_user.id).then(function(forms) {
         $scope.forms = forms;
@@ -17,7 +23,7 @@
     
     $scope.addForm = function ()
     {
-      if ($rootScope.user != null && $scope.form.formName != null) {
+      if ($rootScope.user != null && $scope.form.title != null) {
         FormService.createFormForUser(current_user.id, $scope.form)
 					.then(function (form) {
 						$scope.forms.push(form);
@@ -30,7 +36,7 @@
     $scope.updateForm = function ()
     { 
       if ($scope.currentForm != null) {
-        $scope.currentForm.formName = $scope.form.formName;
+        $scope.currentForm.title = $scope.form.title;
         console.log("start updating:");
         console.log($scope.currentForm);
         FormService.updateFormById($scope.currentForm.id, $scope.currentForm).then(function (form) {
@@ -57,7 +63,7 @@
     
     $scope.selectForm = function (index)
     {
-      document.getElementById('formname').value = $scope.forms[index].formName;
+      document.getElementById('title').value = $scope.forms[index].title;
       $scope.currentForm = $scope.forms[index];
       $scope.isSelected = true;
       console.log("current form is:")

@@ -28,8 +28,8 @@ module.exports = function(app){
 	{
 		var newForm = {
 			id: Guid.create(),
-			userId: userId,
-			formName: form.formName
+			title: form.title,
+			userId: userId
 		};
 		forms.push(newForm);
 		console.log("added in forms");

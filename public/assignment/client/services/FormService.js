@@ -30,7 +30,7 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('/api/assignment/user/' + userId + '/form', form)
+				.get('/api/assignment/user/' + userId + '/form')
 				.success(function(response) {
 				deferred.resolve(response);	
 			});						 
