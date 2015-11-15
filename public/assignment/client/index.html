@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
     <script src="app.js"></script>
-    <script src="views/config.js"></script>
+    <script src="config.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/sidebar/sidebar.controller.js"></script>
     <script src="views/profile/profile.controller.js"></script>
@@ -23,12 +23,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div ng-include="'header/header.view.html'"></div>
+                <div ng-include="'views/header/header.view.html'"></div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
-                <div ng-include="'sidebar/sidebar.view.html'"></div>
+                <div ng-include="'views/sidebar/sidebar.view.html'"></div>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
             </div>

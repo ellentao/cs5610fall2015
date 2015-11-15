@@ -1,5 +1,5 @@
 var forms = require("./form.mock.json");
-require("guid");
+var Guid = require("guid");
 module.exports = function(app){
 	var api = {
 		createFormForUser: createFormForUser,

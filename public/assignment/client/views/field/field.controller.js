@@ -2,7 +2,7 @@
 {
 	angular
 	.module("FormBuilderApp")
-	.controller("FieldController", FormController);
+	.controller("FieldController", FieldController);
 
 	function FieldController($scope, FieldService, $routeParams, $http)
 	{
