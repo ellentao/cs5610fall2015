@@ -15,6 +15,8 @@ module.exports = function(app){
 		updateFieldById: updateFieldById,
 		findAllForms: findAllForms
 	};
+	
+	return api;
 
 //CRUD
 	function findAllForms()

@@ -11,13 +11,12 @@ module.exports = function(app, model) {
 		if (username != null && password != null) {
 			var credentials = {username: username, password: password};
 			var user = model.findUserByCredentials(credentials);
-			res.json(user);
+			res.jsonp(user);
 		} else if (username != null) {
 			var user = model.findUserByUsername(username);
-			res.json(user);
+			res.jsonp(user);
 		} else {
-			var users = model.findAllUsers();
-			res.json(users);
+			res.jsonp(model.findAllUsers());
 		}
 	});
 

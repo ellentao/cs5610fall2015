@@ -10,6 +10,7 @@ module.exports = function(app) {
 		findUserByUsername: findUserByUsername,
 		findUserByCredentials: findUserByCredentials
 	};
+	return api;
 	
   //CRUD
 	function createUser(user)
