@@ -23,9 +23,9 @@ module.exports = function(app, model) {
         res.json(user);
     });
     
-    app.get('/api/assignment/user?username=alice&password=wonderland', function (req, res) {
-		var username = req.params.alice;
-		var password = req.params.wonderland;
+    app.get('/api/assignment/user?username=username&password=password', function (req, res) {
+		var username = req.params.username;
+		var password = req.params.password;
 		var credentials = {username: username, password: password};
 		var user = model.findUserByCredentials(credentials);
         res.json(user);

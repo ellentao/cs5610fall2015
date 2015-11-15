@@ -4,7 +4,7 @@
 	.module("FormBuilderApp")
 	.factory("FieldService", fieldService);
 
-	function fieldService()
+	function fieldService($http)
 	{ 
 		var service = {
 			createFieldForForm : createFieldForForm,

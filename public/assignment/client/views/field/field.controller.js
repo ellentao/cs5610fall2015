@@ -4,10 +4,9 @@
 	.module("FormBuilderApp")
 	.controller("FieldController", FormController);
 
-	function FieldController($scope, $location, FieldService, $routeParams)
+	function FieldController($scope, FieldService, $routeParams, $http)
 	{
 		var current_user = $rootScope.user;
-		$scope.$location = $location;
 		$scope.model.fields = [];
 		var userId = $routeParams.userId;
 		var formId = $routeParams.formId;
