@@ -1,0 +1,123 @@
+<div ng-controller="FieldController">
+<h2>Forms: Registration Form</h2>
+	<ul class="nav nav-tabs">
+			<li role="presentation"><a href="forms.html">Forms</a></li>
+			<li role="presentation" class="active"><a href="form-fields.html">Fields</a></li>
+	</ul>
+	<div class="container">
+	<div class="table-responsive">
+			<table class="table table-hover">
+					<tbody>
+						<div ng-repeat="field in model.fields">
+							<div ng-switch="fieldType">	
+							<tr ng-switch-when="singleLineTextField">									
+									<td>
+											<div class="form-group">
+											<label for="firstName">First Name:</label>
+											<input type="firstname" class="form-control" id="firstName" placeholder="First Name">
+											</div>
+									</td>
+							</tr>
+							<tr ng-switch-when="singleLineTextField">	
+									<td>
+											<div class="form-group">
+													<label for="lastName">Last Name:</label>
+													<input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
+											</div>
+									</td>
+							</tr>
+							<tr ng-switch-when="dateField">
+									<td>
+											<div class="form-group">
+													<label for="dateOfBirth">Date Of Birth:</label>
+													<input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
+											</div>
+									</td>
+							</tr>
+							<tr ng-switch-when="dropdownField">
+									<td>
+											<div class="form-group">
+													<label for="gender">Gender:</label>
+													<select class="form-control" type="text" id="gender">
+															<option value="FEMALE">Female</option>
+															<option value="GENDER">Gender</option>
+													</select>
+											</div>
+									</td>
+							</tr>
+							<tr ng-switch-when="checkboxesField">
+									<td>
+											<div class="form-group">
+													<label for="role">Roles:</label>
+													<div class="checkbox" id="role">
+															<label>
+																	<input type="checkbox">Admin
+															</label>
+													</div>
+													<div class="checkbox" id="role">
+															<label>
+																	<input type="checkbox">Student
+															</label>
+													</div>
+													<div class="checkbox" id="role">
+															<label>
+																	<input type="checkbox">User
+															</label>
+													</div>
+											</div>
+									</td>
+							</tr>
+							<tr ng-switch-when="radioButtonsField">
+									<td>
+											<div class="form-group">
+													<label for="license">License Agreement:</label>
+													<div class="radio" id="license">
+															<label><input id="licenseyes" type="radio" name="bool"/>Yes</label>
+													</div>
+													<div class="radio" id="license">
+															<label><input id="licenseno" type="radio" name="bool"/>No</label>
+													</div>
+											</div>
+									</td>
+							</tr>
+							</div>
+									<td>
+									<a href="#" class="btn btn-warning">
+											<scan class="glyphicon glyphicon-pencil"></scan>
+									</a>
+									<a href="#" class="btn btn-warning">
+											<scan class="glyphicon glyphicon-ok"></scan>
+									</a>
+									<a ng-click="removeField(field)" class="btn btn-danger">
+											<scan class="glyphicon glyphicon-remove"></scan>
+									</a>
+									<a href="#" class="btn btn-warning">
+											<scan class="glyphicon glyphicon-align-justify"></scan>
+									</a>
+									</td>
+						</div>
+							<tr>
+									<td>
+											<div class="form-group">
+													<label ng-click="addField(model.fieldType)"for="addNewField">Add New Field:</label>
+													<select id="addNewField" class="form-control" type="text" name="field" ng-model="model.fieldType">
+															<option value="SINGLELINE">Single Line Text</option>
+															<option value="DATE">Date</option>
+															<option value="DROPDOWN">Dropdown</option>
+															<option value="CHECKBOX">Checkboxes</option>
+															<option value="RADIO">Radio Buttons</option>
+															<option value="GRAPH">Paragraph Text Field</option>
+													</select>
+											</div>
+									</td>
+									<td>
+									<a href="#" class="btn btn-primary">
+											<scan class="glyphicon glyphicon-plus"></scan>
+									</a>
+									</td>
+							</tr>
+					</tbody>
+			</table>
+	</div>
+	</div>              
+</div>
