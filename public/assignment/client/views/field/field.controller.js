@@ -4,21 +4,25 @@
 	.module("FormBuilderApp")
 	.controller("FieldController", FieldController);
 
-	function FieldController($scope, $rootScope, FieldService, $routeParams, $http)
+	function FieldController($scope, $rootScope, FieldService, $http)
 	{
 		var current_user = $rootScope.user;
-		var fields = FieldService.getFieldsForForm($rootScope.formId);
 		console.log("form id is: ");
 		console.log($rootScope.formId);
-		if (fields != null) {
-			$scope.fields = fields;
+		if ($rootScope.formId != null) {
+			FieldService.getFieldsForForm($rootScope.formId).then(function(response) {
+				$scope.fields = response;
+			});
 			console.log("get fields for current form");
-			console.log(fields);
+			console.log($scope.fields);
 		} else {
 			$scope.fields = [];
-		}	
-		var userId = $routeParams.userId;
-		var formId = $routeParams.formId;
+		}
+		var formId = $rootScope.formId;
+		var userId;
+		if (current_user != null) {
+			userId = $rootScope.user.id;
+		}
 
 		$scope.addField = function (fieldType)
 		{
@@ -52,22 +56,23 @@
 					]}
 			}
 		  if (userId != null && formId != null) {
-				FieldService.createFieldForForm(userId, field).then(function (field) {
-					$scope.fields.push(field);
-					console.log("successfully added field");
-					console.log($scope.fields);
-				});
+				FieldService.createFieldForForm(userId, field)
+					.then(function (field) {
+						$scope.fields.push(field);
+						console.log("successfully added field");
+						console.log($scope.fields);
+					});
 		  }
 		}
 
-		$scope.removeField = function (field)
+		$scope.removeField = function (index)
 		{
-		  var formId = $scope.fields[index].id;
-		  $scope.forms.splice(index, 1);
-		  FieldService.deleteFieldFromForm(formId, fieldId).then(function (field) {
-			console.log("successfully deleted field");
-			console.log($scope.fields);
-		  });
+		  $scope.fields.splice(index, 1);
+		  FieldService.deleteFieldFromForm(formId, fieldId)
+				.then(function (field) {
+					console.log("successfully deleted field");
+					console.log($scope.fields);
+				});
 		}
 	}
 })();

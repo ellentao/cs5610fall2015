@@ -92,9 +92,9 @@ module.exports = function(app){
 	{
 		for (var i = 0; i < forms.length; i++) {
 			if (forms[i].title == title) {
-		console.log("found form title");
-		console.log(forms[i]);
-		return forms[i];     
+				console.log("found form title");
+				console.log(forms[i]);
+				return forms[i];     
 			}
 		}
 		return null;      
@@ -120,10 +120,13 @@ module.exports = function(app){
 			type: field.type,
 			placeholder: field.placeholder
 		};
-		form.fields.push(newField);
-		console.log("added field in form");
-		console.log(form.fields);
-		return newField;
+		if (form != null) {
+			form.fields.push(newField);
+			console.log("added field in form");
+			console.log(form.fields);
+			return newField;
+		}
+		return null;
 	}
 	
 	function findAllFieldsForForm(formId)

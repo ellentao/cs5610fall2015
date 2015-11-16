@@ -7,92 +7,101 @@
 	<div class="container">
 	<div class="table-responsive">
 			<table class="table table-hover">
-					<tbody>
-						<tr ng-repeat="field in fields">
-							<td>
-								<label>{{field.label}}</label>
-							</td>
-							<td>
-								<div ng-switch on="field.type">									
-									<div ng-switch-when="SINGLELINE">
-											<input type="firstname" class="form-control" id="firstName" placeholder="First Name">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Label</th>
+						<th>Input</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="field in fields">
+						<td>
+							<label>{{field.type}}</label>
+						</td>
+						<td>
+							<label>{{field.label}}</label>
+						</td>
+						<td ng-switch on="field.type">									
+							<div ng-switch-when="TEXT">
+									<input type="firstname" class="form-control" id="firstName" placeholder="First Name">
+							</div>
+							<div ng-switch-when="TEXTAREA">
+									<input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
+							</div>
+							<div ng-switch-when="DATE">
+									<input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
+							</div>
+							<div ng-switch-when="OPTIONS">
+									<select class="form-control" type="text" id="gender">
+											<option value="FEMALE">Female</option>
+											<option value="GENDER">Gender</option>
+									</select>
+							</div>
+							<div ng-switch-when="CHECKBOXES">
+									<div class="checkbox" id="role">
+											<label>
+													<input type="checkbox">Admin
+											</label>
 									</div>
-									<div ng-switch-when="MULTILINE">
-											<input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
+									<div class="checkbox" id="role">
+											<label>
+													<input type="checkbox">Student
+											</label>
 									</div>
-									<div ng-switch-when="DATE">
-											<input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
+									<div class="checkbox" id="role">
+											<label>
+													<input type="checkbox">User
+											</label>
 									</div>
-									<div ng-switch-when="DROPDOWN">
-											<select class="form-control" type="text" id="gender">
-													<option value="FEMALE">Female</option>
-													<option value="GENDER">Gender</option>
-											</select>
+							</div>
+							<div ng-switch-when="RADIOS">
+									<div class="radio" id="license">
+											<label><input id="licenseyes" type="radio" name="bool"/>Yes</label>
 									</div>
-									<div ng-switch-when="CHECKBOX">
-											<div class="checkbox" id="role">
-													<label>
-															<input type="checkbox">Admin
-													</label>
-											</div>
-											<div class="checkbox" id="role">
-													<label>
-															<input type="checkbox">Student
-													</label>
-											</div>
-											<div class="checkbox" id="role">
-													<label>
-															<input type="checkbox">User
-													</label>
-											</div>
+									<div class="radio" id="license">
+											<label><input id="licenseno" type="radio" name="bool"/>No</label>
 									</div>
-									<div ng-switch-when="RADIO">
-											<div class="radio" id="license">
-													<label><input id="licenseyes" type="radio" name="bool"/>Yes</label>
-											</div>
-											<div class="radio" id="license">
-													<label><input id="licenseno" type="radio" name="bool"/>No</label>
-											</div>
-									</div>
-								</div>
-							</td>
-							<td>
-							<a href="#" class="btn btn-warning">
-									<scan class="glyphicon glyphicon-pencil"></scan>
-							</a>
-							<a href="#" class="btn btn-warning">
-									<scan class="glyphicon glyphicon-ok"></scan>
-							</a>
-							<a ng-click="removeField(field)" class="btn btn-danger">
-									<scan class="glyphicon glyphicon-remove"></scan>
-							</a>
-							<a href="#" class="btn btn-warning">
-									<scan class="glyphicon glyphicon-align-justify"></scan>
-							</a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="form-group">
-										<label ng-click="addField(fieldType)"for="addNewField">Add New Field:</label>
-										<select id="addNewField" class="form-control" type="text" name="field" ng-model="fieldType">
-												<option value="SINGLELINE">Single Line Text</option>
-												<option value="MULTILINE">Multi Line Text</option>
-												<option value="DATE">Date</option>
-												<option value="DROPDOWN">Dropdown</option>
-												<option value="CHECKBOX">Checkboxes</option>
-												<option value="RADIO">Radio Buttons</option>
-										</select>
-								</div>
-							</td>
-							<td>
-							<a href="#" class="btn btn-primary">
-									<scan class="glyphicon glyphicon-plus"></scan>
-							</a>
-							</td>
-						</tr>
-					</tbody>
+							</div>
+						</td>
+						<td>
+						<a href="#" class="btn btn-warning">
+								<scan class="glyphicon glyphicon-pencil"></scan>
+						</a>
+						<a href="#" class="btn btn-warning">
+								<scan class="glyphicon glyphicon-ok"></scan>
+						</a>
+						<a ng-click="removeField($index)" class="btn btn-danger">
+								<scan class="glyphicon glyphicon-remove"></scan>
+						</a>
+						<a href="#" class="btn btn-warning">
+								<scan class="glyphicon glyphicon-align-justify"></scan>
+						</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
+				<div class="form-group">
+						<label for="addNewField">Add New Field:</label>
+						<div class="row">
+							<div class="col-sm-9">
+								<select id="addNewField" class="form-control" type="text" name="field" ng-model="fieldType">
+										<option value="SINGLELINE">Single Line Text</option>
+										<option value="MULTILINE">Multi Line Text</option>
+										<option value="DATE">Date</option>
+										<option value="DROPDOWN">Dropdown</option>
+										<option value="CHECKBOX">Checkboxes</option>
+										<option value="RADIO">Radio Buttons</option>
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<a ng-click="addField(fieldType)" class="btn btn-primary">
+										<scan class="glyphicon glyphicon-plus"></scan>
+								</a>
+							</div>
+					</div>
+			</div>
 	</div>
 	</div>              
 </div>

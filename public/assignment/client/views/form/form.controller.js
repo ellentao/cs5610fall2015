@@ -9,7 +9,9 @@
     var current_user = $rootScope.user;
     $scope.$location = $location;
 		if (current_user != null) {
-			$scope.forms = FormService.findAllFormsForUser(current_user.id);
+			FormService.findAllFormsForUser(current_user.id).then(function(response) {
+				$scope.forms = response;
+			});
 			console.log("all forms for user: ");
 			console.log($scope.forms);
 			console.log("current user id is: ");
