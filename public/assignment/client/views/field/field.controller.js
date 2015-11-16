@@ -58,10 +58,10 @@
 		  if (formId != null) {
 				FieldService.createFieldForForm(formId, field)
 					.then(function (field) {
-						if ($scope.fields != null) {
-							$scope.fields.push(field);
-						} else {
+						if ($scope.fields == []) {
 							$scope.fields = [field];
+						} else {
+							$scope.fields.push(field);
 						}
 						console.log("successfully added field");
 						console.log(field);
