@@ -25,44 +25,33 @@
 						</td>
 						<td ng-switch on="field.type">									
 							<div ng-switch-when="TEXT">
-									<input type="firstname" class="form-control" id="firstName" placeholder="First Name">
+									<input type="text" class="form-control" id="{{field.label}}" placeholder="{{field.placeholder}}">
 							</div>
 							<div ng-switch-when="TEXTAREA">
-									<input type="lastname" class="form-control" id="lastName" placeholder="Last Name">
+									<input type="text" class="form-control" id="{{field.label}}" placeholder="{{field.placeholder}}">
 							</div>
 							<div ng-switch-when="DATE">
-									<input class="form-control" type="date" id="dateOfBirth" style="text-align: center"/>
+									<input class="form-control" type="date" id="{{field.label}}" style="text-align: center"/>
 							</div>
 							<div ng-switch-when="OPTIONS">
-									<select class="form-control" type="text" id="gender">
-											<option value="FEMALE">Female</option>
-											<option value="GENDER">Gender</option>
+									<select class="form-control" type="text" id="{{field.label}}">
+											<option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
 									</select>
 							</div>
 							<div ng-switch-when="CHECKBOXES">
-									<div class="checkbox" id="role">
+									<div ng-repeat="option in field.options" class="checkbox" id="{{field.label}}">
 											<label>
-													<input type="checkbox">Admin
-											</label>
-									</div>
-									<div class="checkbox" id="role">
-											<label>
-													<input type="checkbox">Student
-											</label>
-									</div>
-									<div class="checkbox" id="role">
-											<label>
-													<input type="checkbox">User
+													<input type="{{field.type}}">{{option.label}}
 											</label>
 									</div>
 							</div>
 							<div ng-switch-when="RADIOS">
-									<div class="radio" id="license">
-											<label><input id="licenseyes" type="radio" name="bool"/>Yes</label>
+									<div ng-repeat="option in field.options" class="radio" id="{{field.label}}">
+											<label><input id="{{option.label}}" type="radio" name="{{option.value}}"/>{{option.label}}</label>
 									</div>
-									<div class="radio" id="license">
-											<label><input id="licenseno" type="radio" name="bool"/>No</label>
-									</div>
+							</div>
+							<div ng-switch-when="EMAIL">
+									<input type="email" class="form-control" id="{{field.label}}" placeholder="{{field.placeholder}}">
 							</div>
 						</td>
 						<td>
