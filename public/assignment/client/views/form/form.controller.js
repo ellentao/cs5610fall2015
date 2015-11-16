@@ -10,6 +10,8 @@
     $scope.$location = $location;
 		if (current_user != null) {
 			$scope.forms = FormService.findAllFormsForUser(current_user.id);
+			console.log("all forms for user: ");
+			console.log($scope.forms);
 			console.log("current user id is: ");
 			console.log(current_user.id);
 		} else {
@@ -20,6 +22,11 @@
         $scope.forms = forms;
       });
     }
+		
+		$scope.saveFormId = function (form)
+		{
+			$rootScope.formId = form.id;
+		}
     
     $scope.addForm = function ()
     {

@@ -38,7 +38,11 @@
 <tbody>
 <tr>
 	<tr ng-repeat="form in forms">
-		<td>{{form.title}}</td>
+		<td>
+			<a href="#/field" ng-click="saveFormId(form)">
+			{{form.title}}
+			</a>
+		</td>
 		<td>
 			<a ng-click="deleteForm($index)" class="btn btn-danger">
 				<scan class="glyphicon glyphicon-remove"></scan>

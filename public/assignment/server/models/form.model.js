@@ -129,7 +129,13 @@ module.exports = function(app){
 	function findAllFieldsForForm(formId)
 	{
 		var form = findFormById(formId);
-		return form.fields;
+		if (form != null) {
+			console.log("found fields for form:");
+			console.log(form);
+			console.log(form.fields);
+			return form.fields;
+		}
+		return null;
 	}
 	
 	function findFieldById(formId, fieldId)
