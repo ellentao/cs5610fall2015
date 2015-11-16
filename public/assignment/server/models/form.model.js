@@ -122,7 +122,11 @@ module.exports = function(app){
 			options: field.options
 		};
 		if (form != null) {
-			form.fields.push(newField);
+			if (form.fields != null) {
+				form.fields.push(newField);
+			} else {
+				form.fields = [newField];
+			}
 			console.log("added field in form");
 			console.log(form.fields);
 			return newField;

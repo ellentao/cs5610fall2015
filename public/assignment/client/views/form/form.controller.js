@@ -32,7 +32,7 @@
     
     $scope.addForm = function ()
     {
-      if ($rootScope.user != null && $scope.form.title != null) {
+      if ($rootScope.user != null && $scope.form != null) {
         FormService.createFormForUser(current_user.id, $scope.form)
 					.then(function (form) {
 						$scope.forms.push(form);
