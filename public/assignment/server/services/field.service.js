@@ -23,6 +23,8 @@ module.exports = function(app, model) {
 		var formId = req.params.formId;
 		var field = req.body;
 		var newField = model.createFieldForForm(formId, field);
+		console.log("added new field: ");
+		console.log(newField);
 		res.json(newField);
 	});
 

@@ -27,20 +27,20 @@
 		$scope.addField = function (fieldType)
 		{
 			var field;
-			if (fieldType == "Single Line Text") {
+			if (fieldType == "SINGLELINE") {
 				field = {"id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
-			} else if (fieldType == "Multi Line Text") {
+			} else if (fieldType == "MULTILINE") {
 				field = {"id": null, "label": "New Text Field", "type": "TEXTAREA", "placeholder": "New Field"};
-			} else if (fieldType == "Date") {
+			} else if (fieldType == "DATE") {
 				field = {"id": null, "label": "New Date Field", "type": "DATE"};
-			} else if (fieldType == "Dropdown") {
+			} else if (fieldType == "DROPDOWN") {
 				field = 
 					{"id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
 						{"label": "Option 1", "value": "OPTION_1"},
 						{"label": "Option 2", "value": "OPTION_2"},
 						{"label": "Option 3", "value": "OPTION_3"}
 					]}
-			} else if (fieldType == "Checkboxes") {
+			} else if (fieldType == "CHECKBOX") {
 				field = 
 					{"id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
 						{"label": "Option A", "value": "OPTION_A"},
@@ -55,17 +55,22 @@
 						{"label": "Option Z", "value": "OPTION_Z"}
 					]}
 			}
-		  if (userId != null && formId != null) {
-				FieldService.createFieldForForm(userId, field)
+		  if (formId != null) {
+				FieldService.createFieldForForm(formId, field)
 					.then(function (field) {
-						$scope.fields.push(field);
+						if ($scope.fields == []) {
+							$scope.fields = [field];
+						} else {
+							$scope.fields.push(field);
+						}
 						console.log("successfully added field");
+						console.log(field);
 						console.log($scope.fields);
 					});
 		  }
 		}
 
-		$scope.removeField = function (index)
+		$scope.removeField = function (index, fieldId)
 		{
 		  $scope.fields.splice(index, 1);
 		  FieldService.deleteFieldFromForm(formId, fieldId)

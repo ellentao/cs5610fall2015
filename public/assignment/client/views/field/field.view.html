@@ -50,9 +50,6 @@
 											<label><input id="{{option.label}}" type="radio" name="{{option.value}}"/>{{option.label}}</label>
 									</div>
 							</div>
-							<div ng-switch-when="EMAIL">
-									<input type="email" class="form-control" id="{{field.label}}" placeholder="{{field.placeholder}}">
-							</div>
 						</td>
 						<td>
 						<a href="#" class="btn btn-warning">
@@ -61,7 +58,7 @@
 						<a href="#" class="btn btn-warning">
 								<scan class="glyphicon glyphicon-ok"></scan>
 						</a>
-						<a ng-click="removeField($index)" class="btn btn-danger">
+						<a ng-click="removeField($index, field.id)" class="btn btn-danger">
 								<scan class="glyphicon glyphicon-remove"></scan>
 						</a>
 						<a href="#" class="btn btn-warning">

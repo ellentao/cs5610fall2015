@@ -14,7 +14,7 @@
 				]
 			},
 			{"id": "555", "label": "ZIP", "type": "TEXT", "placeholder": "ZIP"},
-			{"id": "666", "label": "Email", "type": "EMAIL", "placeholder": "Email"}
+			{"id": "666", "label": "Email", "type": "TEXT", "placeholder": "Email"}
 		]
 	},
 	{"id": "010",

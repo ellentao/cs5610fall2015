@@ -103,7 +103,7 @@ module.exports = function(app){
 	function deleteFieldFromForm(formId, fieldId)
 	{
 		var form = findFormById(formId);
-		for (var i = 0; i < form.fields.length; j++) {
+		for (var i = 0; i < form.fields.length; i++) {
 				form.fields.splice(i, 1);
 				console.log("deleted field from form");
 				console.log(form.fields);
@@ -118,7 +118,8 @@ module.exports = function(app){
 			id: Guid.create(),
 			label: field.label,
 			type: field.type,
-			placeholder: field.placeholder
+			placeholder: field.placeholder,
+			options: field.options
 		};
 		if (form != null) {
 			form.fields.push(newField);
