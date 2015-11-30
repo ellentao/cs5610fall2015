@@ -1,38 +1,47 @@
 module.exports = function(app, model) {
-	app.get('/api/assignment/form/:formId/field', function (req, res) {
-		var formId = req.params.formId;
-		var fields = model.findAllFieldsForForm(formId);
-		res.json(fields);
-	});
+	app.get('/api/assignment/form/:formId/field', findAllFieldsForForm);
+	app.get('/api/assignment/form/:formId/field/:fieldId', findFieldById);
+	app.delete('/api/assignment/form/:formId/field/:fieldId', deleteFieldFromForm);
+	app.post('/api/assignment/form/:formId/field', createFieldForForm);
+	app.put('/api/assignment/form/:formId/field/:fieldId', updateFieldById);
+	
+	function findAllFieldsForForm(req, res) {
+		model
+			.findAllFieldsForForm(req.params.formId)
+			.then(function(fields) {
+				res.json(fields);
+			});
+	}
 
-	app.get('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
-		var formId = req.params.formId;
-		var fieldId = req.params.fieldId;
-		var field = model.findFieldById(formId, fieldId);
-		res.json(field);
-	});
+	function findFieldById(req, res) {
+		model
+			.findFieldById(req.params.formId, req.params.fieldId)
+			.then(function(field) {
+				res.json(field);
+			});
+	}
 
-	app.delete('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
-		var formId = req.params.formId;
-		var fieldId = req.params.fieldId;
-		var fields = model.deleteFieldFromForm(formId, fieldId);
-		res.json(fields);
-	});
+	function deleteFieldFromForm(req, res) {
+		model
+			.deleteFieldFromForm(req.params.formId, req.params.fieldId)
+			.then(function(fields) {
+				res.json(fields);
+			});
+	}
 
-	app.post('/api/assignment/form/:formId/field', function (req, res) {
-		var formId = req.params.formId;
-		var field = req.body;
-		var newField = model.createFieldForForm(formId, field);
-		console.log("added new field: ");
-		console.log(newField);
-		res.json(newField);
-	});
+	function createFieldForForm(req, res) {
+		model
+			.createFieldForForm(req.params.formId, req.body)
+			.then(function(field) {
+				res.json(newField);
+			});
+	}
 
-	app.put('/api/assignment/form/:formId/field/:fieldId', function (req, res) {
-		var formId = req.params.formId;
-		var fieldId = req.params.fieldId;
-		var field = req.body;
-		var newField = model.updateFieldById(formId, fieldId, field);
-		res.json(newField);
-	});
+	function updateFieldById(req, res) {
+		model
+			.updateFieldById(req.params.formId, req.params.fieldId, req.body)
+			.then(function(field) {
+				res.json(field);
+			});
+	}
 }

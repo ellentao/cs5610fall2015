@@ -1,39 +1,56 @@
 module.exports = function(app, model) {
-	app.get('/api/assignment/form', function (req, res) {
-		res.json(model.findAllForms());
-	});
+	app.get('/api/assignment/form', findAllForms);
+	app.get('/api/assignment/user/:userId/form', findAllFormsForUser);
+	app.get('/api/assignment/form/:formId', findFormById);
+	app.delete('/api/assignment/form/:formId', deleteFormById);
+	app.post('/api/assignment/user/:userId/form', createFormForUser);
+	app.put('/api/assignment/form/:formId', updateFormById);
+					
+	function findAllForms(req, res) {
+		model
+		.findAllForms()
+		.then(function(forms){
+			res.json(forms);
+		});
+	}
 	
-	app.get('/api/assignment/user/:userId/form', function (req, res) {
-		var userId = req.params.userId;
-		var forms = model.findAllFormsForUser(userId);
-		res.json(forms);
-	});
+	function findAllFormsForUser(req, res) {
+		model
+			.findAllFormsForUser(req.params.userId)
+			.then(function(forms){
+				res.json(forms);
+			});
+	}
 
-	app.get('/api/assignment/form/:formId', function (req, res) {
-		var id = req.params.formId;
-		var form = model.findFormById(id);
-		res.json(form);
-	});
+	function findFormById(req, res) {
+		model
+			.findFormById(req.params.formId)
+			.then(function(form){
+				res.json(form);
+			});
+	}
 
-	app.delete('/api/assignment/form/:formId', function (req, res) {
-		var id = req.params.formId;
-		var forms = model.deleteFormById(id);
-		res.json(forms);
-	});
+	function deleteFormById(req, res) {
+		model
+			.deleteFormById(req.params.formId)
+			.then(function(forms){
+				res.json(forms);
+			});
+	}
 
-	app.post('/api/assignment/user/:userId/form', function (req, res) {
-		var userId = req.params.userId;
-		var form = req.body;
-		console.log("go to model");
-		console.log(form);
-		var newForm = model.createFormForUser(userId, form);
-		res.json(newForm);
-	});
+	function createFormForUser(req, res) {
+		model
+			.createFormForUser(req.params.userId, req.body)
+			.then(function(form){
+				res.json(form);
+			});
+	}
 
-	app.put('/api/assignment/form/:formId', function (req, res) {
-		var id = req.params.formId;
-		var form = req.body;
-		var newForm = model.updateFormById(id, form);
-		res.json(newForm);
-	});
-}
+	function updateFormById(req, res) {
+		model
+			.updateFormById(req.params.formId, req.body)
+			.then(function(form){
+				res.json(form);
+			});
+	}
+};

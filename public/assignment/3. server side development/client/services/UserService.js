@@ -22,8 +22,8 @@
 			$http
 				.get('/api/assignment/user?username=' + username + '&' + 'password=' + password)
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}
 
@@ -33,8 +33,8 @@
 			$http
 				.get('/api/assignment/user')
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		} 
 
@@ -44,8 +44,8 @@
 			$http
 				.post('/api/assignment/user', user)
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}
 
@@ -55,8 +55,8 @@
 			$http
 				.delete('/api/assignment/user/' + id)
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}
 
@@ -66,8 +66,8 @@
 			$http
 				.put('/api/assignment/user/' + id, user)
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}    
 	}

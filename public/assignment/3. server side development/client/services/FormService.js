@@ -21,8 +21,8 @@
 			$http
 				.post('/api/assignment/user/' + userId + '/form', form)
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}
 
@@ -32,8 +32,8 @@
 			$http
 				.get('/api/assignment/user/' + userId + '/form')
 				.success(function(response) {
-					deferred.resolve(response);	
-				});						 
+				deferred.resolve(response);	
+			});						 
 			return deferred.promise;
 		}
 
@@ -43,8 +43,8 @@
 			$http
 				.get('/api/assignment/form/' + formId)
 				.success(function(response) {
-					deferred.resolve(response);
-				});
+				deferred.resolve(response);
+			});
 			return deferred.promise;
 		}
 
@@ -54,8 +54,8 @@
 			$http
 				.delete('/api/assignment/form/' + formId)
 				.success(function(response) {
-					deferred.resolve(response);
-				});
+				deferred.resolve(response);
+			});
 			return deferred.promise;
 		}
 
@@ -65,8 +65,8 @@
 			$http
 				.put('/api/assignment/form/' + formId, newForm)
 				.success(function(response) {
-					deferred.resolve(response);
-				});
+				deferred.resolve(response);
+			});
 			return deferred.promise;
 		}   
 	}
