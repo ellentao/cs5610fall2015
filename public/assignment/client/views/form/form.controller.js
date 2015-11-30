@@ -4,79 +4,79 @@
     .module("FormBuilderApp")
     .controller("FormController", FormController);
     
-  function FormController($scope, $location, $rootScope, FormService)
+  function FormController($location, $rootScope, FormService)
   {
+		var model = this;
     var current_user = $rootScope.user;
-    $scope.$location = $location;
-		if (current_user != null) {
-			FormService.findAllFormsForUser(current_user.id).then(function(response) {
-				$scope.forms = response;
-			});
-			console.log("all forms for user: ");
-			console.log($scope.forms);
-			console.log("current user id is: ");
-			console.log(current_user.id);
-		} else {
-			$scope.forms = [];
-		}
-    if ($rootScope.user != null) {
-      FormService.findAllFormsForUser(current_user.id).then(function(forms) {
-        $scope.forms = forms;
-      });
-    }
+		console.log("rootScope User is: ");
+		console.log(current_user);
 		
-		$scope.saveFormId = function (form)
-		{
-			$rootScope.formId = form.id;
+    model.$location = $location;
+		if (current_user != null) {
+			console.log("rootScope User Id is: ");
+			console.log(current_user._id);
+			console.log(current_user.password);
+			
+			FormService
+				.findAllFormsForUser(current_user._id)
+				.then(function(response) {
+					model.forms = response;
+				});
+			console.log("all forms for user: ");
+			console.log(model.forms);
+			console.log("current user id is: ");
+			console.log(current_user._id);
+		} else {
+			model.forms = [];
 		}
     
-    $scope.addForm = function ()
+    model.addForm = function (form)
     {
-      if ($rootScope.user != null && $scope.form != null) {
-        FormService.createFormForUser(current_user.id, $scope.form)
+      if ($rootScope.user != null && form != null) {
+        FormService.createFormForUser(current_user._id, model.form)
 					.then(function (form) {
-						$scope.forms.push(form);
+						model.forms.push(form);
 						console.log("successfully added form");
-						console.log($scope.forms);
+						console.log(model.forms);
 					});
       }
     }
     
-    $scope.updateForm = function ()
+    model.updateForm = function (form)
     { 
-      if ($scope.currentForm != null) {
-        $scope.currentForm.title = $scope.form.title;
+      if (model.currentForm != null) {
+        model.currentForm.title = form.title;
         console.log("start updating:");
-        console.log($scope.currentForm);
-        FormService.updateFormById($scope.currentForm.id, $scope.currentForm).then(function (form) {
+        console.log(model.currentForm);
+        FormService.updateFormById(model.currentForm._id, model.currentForm).then(function (form) {
           console.log("successfully updated form");
-          console.log($scope.forms);
+          console.log(model.forms);
         });
-        $scope.currentForm = null;
+        model.currentForm = null;
       }
-      FormService.findAllFormsForUser(current_user.id).then(function(forms) {
-        $scope.forms = forms;
+      FormService.findAllFormsForUser(current_user._id).then(function(forms) {
+        model.forms = forms;
       });
 
     }
     
-    $scope.deleteForm = function (index)
+    model.deleteForm = function (index)
     {
-      var formId = $scope.forms[index].id;
-      $scope.forms.splice(index, 1);
+      var formId = model.forms[index]._id;
+      model.forms.splice(index, 1);
       FormService.deleteFormById(formId).then(function (forms) {
         console.log("successfully deleted form");
-        console.log($scope.forms);
+        console.log(model.forms);
       });
     }
     
-    $scope.selectForm = function (index)
+    model.selectForm = function (index)
     {
-      document.getElementById('title').value = $scope.forms[index].title;
-      $scope.currentForm = $scope.forms[index];
-      $scope.isSelected = true;
+      document.getElementById('title').value = model.forms[index].title;
+      model.currentForm = model.forms[index];
+      model.isSelected = true;
       console.log("current form is:")
-      console.log($scope.currentForm);
+      console.log(model.currentForm);
     }
   }
 })();

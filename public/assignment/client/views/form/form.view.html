@@ -26,10 +26,10 @@
 <tr>
 	<td><input ng-model="form.title" id="title" class="form-control" type="text" name="title" placeholder="name"/></td>
 	<td style="white-space: nowrap">
-	<a ng-click="addForm()" class="btn btn-primary">
+	<a ng-click="model.addForm(form)" class="btn btn-primary">
 		<scan class="glyphicon glyphicon-plus"></scan>
 	</a>
-	<a ng-click="updateForm()" class="btn btn-success">
+	<a ng-click="model.updateForm(form)" class="btn btn-success">
 		<scan class="glyphicon glyphicon-ok"></scan>
 	</a>
 	</td>
@@ -37,17 +37,17 @@
 </thead>
 <tbody>
 <tr>
-	<tr ng-repeat="form in forms">
+	<tr ng-repeat="form in model.forms">
 		<td>
 			<a href="#/user/:userId/form/:formId/fields" ng-click="saveFormId(form)">
 			{{form.title}}
 			</a>
 		</td>
 		<td>
-			<a ng-click="deleteForm($index)" class="btn btn-danger">
+			<a ng-click="model.deleteForm($index)" class="btn btn-danger">
 				<scan class="glyphicon glyphicon-remove"></scan>
 			</a>
-			<a ng-click="selectForm($index)" class="btn btn-warning">
+			<a ng-click="model.selectForm($index)" class="btn btn-warning">
 				<scan class="glyphicon glyphicon-pencil"></scan>
 			</a>
 		</td>
