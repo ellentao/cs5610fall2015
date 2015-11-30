@@ -107,7 +107,7 @@ module.exports = function(db, mongoose) {
 	{
 		var deferred = q.defer();
 
-		UserModel.find({username: username}, function(err, user){
+		UserModel.findOne({username: username}, function(err, user){
 				if(err) {
 					deferred.reject(err);
 				} else {
@@ -123,7 +123,7 @@ module.exports = function(db, mongoose) {
 	{	
 		var deferred = q.defer();
 
-		UserModel.find(
+		UserModel.findOne(
 			{username: credentials.username}, 
 			{password: credentials.password}, 
 			function(err, user){

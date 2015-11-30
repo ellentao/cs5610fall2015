@@ -11,7 +11,7 @@
 		console.log("rootScope User is: ");
 		console.log(current_user);
 		
-    model.$location = $location;
+		model.$location = $location;
 		if (current_user != null) {
 			console.log("rootScope User Id is: ");
 			console.log(current_user._id);

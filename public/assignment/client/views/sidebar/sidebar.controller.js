@@ -4,10 +4,9 @@
     .module("FormBuilderApp")
     .controller("SidebarController", SidebarController);
     
-  function SidebarController($location)
+  function SidebarController($scope, $location)
   {
-		var model = this;
-    model.$location = $location;
+    $scope.$location = $location;
     console.log($location.url());
   }
 })();
