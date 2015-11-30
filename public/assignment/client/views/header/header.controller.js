@@ -4,9 +4,10 @@
     .module("FormBuilderApp")
     .controller("HeaderController", HeaderController);
     
-  function HeaderController($scope, $location)
+  function HeaderController($location)
   {
-    $scope.$location = $location;
+		var model = this;
+    model.$location = $location;
     console.log($location.url());
   }
 })();

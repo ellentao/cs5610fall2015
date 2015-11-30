@@ -4,19 +4,20 @@
 	.module("FormBuilderApp")
 	.controller("FieldController", FieldController);
 
-	function FieldController($scope, $rootScope, FieldService, $http)
+	function FieldController($rootScope, FieldService, $http)
 	{
+		var model = this;
 		var current_user = $rootScope.user;
 		console.log("form id is: ");
 		console.log($rootScope.formId);
 		if ($rootScope.formId != null) {
 			FieldService.getFieldsForForm($rootScope.formId).then(function(response) {
-				$scope.fields = response;
+				model.fields = response;
 			});
 			console.log("get fields for current form");
-			console.log($scope.fields);
+			console.log(model.fields);
 		} else {
-			$scope.fields = [];
+			model.fields = [];
 		}
 		var formId = $rootScope.formId;
 		var userId;
@@ -24,7 +25,7 @@
 			userId = $rootScope.user.id;
 		}
 
-		$scope.addField = function (fieldType)
+		model.addField = function (fieldType)
 		{
 			var field;
 			if (fieldType == "SINGLELINE") {
@@ -58,25 +59,25 @@
 		  if (formId != null) {
 				FieldService.createFieldForForm(formId, field)
 					.then(function (field) {
-						if ($scope.fields == []) {
-							$scope.fields = [field];
+						if (model.fields == []) {
+							model.fields = [field];
 						} else {
-							$scope.fields.push(field);
+							model.fields.push(field);
 						}
 						console.log("successfully added field");
 						console.log(field);
-						console.log($scope.fields);
+						console.log(model.fields);
 					});
 		  }
 		}
 
-		$scope.removeField = function (index, fieldId)
+		model.removeField = function (index, fieldId)
 		{
-		  $scope.fields.splice(index, 1);
+		  model.fields.splice(index, 1);
 		  FieldService.deleteFieldFromForm(formId, fieldId)
 				.then(function (field) {
 					console.log("successfully deleted field");
-					console.log($scope.fields);
+					console.log(model.fields);
 				});
 		}
 	}
