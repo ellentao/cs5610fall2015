@@ -1,4 +1,3 @@
-var initForms = require("./form.mock.json");
 var Guid = require('guid');
 var q = require("q");
 

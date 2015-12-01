@@ -1,4 +1,3 @@
-var initUsers = require("./user.mock.json");
 var Guid = require('guid');
 var q = require("q");
 
@@ -13,19 +12,10 @@ module.exports = function(db, mongoose) {
 		deleteUserById: deleteUserById,
 		findUserByUsername: findUserByUsername,
 		findUserByCredentials: findUserByCredentials,
-		initUsers: initUsers
 	};
 	return api;
 	
   //CRUD
-	function initUsers()
-	{
-		for (var i = 0; i < initUsers.length; i++) {
-			var user = initUsers[i];
-			createUser(user);
-		}
-	}
-		
 	function createUser(user) 
 	{
 		var deferred = q.defer();
@@ -131,6 +121,7 @@ module.exports = function(db, mongoose) {
 					deferred.reject(err);
 				} else {
 					deferred.resolve(user);
+					console.log("found user by credentials");
 					console.log(user);
 				}
 		});

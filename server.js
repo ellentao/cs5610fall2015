@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/FormBuilderAppDB');
+mongoose.connect('mongodb://localhost/cs5610');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
