@@ -35,8 +35,10 @@
       if ($rootScope.user != null && form != null) {
         FormService.createFormForUser(current_user._id, model.form)
 					.then(function (form) {
+						console.log("Successfully added form: ")
+						console.log(form);
 						model.forms.push(form);
-						console.log("successfully added form");
+						console.log("the current forms are: ");
 						console.log(model.forms);
 					});
       }

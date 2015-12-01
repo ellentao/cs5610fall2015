@@ -22,10 +22,14 @@ module.exports = function(app, model) {
 						username: username, 
 						password: password
 					};
+			console.log("credential is: ");
+			console.log(credentials);
 			model
 				.findUserByCredentials(credentials)
 				.then(function(user) {
 					res.json(user);
+					console.log("found user by credentials: ");
+					console.log(user);
 				});
 		} else if (username != null) {
 			model
@@ -33,12 +37,14 @@ module.exports = function(app, model) {
 				.then(function(user) {
 					res.json(user);
 				});
+			console.log("found user by username");
 		} else {
 			model
 				.findAllUsers()
 				.then(function(users) {
 					res.json(users);
 				});
+			console.log("found all users");
 		}
 	}
 

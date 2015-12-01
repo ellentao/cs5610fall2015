@@ -50,7 +50,7 @@ module.exports = function(db, mongoose) {
 	{
 		var deferred = q.defer();
 
-		SheetModel.findById(id, function(err, user){
+		UserModel.findById(id, function(err, user){
 			if(err) {
 				deferred.reject(err);
 			} else {
@@ -64,15 +64,21 @@ module.exports = function(db, mongoose) {
 	function updateUserById(id, user)
 	{
 		var deferred = q.defer();
-
-		user.delete("_id");
-
-		SheetModel.update({_id: id}, {$set: user}, function(err, sheet) {
-			if(err) {
-				deferred.reject(err);
-			} else {
-				deferred.resolve(user);
-			}
+		
+		UserModel.update(
+			{_id: id}, 
+			{$set: 
+				{
+					firstName : user.firstName,
+					lastName : user.lastName,
+					username : user.username,
+					password : user.password,
+				}, 
+			},
+			function(err, result) {
+				UserModel.findOne({_id : id}, function(err, result) {
+				deferred.resolve(result);
+				});
 		});
 
 		return deferred.promise;
@@ -82,7 +88,7 @@ module.exports = function(db, mongoose) {
 	{
 		var deferred = q.defer();
 
-		SheetModel.remove({_id: id}, function(err, status) {
+		UserModel.remove({_id: id}, function(err, status) {
 			if(err) {
 				deferred.reject(err);
 			} else {
@@ -113,10 +119,10 @@ module.exports = function(db, mongoose) {
 	{	
 		var deferred = q.defer();
 
-		UserModel.findOne(
-			{username: credentials.username}, 
-			{password: credentials.password}, 
-			function(err, user){
+		UserModel.findOne({
+			username: credentials.username, 
+			password: credentials.password
+			}, function(err, user){
 				if(err) {
 					deferred.reject(err);
 				} else {
