@@ -142,13 +142,13 @@ module.exports = function(db, mongoose){
 	{
 		var deferred = q.defer();
 
-		FormModel.findById(sheetId, function(err, form){
+		FormModel.findById(formId, function(err, form){
 			var fields = form.fields;
 			for (var i = 0; i < fields.length; i++) {
-				if (fields[i]._id == fieldId) {
+				if (fields[i].id == fieldId) {
 					form.fields.splice(i, 1);
 					form.save(function(err, form){
-						deferred.resolve(form.fields);
+						deferred.resolve(form);
 					});
 				}
 			}

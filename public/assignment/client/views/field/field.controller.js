@@ -71,7 +71,7 @@
 		{
 		  model.fields.splice(index, 1);
 		  FieldService.deleteFieldFromForm(formId, fieldId)
-				.then(function (field) {
+				.then(function (result) {
 					console.log("successfully deleted field");
 					console.log(model.fields);
 				});
