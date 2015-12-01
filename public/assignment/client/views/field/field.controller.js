@@ -61,8 +61,12 @@
 				console.log("formId is not null");
 				console.log(formId);
 				FieldService.createFieldForForm(formId, field)
-					.then(function (result) {
-						model.fields.push(field);
+					.then(function (form) {
+						console.log("in controller: ");
+						console.log(form);
+						if (form != null) {
+							model.fields = form.fields;
+						}
 					});
 		  }
 		}

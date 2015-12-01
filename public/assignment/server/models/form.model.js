@@ -161,11 +161,16 @@ module.exports = function(db, mongoose){
 	{
 		var deferred = q.defer();
 		field.id = Guid.create();
+		console.log("created field is:");
+		console.log(field);
 		FormModel.findById(formId, function(err, form){
+			
 			form.fields.push(field);
 			console.log(form.fields);
 			form.save(function(err, form){
 				deferred.resolve(form);
+				console.log("updatedForm");
+				console.log(form);
 			});
 		});
 
