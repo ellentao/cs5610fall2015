@@ -32,8 +32,8 @@ module.exports = function(app, model) {
 	function createFieldForForm(req, res) {
 		model
 			.createFieldForForm(req.params.formId, req.body)
-			.then(function(field) {
-				res.json(newField);
+			.then(function(result) {
+				res.json(result);
 			});
 	}
 

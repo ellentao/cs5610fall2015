@@ -39,7 +39,7 @@
 <tr>
 	<tr ng-repeat="form in model.forms">
 		<td>
-			<a href="#/user/:userId/form/:formId/fields" ng-click="saveFormId(form)">
+			<a href="#/user/:userId/form/:formId/fields" ng-click="model.saveFormId(form)">
 			{{form.title}}
 			</a>
 		</td>

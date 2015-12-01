@@ -1,5 +1,6 @@
 module.exports = function(mongoose) {
 	var FieldSchema = mongoose.Schema({
+		id: String,
 		label: String,
 		type: {
 			type: String,

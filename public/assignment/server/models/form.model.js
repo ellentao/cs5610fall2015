@@ -160,17 +160,18 @@ module.exports = function(db, mongoose){
 	function createFieldForForm(formId, field)
 	{
 		var deferred = q.defer();
-
+		field.id = Guid.create();
 		FormModel.findById(formId, function(err, form){
-				form.fields.push(field);
-				form.save(function(err, form){
-						deferred.resolve(form.fields);
-				});
+			form.fields.push(field);
+			console.log(form.fields);
+			form.save(function(err, form){
+				deferred.resolve(form);
+			});
 		});
 
 		return deferred.promise;
 	}
-	
+
 	function findAllFieldsForForm(formId)
 	{
 		var deferred = q.defer();
@@ -180,6 +181,9 @@ module.exports = function(db, mongoose){
 				deferred.reject(err);
 			} else {
 				deferred.resolve(form.fields);
+				console.log("formId is");
+				console.log(formId);
+				console.log(form);
 			}
 		});
 

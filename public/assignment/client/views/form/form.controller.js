@@ -31,7 +31,7 @@
     
 		model.saveFormId = function (form)
 		{
-			$rootScope.formId = form.id;
+			$rootScope.formId = form._id;
 		}
 				
     model.addForm = function (form)

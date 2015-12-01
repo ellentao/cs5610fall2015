@@ -33,7 +33,9 @@
 			$http
 				.get('/api/assignment/form/' + formId + '/field')
 				.success(function(response) {
-					deferred.resolve(response);	
+					deferred.resolve(response);
+					console.log("found fields: ");
+					console.log(response);
 				});						 
 			return deferred.promise;
 		}
