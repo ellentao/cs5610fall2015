@@ -15,7 +15,6 @@
 		if (current_user != null) {
 			console.log("rootScope User Id is: ");
 			console.log(current_user._id);
-			console.log(current_user.password);
 			
 			FormService
 				.findAllFormsForUser(current_user._id)
@@ -30,14 +29,21 @@
 			model.forms = [];
 		}
     
+		model.saveFormId = function (form)
+		{
+			$rootScope.formId = form.id;
+		}
+				
     model.addForm = function (form)
     {
+			console.log("form title is: ");
+			console.log(form.title);
       if ($rootScope.user != null && form != null) {
-        FormService.createFormForUser(current_user._id, model.form)
-					.then(function (form) {
+        FormService.createFormForUser(current_user._id, form)
+					.then(function (result) {
 						console.log("Successfully added form: ")
-						console.log(form);
-						model.forms.push(form);
+						console.log(result);
+						model.forms.push(result);
 						console.log("the current forms are: ");
 						console.log(model.forms);
 					});
@@ -46,39 +52,36 @@
     
     model.updateForm = function (form)
     { 
-      if (model.currentForm != null) {
-        model.currentForm.title = form.title;
-        console.log("start updating:");
-        console.log(model.currentForm);
-        FormService.updateFormById(model.currentForm._id, model.currentForm).then(function (form) {
-          console.log("successfully updated form");
-          console.log(model.forms);
-        });
-        model.currentForm = null;
-      }
-      FormService.findAllFormsForUser(current_user._id).then(function(forms) {
-        model.forms = forms;
-      });
-
+			FormService.updateFormById(form._id, form).then(function (newform) {
+				FormService.findAllFormsForUser(current_user._id).then(function(forms) {
+					model.forms = forms;
+				});
+				console.log("successfully updated form");
+				console.log(newform);
+				console.log(model.forms);
+			});
     }
     
-    model.deleteForm = function (index)
+    model.deleteForm = function (form)
     {
-      var formId = model.forms[index]._id;
-      model.forms.splice(index, 1);
-      FormService.deleteFormById(formId).then(function (forms) {
+      FormService.deleteFormById(form._id).then(function (forms) {
+				FormService
+					.findAllFormsForUser(form.userId)
+					.then(function (result) {
+						model.forms = result;																								
+					});
         console.log("successfully deleted form");
         console.log(model.forms);
       });
     }
     
-    model.selectForm = function (index)
-    {
-      document.getElementById('title').value = model.forms[index].title;
-      model.currentForm = model.forms[index];
-      model.isSelected = true;
-      console.log("current form is:")
-      console.log(model.currentForm);
+    model.selectForm = function (form)
+    {	
+			FormService.getFormById(form._id).then(function (form) {
+				model.form = form;
+        console.log("successfully selected form");
+        console.log(form);
+      });
     }
   }
 })();

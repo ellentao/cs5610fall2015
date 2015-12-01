@@ -24,12 +24,12 @@
 	</th>
 </tr>
 <tr>
-	<td><input ng-model="form.title" id="title" class="form-control" type="text" name="title" placeholder="name"/></td>
+	<td><input class="form-control" ng-model="model.form.title" id="title" class="form-control" type="text" name="title" placeholder="name"/></td>
 	<td style="white-space: nowrap">
-	<a ng-click="model.addForm(form)" class="btn btn-primary">
+	<a ng-click="model.addForm(model.form)" class="btn btn-primary">
 		<scan class="glyphicon glyphicon-plus"></scan>
 	</a>
-	<a ng-click="model.updateForm(form)" class="btn btn-success">
+	<a ng-click="model.updateForm(model.form)" class="btn btn-success">
 		<scan class="glyphicon glyphicon-ok"></scan>
 	</a>
 	</td>
@@ -44,10 +44,10 @@
 			</a>
 		</td>
 		<td>
-			<a ng-click="model.deleteForm($index)" class="btn btn-danger">
+			<a ng-click="model.deleteForm(form)" class="btn btn-danger">
 				<scan class="glyphicon glyphicon-remove"></scan>
 			</a>
-			<a ng-click="model.selectForm($index)" class="btn btn-warning">
+			<a ng-click="model.selectForm(form)" class="btn btn-warning">
 				<scan class="glyphicon glyphicon-pencil"></scan>
 			</a>
 		</td>

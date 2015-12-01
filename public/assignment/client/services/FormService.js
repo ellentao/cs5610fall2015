@@ -9,6 +9,7 @@
 		var service = {
 		  createFormForUser : createFormForUser,
 		  findAllFormsForUser : findAllFormsForUser,
+			getFormById: getFormById,
 		  deleteFormById : deleteFormById,
 		  updateFormById : updateFormById
 		};
@@ -21,7 +22,7 @@
 			$http
 				.post('/api/assignment/user/' + userId + '/form', form)
 				.success(function(response) {
-					deferred.resolve(response);	
+					deferred.resolve(response);
 				});						 
 			return deferred.promise;
 		}

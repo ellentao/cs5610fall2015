@@ -52,12 +52,13 @@ module.exports = function(db, mongoose){
 		return deferred.promise;
 	}
 	
-	function createFormForUser(userId, form)
+	function createFormForUser(form)
 	{
 		var deferred = q.defer();
-		form.userId = userId;
-		FormModel.create(function(err, form) {
-			deferred.resolve(form);
+		FormModel.create(form, function(err, result) {
+			deferred.resolve(result);
+			console.log("result form is: ");
+			console.log(result);
 		});
 
 		return deferred.promise;
@@ -65,9 +66,13 @@ module.exports = function(db, mongoose){
 
 	function findAllFormsForUser(userId)
 	{
+		console.log("userId is: ");
+		console.log(userId);
 		var deferred = q.defer();
 		FormModel.find({userId: userId}, function(err, forms) {
 			deferred.resolve(forms);
+			console.log("found all forms for user: ");
+			console.log(forms);
 		});
 
 		return deferred.promise;
@@ -77,7 +82,7 @@ module.exports = function(db, mongoose){
 	{
 		var deferred = q.defer();
 
-		FormModel.findById(id, function(err, form){
+		FormModel.findById(formId, function(err, form){
 			if(err) {
 				deferred.reject(err);
 			} else {
@@ -91,8 +96,6 @@ module.exports = function(db, mongoose){
 	function updateFormById(id, form)
 	{
 		var deferred = q.defer();
-
-		form.delete("_id");
 
 		FormModel.update({_id: id}, {$set: form}, function(err, form) {
 			if(err) {
