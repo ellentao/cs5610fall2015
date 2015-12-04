@@ -14,72 +14,86 @@
       .when("/login",
       {
         templateUrl: "login/login.view.html",
-        controller: "LoginController"
+        controller: "LoginController",
+				controllerAs: "model"
       })
       .when("/register",
       {
         templateUrl: "register/register.view.html",
-        controller: "RegisterController"
+        controller: "RegisterController",
+				controllerAs: "model"
       })
       .when("/profile",
       {
         templateUrl: "profile/profile.view.html",
-        controller: "ProfileController"
+        controller: "ProfileController",
+				controllerAs: "model"
       })
       .when("/album",
       {
         templateUrl: "album/album.view.html",
-        controller: "AlbumController"
+        controller: "AlbumController",
+				controllerAs: "model"
       })
 			.when("/artist",
       {
         templateUrl: "artist/artist.view.html",
-        controller: "ArtistController"
+        controller: "ArtistController",
+				controllerAs: "model"
       })
 			.when("/genres",
       {
         templateUrl: "genres/genres.view.html",
-        controller: "GenresController"
+        controller: "GenresController",
+				controllerAs: "model"
       })
 			.when("/new-releases",
       {
         templateUrl: "new-releases/new-releases.view.html",
-        controller: "NewReleasesController"
+        controller: "NewReleasesController",
+				controllerAs: "model"
       })
 			.when("/popular-artist",
       {
         templateUrl: "popular-artist/popular-artist.view.html",
-        controller: "PopularArtistController"
+        controller: "PopularArtistController",
+				controllerAs: "model"
       })
 			.when("/search",
       {
         templateUrl: "search/search.view.html",
-        controller: "SearchController"
+        controller: "SearchController",
+				controllerAs: "model"
       })
 			.when("/song",
       {
         templateUrl: "song/song.view.html",
-        controller: "SongController"
+        controller: "SongController",
+				controllerAs: "model"
       })
 			.when("/user",
       {
         templateUrl: "user/user.view.html",
-        controller: "UserController"
+        controller: "UserController",
+				controllerAs: "model"
       })
 			.when("/user-comment",
       {
         templateUrl: "user-comment/user-comment.view.html",
-        controller: "UserCommentController"
+        controller: "UserCommentController",
+				controllerAs: "model"
       })
 			.when("/user-follow",
       {
         templateUrl: "user-follow/user-follow.view.html",
-        controller: "UserController"
+        controller: "UserController",
+				controllerAs: "model"
       })
 			.when("/user-guess",
       {
         templateUrl: "user-guess/user-guess.view.html",
-        controller: "UserGuessController"
+        controller: "UserGuessController",
+				controllerAs: "model"
       })
       .otherwise({
         redirectTo: "/home"

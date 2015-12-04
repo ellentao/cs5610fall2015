@@ -9,18 +9,21 @@
 </div>
 <div id="navbar" class="navbar-collapse collapse">
 	<ul class="nav navbar-nav navbar-right">
+		<li ng-class="{'active' : $location.url().indexOf('search') != -1}"><a href="#/search">Search</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('register') != -1}"><a href="#/register">Register</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">Login</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('user') != -1}"><a href="#/user">Username</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
 		<li ng-class="{'active' : $location.url().indexOf('login') != -1}"><a href="#/login">Logout</a></li>
 	</ul>
+<!--
 	<form class="navbar-form navbar-right" role="search">
 		<div class="form-group">
 		<input type="text" class="form-control" placeholder="Search the album/artist/song you love!">
 		</div>
-		<a href="search/search.view.html">
+		<a href="#/search">
 				<scan class="glyphicon glyphicon-search"></scan>
 		</a>
 	</form>
+-->
 </div>

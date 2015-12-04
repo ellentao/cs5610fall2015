@@ -1,9 +1,9 @@
-module.exports = function(app) {
-	var userModel = require("./models/user.model.js")(app);
-	var albumModel = require("./models/album.model.js")(app);
-	var artistModel = require("./models/artist.model.js")(app);
-	var searchModel = require("./models/search.model.js")(app);
-	var songModel = require("./models/song.model.js")(app);
+module.exports = function(app, db, mongoose) {
+	var userModel = require("./models/user.model.js")(db, mongoose);
+	var albumModel = require("./models/album.model.js")();
+	var artistModel = require("./models/artist.model.js")();
+	var searchModel = require("./models/search.model.js")();
+	var songModel = require("./models/song.model.js")();
 
 	require("./services/user.service.js")(app, userModel);
 	require("./services/album.service.js")(app, albumModel);
