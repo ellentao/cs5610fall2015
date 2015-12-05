@@ -18,22 +18,21 @@
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
 			console.log($rootScope.album);
-			model.album = $rootScope.album;
 			
 		  SearchService.findAlbumById($rootScope.album.id)
 				.then(function (result) {
 					console.log("successfully found album");
 					model.album = result;
+				
+					SearchService.findSongsByAlbum(model.album.id)
+					.then(function (result) {
+						console.log("successfully found songs");
+						model.songs = result.items;
+						console.log(model.songs);
+					});
 					console.log($rootScope.album);
 					console.log($rootScope.album.name);
 				});
-			
-			SearchService.findSongsByAlbum(model.album.id)
-			.then(function (result) {
-				console.log("successfully found songs");
-				model.songs = result.items;
-				console.log(model.songs);
-			});
 		}
 		
 		model.millisToMinutesAndSeconds = function (millis) {
@@ -46,8 +45,8 @@
 			$rootScope.song = song;
 		}
 		
-		model.saveArtist = function (artist) {
-			$rootScope.artist = artist;
+		model.saveArtist = function (song) {
+			$rootScope.artist.id = song.artists[0].id;
 		}
 	}
 })();

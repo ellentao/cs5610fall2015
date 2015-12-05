@@ -65,7 +65,7 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('https://api.spotify.com/v1/album/' + id)
+				.get('https://api.spotify.com/v1/albums/' + id)
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 

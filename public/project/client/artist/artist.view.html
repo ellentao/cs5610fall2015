@@ -8,6 +8,10 @@
 				<ul>
 						<li>popularity: {{model.artist.popularity}} </li>
 						<li>followers: {{model.artist.followers.total}} </li>
+						<li>genres: </li>
+						<ul ng-repeat="genre in model.genres">
+							<li>{{genre}}</li>
+						</ul>
 				</ul>
 		</div>
 		<div class="col-sm-3">

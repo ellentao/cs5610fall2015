@@ -13,22 +13,22 @@
 		if ($rootScope.artist != null) {
 			console.log("In artist page, current artist is: ");
 			console.log($rootScope.artist);
-			model.artist = $rootScope.artist;
 			
 		  SearchService.findArtistById($rootScope.artist.id)
 				.then(function (result) {
 					console.log("successfully found artist");
+					console.log(result);
 					model.artist = result;
-					console.log($rootScope.artist);
-					console.log($rootScope.artist.name);
+					model.genres = result.genres;
+					console.log(model.genres);
+				
+					SearchService.findAlbumByArtist(model.artist.id)
+					.then(function (result) {
+						console.log("successfully found albums");
+						model.albums = result.items;
+						console.log(model.albums);
+					});
 				});
-			
-			SearchService.findAlbumByArtist(model.artist.id)
-			.then(function (result) {
-				console.log("successfully found albums");
-				model.albums = result.items;
-				console.log(model.albums);
-			});
 		}
 		model.saveAlbum = function (album) {
 			$rootScope.album = album;

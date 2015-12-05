@@ -6,7 +6,10 @@
 		<div class="col-sm-5">
 				<h2>{{model.album.name}}</h2>
 				<ul>
-						<li>Artist: {{model.album.artists[0].name}}</li>
+						<li>Artist: </li>
+						<ul ng-repeat="artist in model.album.artists">
+							<li>{{artist.name}}</li>
+						</ul>
 						<li>Release data: {{model.album.release_date}}</li>
 						<li>Total songs: {{model.album.tracks.items.length}}</li>
 						<li>Popularity: {{model.album.popularity}}</li>
@@ -18,16 +21,6 @@
 				</div>
 		</div>
 </div>
-
-<!--
-<div id="song-results"></div>
-<script id="song-results-template" type="text/x-handlebars-template">
-		{{#each Object.uri}}
-	<h5>hello</h5>
-		<iframe src="https://embed.spotify.com/?uri={{uri}}" frameborder="0" allowtransparency="true"></iframe>
-		{{/each}}
-</script>
--->
 	
 <div class="col-sm-12">
 <hr>

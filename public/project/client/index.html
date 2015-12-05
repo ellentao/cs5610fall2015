@@ -38,44 +38,44 @@
 </head>
 
 <body>
-<div id="myCarousel" class="carousel slide">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
+	<div id="myCarousel" class="carousel slide">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
 
-		<!-- Wrapper for Slides -->
-		<div class="carousel-inner">
-				<div class="item active">
-						<!-- Set the first background image using inline CSS below. -->
-						<div class="fill" style="background-image:url('img/bruno-mars-cover.jpg');"></div>
-<!--
-						<div class="carousel-caption">
-								<h2>Caption 1</h2>
-						</div>
--->
-				</div>
-				<div class="item">
-						<!-- Set the second background image using inline CSS below. -->
-						<div class="fill" style="background-image:url('img/Maroon-5-Overexposed-Cover.jpg');"></div>
-				</div>
-				<div class="item">
-						<!-- Set the third background image using inline CSS below. -->
-						<div class="fill" style="background-image:url('img/katy-perry-prism-cover.jpg');"></div>
-				</div>
-		</div>
+			<!-- Wrapper for Slides -->
+			<div class="carousel-inner">
+					<div class="item active">
+							<!-- Set the first background image using inline CSS below. -->
+							<div class="fill" style="background-image:url('img/bruno-mars-cover.jpg');"></div>
+	<!--
+							<div class="carousel-caption">
+									<h2>Caption 1</h2>
+							</div>
+	-->
+					</div>
+					<div class="item">
+							<!-- Set the second background image using inline CSS below. -->
+							<div class="fill" style="background-image:url('img/Maroon-5-Overexposed-Cover.jpg');"></div>
+					</div>
+					<div class="item">
+							<!-- Set the third background image using inline CSS below. -->
+							<div class="fill" style="background-image:url('img/katy-perry-prism-cover.jpg');"></div>
+					</div>
+			</div>
 
-		<!-- Controls -->
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="icon-prev"></span>
-		</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				<span class="icon-next"></span>
-		</a>
-
-</div>
+			<!-- Controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					<span class="icon-prev"></span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+					<span class="icon-next"></span>
+			</a>
+	</div>
+	<div class="container">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div ng-include="'header/header.view.html'"></div>
@@ -84,8 +84,7 @@
     
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-12 col-sm-offset-2 col-md-10 col-md-offset-2 main">
-				<div ng-view></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-2 main" ng-view>
 			</div>
 		</div>
 	</div>
@@ -100,5 +99,6 @@
 			</div>
 			<!-- /.row -->
 	</footer>
+	</div>
 </body>
 </html>

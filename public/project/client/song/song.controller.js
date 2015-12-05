@@ -10,6 +10,8 @@
 		model.$location = $location;
 		
 		model.song = $rootScope.song;
+		console.log("in song page, current song is: ");
+		console.log(model.song);
 		
 		model.millisToMinutesAndSeconds = function (millis) {
 			var minutes = Math.floor(millis / 60000);

@@ -8,6 +8,8 @@
   {
 		var model = this;
 		model.$location = $location;
+		model.artists = [];
+		model.albums = [];
 		
 		// find template and compile it
 		var templateSource = document.getElementById('results-template').innerHTML,

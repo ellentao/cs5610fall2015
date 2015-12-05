@@ -1,5 +1,5 @@
 <div ng-controller="SearchController">
-<div class="container">
+<div>
     <h1>Search for an Artist's Albums and Listen!</h1>
     <p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
     <form id="search-form">
@@ -14,7 +14,7 @@
     {{/each}}
 </script>
 
-<div class="container">
+<div>
     <h1>Search for an Artist</h1>
     <p>Type an artist name and click on "Search". Then, click on any album from the results to see details of this album. </p>
     <form id="search-form2">
@@ -22,8 +22,8 @@
         <input ng-click="model.findArtistByName(model.name)" class="btn btn-primary" value="Search artist" />
     </form>
 </div>
-	
-<div class="container">
+
+<div>
 	<hr>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
@@ -59,7 +59,7 @@
 </table>
 </div>
 	
-<div class="container">
+<div>
     <h1>Search for an Album</h1>
     <p>Type an album name and click on "Search". Then, click on any album from the results to see details of this album. </p>
     <form id="search-form3">
@@ -68,7 +68,7 @@
     </form>
 </div>
 	
-<div class="container">
+<div>
 	<hr>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
@@ -89,6 +89,7 @@
 </thead>
 <tbody>
 	<tr ng-repeat="album in model.albums">
+		{{album.images}}
 		<td>
 			<a href="#/album" ng-click="model.saveAlbum(album)">
 				{{album.name}}
@@ -232,4 +233,5 @@
 				</tbody>
 				</table>
 		</div>
+</div>
 </div>
