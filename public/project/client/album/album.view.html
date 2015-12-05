@@ -6,13 +6,19 @@
 		<div class="col-sm-5">
 				<h2>{{model.album.name}}</h2>
 				<ul>
-						<li>Artist: </li>
-						<ul ng-repeat="artist in model.album.artists">
-							<li>{{artist.name}}</li>
+					<li>Polularity: 
+						<ul class="list-inline">
+						<li ng-repeat="n in [] | range: model.album.popularity">
+							<span class="glyphicon glyphicon-heart"></span>
+						</li>
 						</ul>
-						<li>Release data: {{model.album.release_date}}</li>
-						<li>Total songs: {{model.album.tracks.items.length}}</li>
-						<li>Popularity: {{model.album.popularity}}</li>
+					</li>
+					<li>Artist: </li>
+					<ul ng-repeat="artist in model.album.artists">
+						<li>{{artist.name}}</li>
+					</ul>
+					<li>Release data: {{model.album.release_date}}</li>
+					<li>Total songs: {{model.album.tracks.items.length}}</li>
 				</ul>
 		</div>
 		<div class="col-sm-3">

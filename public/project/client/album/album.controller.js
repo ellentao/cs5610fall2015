@@ -7,6 +7,16 @@
       return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
    };
 	})
+	.filter('range', function() {
+		return function(val, range) {
+			range = parseInt(range / 20);
+			console.log("current range is");
+			console.log(range);
+			for (var i=0; i<=range; i++)
+				val.push(i);
+			return val;
+		};
+	})
 	.controller("AlbumController", albumController);
 
 	function albumController($location, $rootScope, SearchService, $sce)

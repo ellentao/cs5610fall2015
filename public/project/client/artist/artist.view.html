@@ -3,18 +3,24 @@
 		<div class="col-sm-4">
 				<a href="#"><img src="{{artist.images[0].url}}" class="img-thumbnail" alt="{{artist.name}} image" width="200" height="200"></a>
 				</div>            
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 				<h2>{{model.artist.name}}</h2>
 				<ul>
-						<li>popularity: {{model.artist.popularity}} </li>
-						<li>followers: {{model.artist.followers.total}} </li>
-						<li>genres: </li>
-						<ul ng-repeat="genre in model.genres">
-							<li>{{genre}}</li>
+					<li>Polularity: 
+						<ul class="list-inline">
+								<li ng-repeat="n in [] | range: model.artist.popularity">
+									<span class="glyphicon glyphicon-heart"></span>
+								</li>
 						</ul>
+					</li>
+					<li>followers: {{model.artist.followers.total}} </li>
+					<li>genres: </li>
+					<ul ng-repeat="genre in model.genres">
+						<li>{{genre}}</li>
+					</ul>
 				</ul>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 				<div class="text-right">
 				<button class="btn-info btn"><a href="#/login">like</a></button>
 				</div>

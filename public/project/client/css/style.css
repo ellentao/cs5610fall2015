@@ -229,3 +229,5 @@ body {
 .cover.playing {
     border: 5px solid #e45343;
 }
+
+.repeat-glyphicon > li > .glyphicon { display: inline-block; }
