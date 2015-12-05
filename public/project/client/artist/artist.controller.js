@@ -30,6 +30,10 @@
 				console.log(model.albums);
 			});
 		}
-
+		model.saveAlbum = function (album) {
+			$rootScope.album = album;
+			console.log("In artist page, saved album");
+			console.log($rootScope.album);
+		}
 	}
 })();

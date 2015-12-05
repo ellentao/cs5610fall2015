@@ -40,12 +40,12 @@
 <tbody>
 	<tr ng-repeat="album in model.albums">
 		<td>
-			<a href="#/album">
+			<a href="#/album" ng-click="model.saveAlbum(album)">
 				{{album.name}}
 			</a>
 		</td>
 		<td>
-			<a href="#/album">
+			<a href="#/album" ng-click="model.saveAlbum(album)">
 			<img src="{{album.images[0].url}}" class="img-rounded" alt="{{album.name}} image" width="200" height="200">
 			</a>
 		</td>

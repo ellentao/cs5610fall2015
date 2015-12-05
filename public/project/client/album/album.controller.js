@@ -1,18 +1,19 @@
 (function()
 {
 	angular
-	.module("PandaMusicApp")
+	.module("PandaMusicApp")	
+	.filter('trustUrl', function ($sce) {
+    return function(url) {
+      return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
+   };
+	})
 	.controller("AlbumController", albumController);
 
-	function albumController($location, $rootScope, SearchService)
+	function albumController($location, $rootScope, SearchService, $sce)
 	{
 		var model = this;
 		model.$location = $location;
 		model.songs = [];
-		
-//		var templateSource2 = document.getElementById('song-results-template').innerHTML,
-//				template2 = Handlebars.compile(templateSource2),
-//				resultsPlaceholder2 = document.getElementById('song-results');
 		
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
@@ -32,10 +33,6 @@
 				console.log("successfully found songs");
 				model.songs = result.items;
 				console.log(model.songs);
-//				resultsPlaceholder2.innerHTML = template2(result);
-//				console.log("read resultsPlaceholder2");
-//				console.log(resultsPlaceholder2);
-//				console.log(resultsPlaceholder2.innerHTML);
 			});
 		}
 		
@@ -45,9 +42,12 @@
 			return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 		}
 		
-		model.replaceUri = function (song) {
-			console.log("https://embed.spotify.com/?uri=" + song.uri);
-			return "https://embed.spotify.com/?uri=" + song.uri;
+		model.saveSong = function (song) {
+			$rootScope.song = song;
+		}
+		
+		model.saveArtist = function (artist) {
+			$rootScope.artist = artist;
 		}
 	}
 })();
