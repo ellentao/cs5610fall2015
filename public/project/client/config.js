@@ -53,10 +53,10 @@
         controller: "NewReleasesController",
 				controllerAs: "model"
       })
-			.when("/popular-artist",
+			.when("/category",
       {
-        templateUrl: "popular-artist/popular-artist.view.html",
-        controller: "PopularArtistController",
+        templateUrl: "category/category.view.html",
+        controller: "CategoryController",
 				controllerAs: "model"
       })
 			.when("/search",

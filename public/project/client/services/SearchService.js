@@ -9,7 +9,10 @@
 		var service = {
 		  findArtistByName: findArtistByName,
 			findArtistById: findArtistById,
-			findAlbumByArtist: findAlbumByArtist
+			findAlbumByArtist: findAlbumByArtist,
+			findAlbumByName: findAlbumByName,
+			findAlbumById: findAlbumById,
+			findSongsByAlbum: findSongsByAlbum
 		};
 
 		return service;
@@ -18,7 +21,7 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('https://api.spotify.com/v1/search?q='+ name + '&type=artist&offset=20&limit=' + 5)
+				.get('https://api.spotify.com/v1/search?q='+ name + '&type=artist&limit=' + 5)
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 
@@ -41,6 +44,39 @@
 			var deferred = $q.defer();
 			$http
 				.get('https://api.spotify.com/v1/artists/' + id + '/albums')
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findAlbumByName(name)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('https://api.spotify.com/v1/search?q='+ name + '&type=album&limit=' + 5)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findAlbumById(id)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('https://api.spotify.com/v1/album/' + id)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findSongsByAlbum(id)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('https://api.spotify.com/v1/albums/'+ id +'/tracks')
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 

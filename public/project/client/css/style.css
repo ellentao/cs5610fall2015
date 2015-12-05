@@ -209,9 +209,11 @@ footer {
 }
 
 /* search details */
+/*
 body {
     padding: 20px;
 }
+*/
 #search-form, .form-control {
     margin-bottom: 20px;
 }

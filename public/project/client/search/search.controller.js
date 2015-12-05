@@ -67,6 +67,7 @@
 				searchAlbums(document.getElementById('query').value);
 		}, false);
 		
+		
 		model.findArtistByName = function (name)
 		{
 		  SearchService.findArtistByName(name)
@@ -77,16 +78,26 @@
 				});
 		}
 		
-		model.findArtistById = function (id)
+		model.saveArtist = function (artist)
 		{
-		  SearchService.findArtistById(id)
+		  $rootScope.artist = artist;
+			
+		}
+		
+		model.findAlbumByName = function (name)
+		{
+		  SearchService.findAlbumByName(name)
 				.then(function (result) {
-					console.log("successfully found artist");
-					$rootScope.artist = result;
-					console.log(id);
-					console.log($rootScope.artist);
-					console.log($rootScope.artist.name);
+					console.log("successfully found album array");
+					model.albums = result.albums.items;
+					console.log(model.albums);
 				});
+		}
+		
+		model.saveAlbum = function (album)
+		{
+		  $rootScope.album = album;
+			
 		}
 	}
 })();

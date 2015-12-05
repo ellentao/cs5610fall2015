@@ -1,14 +1,15 @@
+<div ng-controller="AlbumController">
 <div class="col-sm-12">
 		<div class="col-sm-4">
-				<img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
+				<img src="{{album.images[0].url}}" class="img-thumbnail" alt="{{album.name}} image" width="200" height="200">
 				</div>            
 		<div class="col-sm-5">
-				<h2>Despicable Me 2</h2>
+				<h2>{{model.album.name}}</h2>
 				<ul>
-						<li>Artist: </li>
-						<li>Release year: </li>
-						<li>Total songs: </li>
-						<li>Time duration: </li>
+						<li>Artist: {{model.album.artists[0].name}}</li>
+						<li>Release data: {{model.album.release_date}}</li>
+						<li>Total songs: {{model.album.tracks.items.length}}</li>
+						<li>Popularity: {{model.album.popularity}}</li>
 				</ul>
 		</div>
 		<div class="col-sm-3">
@@ -17,77 +18,74 @@
 				</div>
 		</div>
 </div>
+
+<!--
+<div id="song-results"></div>
+<script id="song-results-template" type="text/x-handlebars-template">
+		{{#each Object.uri}}
+	<h5>hello</h5>
+		<iframe src="https://embed.spotify.com/?uri={{uri}}" frameborder="0" allowtransparency="true"></iframe>
+		{{/each}}
+</script>
+-->
+	
 <div class="col-sm-12">
+<hr>
 <h2>Songs</h2>
-<div class="table-responsive">
-		<table class="table table-striped table-bordered table-hover table-condensed">
-		<thead>
-		<tr>
-				<th>
-						<a href="#"><scan class="glyphicon glyphicon-triangle-bottom"></scan></a>
-						Name
-				</th>
-				<th>
-						<a href="#"><scan class="glyphicon glyphicon-triangle-bottom"></scan></a>
-						Artist
-				</th>
-				<th>
-						<a href="#"><scan class="glyphicon glyphicon-triangle-bottom"></scan></a>
-						Time duration
-				</th>
-				<th>
-						<a href="#"><scan class="glyphicon glyphicon-triangle-bottom"></scan></a>
-						Popularity
-				</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr>
-				<td><a href="#/song">Happy</a></td>
-				<td><a href="#/artist">Pharrell Williams</a></td>
-				<td>3:53</td>
-				<td>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-				</td>
-		</tr>
-		<tr>
-				<td><a href="#/song">Scream</a></td>
-				<td><a href="#/artist">xx</a></td>
-				<td>3:53</td>
-				<td>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-				</td>
-		</tr>
-		<tr>
-				<td><a href="#/song">Fun Fun Fun Tied</a></td>
-				<td><a href="#/artist">xx</a></td>
-				<td>3:59</td>
-				<td>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-				</td>
-		</tr>
-		<tr>
-				<td><a href="#/song">I swear</a></td>
-				<td><a href="#/artist">xx</a></td>
-				<td>2:56</td>
-				<td>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-						<scan class="glyphicon glyphicon-heart"></scan>
-				</td>
-		</tr>
-		</tbody>
-		</table>
+<table class="table table-striped table-bordered table-hover table-condensed">
+<thead>
+<tr>
+	<th>
+		<a href="#">
+			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+		</a>
+		Song Name
+	</th>
+	<th>
+		<a href="#">
+			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+		</a>
+		Artist Name
+	</th>
+	<th>
+		<a href="#">
+			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+		</a>
+		Time Duration
+	</th>
+	<th>
+		<a href="#">
+			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+		</a>
+		Preview
+	</th>
+</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="song in model.songs">
+		<td>
+			<a href="#/song">
+				{{song.name}}
+			</a>
+		</td>
+		<td>
+			<a href="#/artist">
+			{{song.artists[0].name}}
+			</a>
+		</td>
+		<td>
+			{{model.millisToMinutesAndSeconds(song.duration_ms)}}
+		</td>
+		<td>
+			{{model.replaceUri(song)}}
+			<iframe src="{{model.replaceUri(song)}}" frameborder="0" allowtransparency="true"></iframe>
+<!--			<iframe src="https://embed.spotify.com/?uri={{song.uri}}" frameborder="0" allowtransparency="true"></iframe>-->
+		</td>
+	</tr>
+</tbody>
+</table>
 </div>
+
 <h2>Comments</h2>               
 <div class="detailBox">
 <div class="actionBox">
