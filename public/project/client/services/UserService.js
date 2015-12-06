@@ -20,10 +20,10 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('/api/assignment/user?username=' + username + '&' + 'password=' + password)
+				.get('/api/project/user?username=' + username + '&' + 'password=' + password)
 				.success(function(response) {
-				deferred.resolve(response);	
-			});						 
+					deferred.resolve(response);	
+				});						 
 			return deferred.promise;
 		}
 
@@ -31,10 +31,10 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('/api/assignment/user')
+				.get('/api/project/user')
 				.success(function(response) {
-				deferred.resolve(response);	
-			});						 
+					deferred.resolve(response);	
+				});						 
 			return deferred.promise;
 		} 
 
@@ -42,10 +42,10 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.post('/api/assignment/user', user)
+				.post('/api/project/user', user)
 				.success(function(response) {
-				deferred.resolve(response);	
-			});						 
+					deferred.resolve(response);	
+				});						 
 			return deferred.promise;
 		}
 
@@ -53,10 +53,10 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.delete('/api/assignment/user/' + id)
+				.delete('/api/project/user/' + id)
 				.success(function(response) {
-				deferred.resolve(response);	
-			});						 
+					deferred.resolve(response);	
+				});						 
 			return deferred.promise;
 		}
 
@@ -64,10 +64,10 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.put('/api/assignment/user/' + id, user)
+				.put('/api/project/user/' + id, user)
 				.success(function(response) {
-				deferred.resolve(response);	
-			});						 
+					deferred.resolve(response);	
+				});						 
 			return deferred.promise;
 		}    
 	}

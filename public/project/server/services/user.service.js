@@ -1,9 +1,9 @@
 module.exports = function(app, model) {
-	app.post('/api/assignment/user', createUser);
-	app.get('/api/assignment/user', findUser);
-	app.get('/api/assignment/user/:id', findUserById);
-	app.put('/api/assignment/user/:id', updateUserById);
-	app.delete('/api/assignment/user/:id', deleteUserById);
+	app.post('/api/project/user', createUser);
+	app.get('/api/project/user', findUser);
+	app.get('/api/project/user/:id', findUserById);
+	app.put('/api/project/user/:id', updateUserById);
+	app.delete('/api/project/user/:id', deleteUserById);
 	
 	function createUser(req, res) {
 		model

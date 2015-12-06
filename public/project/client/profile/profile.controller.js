@@ -4,12 +4,16 @@
     .module("PandaMusicApp")
     .controller("ProfileController", ProfileController);
     
-  function ProfileController($scope, $location, $rootScope, UserService)
+  function ProfileController($location, $rootScope, UserService)
   {
-    $scope.$location = $location;
+		var model = this;
+    model.$location = $location;
 
-    $scope.update = function () {
-      UserService.updateUser($rootScope.user.id, $scope.profileUser).then(function (user) {
+		console.log("current user need to update is: ");
+		console.log($rootScope.user);
+		
+    model.update = function (profileUser) {
+      UserService.updateUser($rootScope.user._id, profileUser).then(function (user) {
         $rootScope.user = user;
         $location.url("/profile");
         console.log("updated profile");
