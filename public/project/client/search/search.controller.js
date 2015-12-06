@@ -82,8 +82,7 @@
 				searchAlbums(document.getElementById('query').value);
 		}, false);
 		
-		
-		model.findArtistByName = function (name)
+		model.search = function (name)
 		{
 		  SearchService.findArtistByName(name)
 				.then(function (result) {
@@ -91,32 +90,14 @@
 					model.artists = result.artists.items;
 					console.log(model.artists);
 				});
-		}
-		
-		model.saveArtist = function (artist)
-		{
-		  $rootScope.artist = artist;
 			
-		}
-		
-		model.findAlbumByName = function (name)
-		{
 		  SearchService.findAlbumByName(name)
 				.then(function (result) {
 					console.log("successfully found album array");
 					model.albums = result.albums.items;
 					console.log(model.albums);
 				});
-		}
-		
-		model.saveAlbum = function (album)
-		{
-		  $rootScope.album = album;
 			
-		}
-		
-		model.findSongByName = function (name)
-		{
 		  SearchService.findSongByName(name)
 				.then(function (result) {
 					console.log("successfully found song array");
@@ -124,6 +105,48 @@
 					console.log(model.songs);
 				});
 		}
+				
+//		model.findArtistByName = function (name)
+//		{
+//		  SearchService.findArtistByName(name)
+//				.then(function (result) {
+//					console.log("successfully found artist array");
+//					model.artists = result.artists.items;
+//					console.log(model.artists);
+//				});
+//		}
+		
+		model.saveArtist = function (artist)
+		{
+		  $rootScope.artist = artist;
+			
+		}
+		
+//		model.findAlbumByName = function (name)
+//		{
+//		  SearchService.findAlbumByName(name)
+//				.then(function (result) {
+//					console.log("successfully found album array");
+//					model.albums = result.albums.items;
+//					console.log(model.albums);
+//				});
+//		}
+		
+		model.saveAlbum = function (album)
+		{
+		  $rootScope.album = album;
+			
+		}
+		
+//		model.findSongByName = function (name)
+//		{
+//		  SearchService.findSongByName(name)
+//				.then(function (result) {
+//					console.log("successfully found song array");
+//					model.songs = result.tracks.items;
+//					console.log(model.songs);
+//				});
+//		}
 		
 		model.saveArtist = function (artist)
 		{

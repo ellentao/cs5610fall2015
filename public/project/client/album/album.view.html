@@ -2,7 +2,7 @@
 <div class="col-sm-12">
 		<div class="col-sm-4">
 				<img src="{{model.album.images[0].url}}" class="img-thumbnail" alt="{{album.name}} image" width="200" height="200">
-				</div>            
+		</div>            
 		<div class="col-sm-8">
 				<h2>{{model.album.name}}</h2>
 				<ul>
@@ -54,12 +54,6 @@
 		</a>
 		Preview
 	</th>
-	<th>
-		<a href="#">
-			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-		</a>
-		Popularity
-	</th>
 </tr>
 </thead>
 <tbody>
@@ -79,13 +73,6 @@
 		</td>
 		<td>
 			<iframe ng-src="{{song.uri | trustUrl}}" frameborder="0" allowtransparency="true"></iframe>
-		</td>
-		<td>
-			<ul class="list-inline">
-				<li ng-repeat="n in [] | range: song.popularity">
-					<span class="glyphicon glyphicon-heart"></span>
-				</li>
-			</ul>
 		</td>
 	</tr>
 </tbody>

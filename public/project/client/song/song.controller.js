@@ -17,14 +17,19 @@
 		})
     .controller("SongController", SongController);
     
-  function SongController($location, $rootScope, UserService)
+  function SongController($location, $rootScope, SearchService)
   {
 		var model = this;
 		model.$location = $location;
 		
-		model.song = $rootScope.song;
-		console.log("in song page, current song is: ");
-		console.log(model.song);
+		if($rootScope.song != null) {
+			SearchService.findSongById($rootScope.song.id)
+				.then(function (result) {
+					console.log("successfully found song");
+					model.song = result;
+					console.log(model.song);
+				});
+		}
 		
 		model.millisToMinutesAndSeconds = function (millis) {
 			var minutes = Math.floor(millis / 60000);

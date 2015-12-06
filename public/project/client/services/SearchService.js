@@ -13,7 +13,8 @@
 			findAlbumByName: findAlbumByName,
 			findAlbumById: findAlbumById,
 			findSongsByAlbum: findSongsByAlbum,
-			findSongByName: findSongByName
+			findSongByName: findSongByName,
+			findSongById: findSongById
 		};
 
 		return service;
@@ -88,7 +89,18 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('https://api.spotify.com/v1/search?q='+ name + '&type=track&limit=' + 5)
+				.get('https://api.spotify.com/v1/search?q='+ name + '&type=track&limit=' + 10)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findSongById(id)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('https://api.spotify.com/v1/tracks/'+ id)
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 

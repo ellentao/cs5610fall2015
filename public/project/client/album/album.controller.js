@@ -21,7 +21,6 @@
 	{
 		var model = this;
 		model.$location = $location;
-		model.songs = [];
 		
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
