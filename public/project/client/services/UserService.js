@@ -11,10 +11,22 @@
 		  findAllUsers : findAllUsers,
 		  createUser : createUser,
 		  deleteUserById : deleteUserById,
-		  updateUser : updateUser
+		  updateUser : updateUser,
+			findUserByUsername : findUserByUsername
 		};
 
 		return service;
+		
+		function findUserByUsername(username)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/user?username=' + username)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
 
 		function findUserByUsernameAndPassword(username, password)
 		{

@@ -23,7 +23,7 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('https://api.spotify.com/v1/search?q='+ name + '&type=artist&limit=' + 5)
+				.get('https://api.spotify.com/v1/search?q='+ name + '&type=artist&limit=' + 9)
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 
@@ -56,7 +56,7 @@
 		{
 			var deferred = $q.defer();
 			$http
-				.get('https://api.spotify.com/v1/search?q='+ name + '&type=album&limit=' + 5)
+				.get('https://api.spotify.com/v1/search?q='+ name + '&type=album&limit=' + 9)
 				.success(function(response) {
 					deferred.resolve(response);	
 				});						 
