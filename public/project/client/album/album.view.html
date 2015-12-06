@@ -1,9 +1,9 @@
 <div ng-controller="AlbumController">
 <div class="col-sm-12">
 		<div class="col-sm-4">
-				<img src="{{album.images[0].url}}" class="img-thumbnail" alt="{{album.name}} image" width="200" height="200">
+				<img src="{{model.album.images[0].url}}" class="img-thumbnail" alt="{{album.name}} image" width="200" height="200">
 				</div>            
-		<div class="col-sm-5">
+		<div class="col-sm-8">
 				<h2>{{model.album.name}}</h2>
 				<ul>
 					<li>Polularity: 
@@ -21,11 +21,7 @@
 					<li>Total songs: {{model.album.tracks.items.length}}</li>
 				</ul>
 		</div>
-		<div class="col-sm-3">
-				<div class="text-right">
-				<button class="btn-info btn"><a href="login.html">like</a></button>
-				</div>
-		</div>
+		<button class="btn-info btn pull-right"><a href="#/login">like</a></button>
 </div>
 	
 <div class="col-sm-12">
@@ -58,6 +54,12 @@
 		</a>
 		Preview
 	</th>
+	<th>
+		<a href="#">
+			<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+		</a>
+		Popularity
+	</th>
 </tr>
 </thead>
 <tbody>
@@ -68,15 +70,22 @@
 			</a>
 		</td>
 		<td>
-			<a href="#/artist" ng-click="model.saveArtist(song)">
-			{{song.artists[0].name}}
-			</a>
+			<ul ng-repeat="artist in song.artists">
+				<li><a href="#/artist" ng-click="model.saveArtist(artist)">{{artist.name}}</a></li>
+			</ul>
 		</td>
 		<td>
 			{{model.millisToMinutesAndSeconds(song.duration_ms)}}
 		</td>
 		<td>
 			<iframe ng-src="{{song.uri | trustUrl}}" frameborder="0" allowtransparency="true"></iframe>
+		</td>
+		<td>
+			<ul class="list-inline">
+				<li ng-repeat="n in [] | range: song.popularity">
+					<span class="glyphicon glyphicon-heart"></span>
+				</li>
+			</ul>
 		</td>
 	</tr>
 </tbody>

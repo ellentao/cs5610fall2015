@@ -2,6 +2,19 @@
 {
   angular
     .module("PandaMusicApp")
+		.filter('trustUrl', function ($sce) {
+			return function(url) {
+				return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
+		 };
+		})
+		.filter('range', function() {
+			return function(val, range) {
+				range = parseInt(range / 20);
+				for (var i=0; i<=range; i++)
+					val.push(i);
+				return val;
+			};
+		})
     .controller("SongController", SongController);
     
   function SongController($location, $rootScope, UserService)

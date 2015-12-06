@@ -5,8 +5,6 @@
 	.filter('range', function() {
 		return function(val, range) {
 			range = parseInt(range / 20);
-			console.log("current range is");
-			console.log(range);
 			for (var i=0; i<=range; i++)
 				val.push(i);
 			return val;

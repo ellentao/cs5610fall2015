@@ -1,9 +1,9 @@
 <div ng-controller="ArtistController">
 <div class="col-sm-12">
 		<div class="col-sm-4">
-				<a href="#"><img src="{{artist.images[0].url}}" class="img-thumbnail" alt="{{artist.name}} image" width="200" height="200"></a>
+				<a href="#"><img src="{{model.artist.images[0].url}}" class="img-thumbnail" alt="{{artist.name}} image" width="200" height="200"></a>
 				</div>            
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 				<h2>{{model.artist.name}}</h2>
 				<ul>
 					<li>Polularity: 
@@ -20,11 +20,7 @@
 					</ul>
 				</ul>
 		</div>
-		<div class="col-sm-2">
-				<div class="text-right">
-				<button class="btn-info btn"><a href="#/login">like</a></button>
-				</div>
-		</div>
+		<button class="btn-info btn pull-right"><a href="#/login">like</a></button>
 </div>
 
 <div class="col-sm-12">
