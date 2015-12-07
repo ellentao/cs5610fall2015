@@ -2,6 +2,11 @@
 {
   angular
     .module("PandaMusicApp")
+		.filter('trustUrl', function ($sce) {
+			return function(url) {
+				return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
+		 };
+		})
     .controller("UserController", UserController);
     
   function UserController($location, $rootScope, UserService)
@@ -44,6 +49,8 @@
 		
 		model.deleteArtist = function (artist)
     {
+			console.log("successfully deleted artist");
+      console.log(model.user.artists);
       UserService.deleteArtistFromUser(model.user._id, artist._id).then(function (artists) {
 				UserService
 					.findArtistsByUserId(model.user._id)

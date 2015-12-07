@@ -125,7 +125,7 @@
 			return deferred.promise;
 		}
 		
-				function addArtistToUser(userId, artist)
+		function addArtistToUser(userId, artist)
 		{
 			var deferred = $q.defer();
 			$http
@@ -153,6 +153,8 @@
 			$http
 				.delete('/api/project/user/' + userId + '/artist/' + artistId)
 				.success(function(response) {
+					console.log("deleted artist from user");
+					console.log(response);
 					deferred.resolve(response);
 				});
 			return deferred.promise;

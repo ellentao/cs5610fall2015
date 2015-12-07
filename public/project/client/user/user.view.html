@@ -13,7 +13,7 @@
 </div>
 <h2>Favorite Artist</h2>
 <div class="row">
-	<div class="col-sm-4" ng-repeat="artist in model.user.artists" style="height:200px;width:200px">
+	<div class="col-sm-4" ng-repeat="artist in model.user.artists" style="height:220px;width:220px">
 		<a href="#/artist" ng-click="model.saveArtist(artist.id)">
 				<img src="{{artist.imageUrl}}" class="img-rounded" alt="{{artist.name}} image" width="130" height="130">
 		</a>
@@ -27,7 +27,7 @@
 </div>
 <h2>Favorite Albums</h2>
 <div class="row">
-	<div class="col-sm-4" ng-repeat="album in model.user.albums" style="height:200px;width:250px">
+	<div class="col-sm-4" ng-repeat="album in model.user.albums" style="height:220px;width:220px">
 		<a href="#/album" ng-click="model.saveAlbum(album.id)">
 				<img src="{{album.imageUrl}}" class="img-rounded" alt="{{album.name}} image" width="130" height="130">
 		</a>
@@ -39,7 +39,6 @@
 		</a>
 	</div>
 </div>
-<hr>
 <h2>Favorite Songs</h2>
 <div class="row">
 <div class="table-responsive">

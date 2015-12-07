@@ -260,11 +260,11 @@ module.exports = function(db, mongoose) {
 		UserModel.findById(userId, function(err, user){
 			var artists = user.favoriteArtists;
 			for (var i = 0; i < artists.length; i++) {
-				if (artists[i]._id == artists) {
+				if (artists[i]._id == artistId) {
 					user.favoriteArtists.splice(i, 1);
 					user.save(function(err, user){
-						deferred.resolve(user);
-					});
+					deferred.resolve(user);
+				});
 				}
 			}
 		});

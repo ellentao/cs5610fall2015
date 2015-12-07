@@ -125,6 +125,8 @@ module.exports = function(app, model) {
 		model
 			.deleteArtistFromUser(req.params.userId, req.params.artistId)
 			.then(function(result) {
+				console.log("in server service, deleted artist from user");
+				console.log(result);
 				res.json(result);
 			});
 	}
