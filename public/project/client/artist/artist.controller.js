@@ -12,7 +12,7 @@
 	})
 	.controller("ArtistController", artistController);
 
-	function artistController($rootScope, $http, $location, SearchService, UserService)
+	function artistController($rootScope, $http, $location, SearchService, UserService, CommentService)
 	{
 		var model = this;
 		model.$location = $location;
@@ -42,6 +42,15 @@
 						model.albums = result.items;
 						console.log(model.albums);
 					});
+				
+					/*get all comments for this artist from database*/
+					CommentService
+						.findAllCommentsByArtistId(model.artist.id)
+						.then(function(response) {
+							console.log("successfully found comments");
+							console.log(response);
+							model.comments = response;
+						});
 				});
 		}
 		model.saveAlbum = function (album) {
@@ -63,6 +72,33 @@
 				console.log("successfully added song to user");
 				console.log(user);
 			})
+		}
+		
+		model.addComment = function (content)
+		{
+			if ($rootScope.user != null && content != null) {
+				var newComment = {
+					type: "artist",
+					id: model.artist.id,
+					name: model.artist.name,
+					username: $rootScope.user.username,
+					userId: $rootScope.user._id,
+					content: content,
+					date: new Date()
+				};
+				console.log("new comment is: ");
+				console.log(newComment);
+				CommentService.addComment(newComment)
+					.then(function(result) {
+					model.comments.push(result);
+					console.log("successfully added comment");
+					console.log(result);
+				});	
+			}
+		}
+		
+		model.saveCommentUserId = function (userId) {
+			$rootScope.commentUserId = userId;
 		}
 	}
 })();

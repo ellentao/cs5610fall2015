@@ -21,5 +21,20 @@
 				console.log(model.comments);
 			});
 		}
+		
+		model.saveId = function(type, id) {
+			console.log(type);
+			console.log(id);
+			if (type == "album") {
+				console.log("redirect to album");
+				$rootScope.album = {id: id};
+			} else if (type == "artist") {
+				console.log("redirect to artist");
+				$rootScope.artist = {id: id};
+			} else if (type == "song") {
+				console.log("redirect to song");
+				$rootScope.song = {id: id};
+			}
+		}
   }
 })();

@@ -17,7 +17,7 @@
 		})
     .controller("SongController", SongController);
     
-  function SongController($location, $rootScope, SearchService, UserService)
+  function SongController($location, $rootScope, SearchService, UserService, CommentService)
   {
 		var model = this;
 		model.$location = $location;
@@ -34,6 +34,15 @@
 					console.log("successfully found song");
 					model.song = result;
 					console.log(model.song);
+				
+					/*get all comments for this ablum from database*/
+					CommentService
+						.findAllCommentsBySongId(model.song.id)
+						.then(function(response) {
+							console.log("successfully found comments");
+							console.log(response);
+							model.comments = response;
+						});
 				});
 		}
 		
@@ -71,6 +80,33 @@
 				console.log("successfully added song to user");
 				console.log(user);
 			})
+		}
+		
+		model.addComment = function (content)
+		{
+			if ($rootScope.user != null && content != null) {
+				var newComment = {
+					type: "song",
+					id: model.song.id,
+					name: model.song.name,
+					username: $rootScope.user.username,
+					userId: $rootScope.user._id,
+					content: content,
+					date: new Date()
+				};
+				console.log("new comment is: ");
+				console.log(newComment);
+				CommentService.addComment(newComment)
+					.then(function(result) {
+					model.comments.push(result);
+					console.log("successfully added comment");
+					console.log(result);
+				});	
+			}
+		}
+		
+		model.saveCommentUserId = function (userId) {
+			$rootScope.commentUserId = userId;
 		}
 	}
 })();

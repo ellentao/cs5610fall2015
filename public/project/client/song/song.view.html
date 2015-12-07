@@ -39,41 +39,23 @@
 <h2>Comments</h2>               
 <div class="detailBox">
 <div class="actionBox">
-		<ul class="commentList">
+		<ul class="commentList" ng-repeat="comment in model.comments">
 				<li>
-						<div class="commenterImage">
-						<a href="#/user"><img src="img/user.jpg" /></a>
-						</div>
+						<div>
+						<a href="#/user" ng-click="model.saveCommentUserId(comment.userId)"><h5>{{comment.username}}: </h5></a>
+						</div>                                    
 						<div class="commentText">
-								<p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-						</div>
-				</li>
-				<li>
-						<div class="commenterImage">
-						<a href="#/user"><img src="img/user.jpg" /></a>
-						</div>
-						<div class="commentText">
-								<p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-						</div>
-				</li>
-				<li>
-						<div class="commenterImage">
-						<a href="#/user"><img src="img/user.jpg" /></a>
-						</div>
-						<div class="commentText">
-								<p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
+								<p>{{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>
 						</div>
 				</li>
 		</ul>
 		<form class="form-inline" role="form">
 				<div class="form-group">
-						<input class="form-control" type="text" placeholder="Your comments" />
+<!--						<input ng-model="content" class="form-control" type="text" placeholder="Your comments" />-->
+					<input type="textarea" ng-model="content" class="form-control" placeholder="Your comment"/>
 				</div>
 				<div class="form-group">
-						<button class="btn btn-default">Add</button>
+						<button ng-click="model.addComment(content)" class="btn btn-default">Add</button>
 				</div>
 		</form>
 </div>

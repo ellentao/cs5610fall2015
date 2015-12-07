@@ -9,6 +9,8 @@
 		var service = {
 			addComment : addComment,
 			findAllCommentsByAlbumId : findAllCommentsByAlbumId,
+			findAllCommentsByArtistId : findAllCommentsByArtistId,
+			findAllCommentsBySongId : findAllCommentsBySongId,
 			findAllCommentsByUserId : findAllCommentsByUserId
 		};
 
@@ -32,6 +34,32 @@
 			var deferred = $q.defer();
 			$http
 				.get('/api/project/comment/' + albumId +'?type=album')
+				.success(function(response) {
+					console.log("in client services, find comments");
+					console.log(response);
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function findAllCommentsByArtistId(artistId)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/comment/' + artistId +'?type=artist')
+				.success(function(response) {
+					console.log("in client services, find comments");
+					console.log(response);
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function findAllCommentsBySongId(songId)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/comment/' + songId +'?type=song')
 				.success(function(response) {
 					console.log("in client services, find comments");
 					console.log(response);

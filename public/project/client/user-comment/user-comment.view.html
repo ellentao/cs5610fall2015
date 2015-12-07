@@ -23,13 +23,13 @@
 				<ul class="commentList" ng-repeat="comment in model.comments">
 						<li>
 								<div>
-								<h5>{{comment.type}}: </h5>
+								<h5>{{comment.type}} </h5>
 								</div>     
 								<div>
-								<h5>{{comment.name}} </h5>
+								<a href="#/{{comment.type}}"><h5 ng-click="model.saveId(comment.type, comment.id)">[{{comment.name}}]</h5></a>
 								</div>  
 								<div class="commentText">
-										<p>{{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>
+										<p>: {{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>
 								</div>
 						</li>
 				</ul>
