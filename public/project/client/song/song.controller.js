@@ -17,10 +17,16 @@
 		})
     .controller("SongController", SongController);
     
-  function SongController($location, $rootScope, SearchService)
+  function SongController($location, $rootScope, SearchService, UserService)
   {
 		var model = this;
 		model.$location = $location;
+		
+		if($rootScope.user != null) {
+			model.loginMessage = "yes";
+		} else {
+			model.loginMessage = "no";
+		}
 		
 		if($rootScope.song != null) {
 			SearchService.findSongById($rootScope.song.id)
@@ -50,6 +56,21 @@
 		
 		model.saveArtist = function (artist) {
 			$rootScope.artist = artist;
+		}
+		
+		model.saveLocation = function () {
+			$rootScope.location = "/song";
+		}
+		
+		model.addSongToUser = function ()
+		{
+			console.log("add song to current user: ");
+			console.log($rootScope.user);
+			UserService.addSongToUser($rootScope.user._id, model.song)
+				.then(function(user) {
+				console.log("successfully added song to user");
+				console.log(user);
+			})
 		}
 	}
 })();

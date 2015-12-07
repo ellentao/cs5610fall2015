@@ -152,8 +152,7 @@
 		{
 			console.log("save artist");
 			console.log(artist);
-		  $rootScope.artist= artist;
-			
+		  $rootScope.artist= artist;	
 		}
 		
 		model.saveSong = function (song)
@@ -161,7 +160,6 @@
 			console.log("save song");
 			console.log(song);
 		  $rootScope.song= song;
-			
 		}
 		
 		model.millisToMinutesAndSeconds = function (millis) {

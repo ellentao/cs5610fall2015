@@ -19,6 +19,12 @@
         controller: "RegisterController",
 				controllerAs: "model"
       })
+		  .when("/header",
+      {
+        templateUrl: "header/header.view.html",
+        controller: "HeaderController",
+				controllerAs: "model"
+      })
       .when("/profile",
       {
         templateUrl: "profile/profile.view.html",
@@ -35,18 +41,6 @@
       {
         templateUrl: "artist/artist.view.html",
         controller: "ArtistController",
-				controllerAs: "model"
-      })
-			.when("/genres",
-      {
-        templateUrl: "genres/genres.view.html",
-        controller: "GenresController",
-				controllerAs: "model"
-      })
-			.when("/new-releases",
-      {
-        templateUrl: "new-releases/new-releases.view.html",
-        controller: "NewReleasesController",
 				controllerAs: "model"
       })
 			.when("/category",

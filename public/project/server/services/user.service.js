@@ -4,6 +4,15 @@ module.exports = function(app, model) {
 	app.get('/api/project/user/:id', findUserById);
 	app.put('/api/project/user/:id', updateUserById);
 	app.delete('/api/project/user/:id', deleteUserById);
+	app.post('/api/project/user/:userId/song', addSongToUser);
+	app.get('/api/project/user/:userId/song', findSongsByUserId);
+	app.delete('/api/project/user/:userId/song/:songId', deleteSongFromUser);
+	app.post('/api/project/user/:userId/artist', addArtistToUser);
+	app.get('/api/project/user/:userId/artist', findArtistsByUserId);
+	app.delete('/api/project/user/:userId/artist/:artistId', deleteArtistFromUser);
+	app.post('/api/project/user/:userId/album', addAlbumToUser);
+	app.get('/api/project/user/:userId/album', findAlbumsByUserId);
+	app.delete('/api/project/user/:userId/album/:albumId', deleteAlbumFromUser);
 	
 	function createUser(req, res) {
 		model
@@ -69,6 +78,78 @@ module.exports = function(app, model) {
 			.deleteUserById(req.params.id)
 			.then(function(users) {
 				res.json(users);
+			});
+	}
+	
+	function addSongToUser(req, res) {
+		model
+			.addSongToUser(req.params.userId, req.body)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function findSongsByUserId(req, res) {
+		model
+			.findSongsByUserId(req.params.userId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function deleteSongFromUser(req, res) {
+		model
+			.deleteSongFromUser(req.params.userId, req.params.songId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function addArtistToUser(req, res) {
+		model
+			.addArtistToUser(req.params.userId, req.body)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function findArtistsByUserId(req, res) {
+		model
+			.findArtistsByUserId(req.params.userId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function deleteArtistFromUser(req, res) {
+		model
+			.deleteArtistFromUser(req.params.userId, req.params.artistId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function addAlbumToUser(req, res) {
+		model
+			.addAlbumToUser(req.params.userId, req.body)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function findAlbumsByUserId(req, res) {
+		model
+			.findAlbumsByUserId(req.params.userId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function deleteAlbumFromUser(req, res) {
+		model
+			.deleteAlbumFromUser(req.params.userId, req.params.albumId)
+			.then(function(result) {
+				res.json(result);
 			});
 	}
 }

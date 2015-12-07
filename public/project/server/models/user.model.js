@@ -12,6 +12,15 @@ module.exports = function(db, mongoose) {
 		deleteUserById: deleteUserById,
 		findUserByUsername: findUserByUsername,
 		findUserByCredentials: findUserByCredentials,
+		addSongToUser: addSongToUser,
+		findSongsByUserId: findSongsByUserId,
+		deleteSongFromUser: deleteSongFromUser,
+		addArtistToUser: addArtistToUser,
+		findArtistsByUserId: findArtistsByUserId,
+		deleteArtistFromUser: deleteArtistFromUser,
+		addAlbumToUser: addAlbumToUser,
+		findAlbumsByUserId: findAlbumsByUserId,
+		deleteAlbumFromUser: deleteAlbumFromUser
 	};
 	return api;
 	
@@ -133,5 +142,193 @@ module.exports = function(db, mongoose) {
 		});
 		
 		return deferred.promise;
-	} 
+	}
+		
+	function addSongToUser(userId, song)
+	{
+		var deferred = q.defer();
+		var newSong = {
+			id: song.id,
+			name: song.name,
+			albumName: song.album.name,
+			albumId: song.album.id,
+			artistName: song.artists[0].name,
+			artistId: song.artists[0].id,
+			duration_ms: song.duration_ms,
+			uri: song.uri,
+			popularity: song.popularity
+		};
+		console.log("add song to user:");
+		console.log(newSong);
+		
+		UserModel.findById(userId, function(err, user){
+			user.favoriteSongs.push(newSong);
+			console.log(user.favoriteSongs);
+			user.save(function(err, user){
+				deferred.resolve(user);
+				console.log("updatedUser");
+				console.log(user);
+			});
+		});
+
+		return deferred.promise;
+	}
+	
+	function findSongsByUserId(userId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			if(err) {
+				console.log(err);
+				deferred.reject(err);
+			} else {
+				deferred.resolve(user.favoriteSongs);
+				console.log("favorite songs are: ");
+				console.log(user);
+				console.log(user.favoriteSongs);
+			}
+		});
+		return deferred.promise;
+	}
+	
+	function deleteSongFromUser(userId, songId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			var songs = user.favoriteSongs;
+			for (var i = 0; i < songs.length; i++) {
+				if (songs[i]._id == songId) {
+					user.favoriteSongs.splice(i, 1);
+					user.save(function(err, user){
+						deferred.resolve(user);
+					});
+				}
+			}
+		});
+		
+		return deferred.promise;
+	}
+	
+	function addArtistToUser(userId, artist)
+	{
+		var deferred = q.defer();
+		var newArtist = {
+			id: artist.id,
+			name: artist.name,
+			imageUrl: artist.images[0].url
+		};
+		console.log("add artist to user:");
+		console.log(newArtist);
+		
+		UserModel.findById(userId, function(err, user){		
+			user.favoriteArtists.push(newArtist);
+			console.log(user.favoriteArtists);
+			user.save(function(err, user){
+				deferred.resolve(user);
+				console.log("updatedUser");
+				console.log(user);
+			});
+		});
+
+		return deferred.promise;
+	}
+	
+	function findArtistsByUserId(userId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			if(err) {
+				console.log(err);
+				deferred.reject(err);
+			} else {
+				deferred.resolve(user.favoriteArtists);
+				console.log("favorite artists are: ");
+				console.log(user);
+				console.log(user.favoriteArtists);
+			}
+		});
+		return deferred.promise;
+	}
+	
+	function deleteArtistFromUser(userId, artistId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			var artists = user.favoriteArtists;
+			for (var i = 0; i < artists.length; i++) {
+				if (artists[i]._id == artists) {
+					user.favoriteArtists.splice(i, 1);
+					user.save(function(err, user){
+						deferred.resolve(user);
+					});
+				}
+			}
+		});
+		
+		return deferred.promise;
+	}
+	
+	function addAlbumToUser(userId, album)
+	{
+		var deferred = q.defer();
+		var newAlbum = {
+			id: album.id,
+			name: album.name,
+			imageUrl: album.images[0].url
+		};
+		console.log("add album to user:");
+		console.log(newAlbum);
+		UserModel.findById(userId, function(err, user){
+			user.favoriteAlbums.push(newAlbum);
+			console.log(user.favoriteAlbums);
+			user.save(function(err, user){
+				deferred.resolve(user);
+				console.log("updatedUser");
+				console.log(user);
+			});
+		});
+
+		return deferred.promise;
+	}
+	
+	function findAlbumsByUserId(userId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			if(err) {
+				console.log(err);
+				deferred.reject(err);
+			} else {
+				deferred.resolve(user.favoriteAlbums);
+				console.log("favorite songs are: ");
+				console.log(user);
+				console.log(user.favoriteAlbums);
+			}
+		});
+		return deferred.promise;
+	}
+	
+	function deleteAlbumFromUser(userId, albumId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			var albums = user.favoriteAlbums;
+			for (var i = 0; i < albums.length; i++) {
+				if (albums[i]._id == albumId) {
+					user.favoriteAlbums.splice(i, 1);
+					user.save(function(err, user){
+						deferred.resolve(user);
+					});
+				}
+			}
+		});
+		
+		return deferred.promise;
+	}
 };

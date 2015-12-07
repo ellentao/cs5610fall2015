@@ -75,6 +75,12 @@
 							<a href="#">
 								<scan class="glyphicon glyphicon-triangle-bottom"></scan>
 							</a>
+							Album Name
+						</th>
+						<th>
+							<a href="#">
+								<scan class="glyphicon glyphicon-triangle-bottom"></scan>
+							</a>
 							Time Duration
 						</th>
 						<th>
@@ -102,6 +108,11 @@
 								<ul ng-repeat="artist in song.artists">
 									<li><a href="#/artist" ng-click="model.saveArtist(artist)">{{artist.name}}</a></li>
 								</ul>
+							</td>
+							<td>
+								<a href="#/album" ng-click="model.saveAlbum(song.album)">
+									{{song.album.name}}
+								</a>
 							</td>
 							<td>
 								{{model.millisToMinutesAndSeconds(song.duration_ms)}}

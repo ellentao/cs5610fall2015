@@ -18,5 +18,13 @@
         <a ng-click="model.login(loginUser)" type="submit" class="btn btn-default btn-block active" Role="button">Login</a>
     </div>
     </div>
+		<div ng-switch on="model.loginDisplayMessage">									
+		<div ng-switch-when="error">
+				<h5>Sorry, the username and password doesn't match, please try it again!</h5>
+		</div>
+		<div ng-switch-when="success">
+				<h5>Congratulations! you're successfully logged in!</h5>
+		</div>
+	</div>
 </form>
 </div>

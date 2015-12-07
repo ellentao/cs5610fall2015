@@ -15,10 +15,18 @@
 				.then(function (user) {
         if (user != null) {
           $rootScope.user = user;
-          $location.url("/profile");
+					model.loginDisplayMessage ="success";
+					if ($rootScope.location != null) {
+						$location.url($rootScope.location);
+					} else {
+						$location.url("/profile");
+					}
+          
           console.log("current login user is: ");
           console.log($rootScope.user);
-      	}
+      	} else {
+					model.loginDisplayMessage ="error";
+				}
       });
       UserService
 				.findAllUsers()

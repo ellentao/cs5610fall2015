@@ -12,7 +12,16 @@
 		  createUser : createUser,
 		  deleteUserById : deleteUserById,
 		  updateUser : updateUser,
-			findUserByUsername : findUserByUsername
+			findUserByUsername : findUserByUsername,
+			addSongToUser : addSongToUser,
+			findSongsByUserId : findSongsByUserId,
+			deleteSongFromUser : deleteSongFromUser,
+			addArtistToUser : addArtistToUser,
+			findArtistsByUserId : findArtistsByUserId,
+			deleteArtistFromUser : deleteArtistFromUser,
+			addAlbumToUser : addAlbumToUser,
+			findAlbumsByUserId : findAlbumsByUserId,
+			deleteAlbumFromUser : deleteAlbumFromUser,
 		};
 
 		return service;
@@ -81,6 +90,106 @@
 					deferred.resolve(response);	
 				});						 
 			return deferred.promise;
-		}    
+		}
+		
+		function addSongToUser(userId, song)
+		{
+			var deferred = $q.defer();
+			$http
+				.post('/api/project/user/'+ userId + '/song', song)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findSongsByUserId(userId)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/user/' + userId + '/song')
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function deleteSongFromUser(userId, songId)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/user/' + userId + '/song/' + songId)
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+				function addArtistToUser(userId, artist)
+		{
+			var deferred = $q.defer();
+			$http
+				.post('/api/project/user/'+ userId + '/artist', artist)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findArtistsByUserId(userId)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/user/' + userId + '/artist')
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function deleteArtistFromUser(userId, artistId)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/user/' + userId + '/artist/' + artistId)
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function addAlbumToUser(userId, album)
+		{
+			var deferred = $q.defer();
+			$http
+				.post('/api/project/user/'+ userId + '/album', album)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findAlbumsByUserId(userId)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/user/' + userId + '/album')
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function deleteAlbumFromUser(userId, albumId)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/user/' + userId + '/album/' + albumId)
+				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
 	}
 })();

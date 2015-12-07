@@ -12,11 +12,17 @@
 	})
 	.controller("ArtistController", artistController);
 
-	function artistController($rootScope, $http, $location, SearchService)
+	function artistController($rootScope, $http, $location, SearchService, UserService)
 	{
 		var model = this;
 		model.$location = $location;
 		model.albums = [];
+		
+		if($rootScope.user != null) {
+			model.loginMessage = "yes";
+		} else {
+			model.loginMessage = "no";
+		}
 		
 		if ($rootScope.artist != null) {
 			console.log("In artist page, current artist is: ");
@@ -42,6 +48,21 @@
 			$rootScope.album = album;
 			console.log("In artist page, saved album");
 			console.log($rootScope.album);
+		}
+		
+		model.saveLocation = function () {
+			$rootScope.location = "/artist";
+		}
+		
+		model.addArtistToUser = function ()
+		{
+			console.log("add artist to current user: ");
+			console.log($rootScope.user);
+			UserService.addArtistToUser($rootScope.user._id, model.artist)
+				.then(function(user) {
+				console.log("successfully added song to user");
+				console.log(user);
+			})
 		}
 	}
 })();

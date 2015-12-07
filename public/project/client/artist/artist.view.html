@@ -20,7 +20,14 @@
 					</ul>
 				</ul>
 		</div>
-		<button class="btn-info btn pull-right"><a href="#/login">like</a></button>
+		<div ng-switch on="model.loginMessage">									
+		<div ng-switch-when="yes">
+				<button class="btn-info btn pull-right" ng-click="model.addArtistToUser()"><a href="#/user">like</a></button>
+		</div>
+		<div ng-switch-when="no">
+				<button class="btn-info btn pull-right" ng-click="model.saveLocation()"><a href="#/login">like</a></button>
+		</div>
+		</div>
 </div>
 
 <div class="col-sm-12">
@@ -191,4 +198,5 @@
 						</form>
 				</div>
 		</div>
+</div>
 </div>

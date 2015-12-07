@@ -4,9 +4,18 @@
     .module("PandaMusicApp")
     .controller("HeaderController", HeaderController);
     
-  function HeaderController($scope, $location)
+  function HeaderController($rootScope, $location)
   {
-    $scope.$location = $location;
-    console.log($location.url());
+		var model = this;
+		model.$location = $location;
+		
+		if ($rootScope.user != null) {
+			model.user = $rootScope.user;
+			model.loginMessage = "yes";
+		} else {
+			model.loginMessage ="no";
+		}
+		console.log("current login message is: ");
+		console.log(model.loginMessage);
   }
 })();

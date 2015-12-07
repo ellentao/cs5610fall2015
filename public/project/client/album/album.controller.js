@@ -17,10 +17,16 @@
 	})
 	.controller("AlbumController", albumController);
 
-	function albumController($location, $rootScope, SearchService, $sce)
+	function albumController($location, $rootScope, SearchService, $sce, UserService)
 	{
 		var model = this;
 		model.$location = $location;
+		
+		if($rootScope.user != null) {
+			model.loginMessage = "yes";
+		} else {
+			model.loginMessage = "no";
+		}
 		
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
@@ -54,6 +60,21 @@
 		
 		model.saveArtist = function (artist) {
 			$rootScope.artist = artist;
+		}
+		
+		model.saveLocation = function () {
+			$rootScope.location = "/album";
+		}
+		
+		model.addAlbumToUser = function ()
+		{
+			console.log("add album to current user: ");
+			console.log($rootScope.user);
+			UserService.addAlbumToUser($rootScope.user._id, model.album)
+				.then(function(user) {
+				console.log("successfully added album to user");
+				console.log(user);
+			})
 		}
 	}
 })();
