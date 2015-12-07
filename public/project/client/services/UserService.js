@@ -22,9 +22,21 @@
 			addAlbumToUser : addAlbumToUser,
 			findAlbumsByUserId : findAlbumsByUserId,
 			deleteAlbumFromUser : deleteAlbumFromUser,
+			findUserById : findUserById
 		};
 
 		return service;
+		
+		function findUserById(id)
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/user/' + id)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
 		
 		function findUserByUsername(username)
 		{
@@ -39,6 +51,7 @@
 
 		function findUserByUsernameAndPassword(username, password)
 		{
+			console.log("find user by username and password");
 			var deferred = $q.defer();
 			$http
 				.get('/api/project/user?username=' + username + '&' + 'password=' + password)

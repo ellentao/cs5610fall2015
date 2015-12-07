@@ -13,8 +13,17 @@
   {
 		var model = this;
 		model.$location = $location;
-		
 		model.user = $rootScope.user;
+		
+		if  ($rootScope.commentUserId != null) {
+			UserService.findUserById($rootScope.commentUserId).then(function (user) {
+				/*need to remove edit mode for viewing only user*/
+				console.log("view user from comment");
+				console.log(user);
+				model.user = user;
+			});
+		}
+																																	
 		/*find current user's favorite songs, artists, and albums from database*/
 		UserService.findSongsByUserId(model.user._id).then(function (songs) {
 			model.user.songs = songs;
@@ -87,6 +96,12 @@
 		
 		model.saveArtist = function (artistId) {
 			$rootScope.artist = {id: artistId};
+		}
+		
+		model.saveCurrentUserId = function () {
+			console.log("saved current user id");
+			console.log(model.user._id);
+			$rootScope.currentUserId = model.user._id;
 		}
 				
 //		UserService.findArtistByUserId(model.user.id, $scope.profileUser).then(function (user) {

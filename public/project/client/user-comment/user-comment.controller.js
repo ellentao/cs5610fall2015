@@ -4,17 +4,22 @@
     .module("PandaMusicApp")
     .controller("UserCommentController", UserCommentController);
     
-  function UserCommentController($scope, $location, $rootScope, UserService)
+  function UserCommentController($location, $rootScope, UserService, CommentService)
   {
-    $scope.$location = $location;
+    var model = this;
+		model.$location = $location;
 
-    $scope.update = function () {
-      UserService.updateUser($rootScope.user.id, $scope.profileUser).then(function (user) {
-        $rootScope.user = user;
-        $location.url("/profile");
-        console.log("updated profile");
-        console.log(user);
-      });
-    }
+		if ($rootScope.currentUserId != null) {
+			UserService.findUserById($rootScope.currentUserId).then(function (user) {
+				model.user = user;
+			});
+			
+			/*find current user's comments*/
+			CommentService.findAllCommentsByUserId($rootScope.currentUserId).then(function (comments) {
+				model.comments = comments;
+				console.log("found user's comments");
+				console.log(model.comments);
+			});
+		}
   }
 })();

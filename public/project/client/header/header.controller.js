@@ -8,9 +8,9 @@
   {
 		var model = this;
 		model.$location = $location;
+		model.user = $rootScope.user;
 		
 		if ($rootScope.user != null) {
-			model.user = $rootScope.user;
 			model.loginMessage = "yes";
 		} else {
 			model.loginMessage ="no";

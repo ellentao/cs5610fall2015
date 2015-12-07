@@ -1,12 +1,14 @@
 <div class="col-sm-12">
 		<div class="col-sm-4">
 				<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
-				</div>            
+		</div>            
 		<div class="col-sm-5">
-				<h2>Username</h2>
+				<h2>{{model.user.username}}</h2>
+<!--
 				<ul>
 						<li>About: </li>
 				</ul>
+-->
 		</div>
 		<div class="col-sm-3">
 				<div class="text-right">
@@ -17,35 +19,20 @@
 <div class="col-sm-12">
 		<h2>Comments</h2>               
 		<div class="detailBox">
-				<div class="actionBox">
-						<ul class="commentList">
-								<li>
-										<div class="commenterImage">
-										<a href="#/song"><img src="img/example.jpg" /></a>
-										</div>                                    
-										<div class="commentText">
-												<p class="">Song name: Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-										</div>
-								</li>
-								<li>
-										<div class="commenterImage">
-										<a href="#/song"><img src="img/example.jpg" /></a>
-										</div>
-										<div class="commentText">
-												<p class="">Song name: Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-										</div>
-								</li>
-								<li>
-										<div class="commenterImage">
-										<a href="#/song"><img src="img/example.jpg" /></a>
-										</div>
-										<div class="commentText">
-												<p class="">Song name: Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>              
-										</div>
-								</li>
-						</ul>
-				</div>
+		<div class="actionBox">
+				<ul class="commentList" ng-repeat="comment in model.comments">
+						<li>
+								<div>
+								<h5>{{comment.type}}: </h5>
+								</div>     
+								<div>
+								<h5>{{comment.name}} </h5>
+								</div>  
+								<div class="commentText">
+										<p>{{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>
+								</div>
+						</li>
+				</ul>
+		</div>
 		</div>
 </div>
