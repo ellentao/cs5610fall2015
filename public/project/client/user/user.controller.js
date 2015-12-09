@@ -15,33 +15,48 @@
 		model.$location = $location;
 		model.user = $rootScope.user;
 		
+		if ($rootScope.viewOtherUser) {
+			model.user = {id : $rootScope.commentUserId};
+			model.canEdit = false;
+			$rootScope.viewOtherUser = false;
+		} else {
+			model.user = $rootScope.user;
+			if (model.user != null) {
+				find();
+				model.canEdit = true;
+			}
+		}
+		
 		if  ($rootScope.commentUserId != null) {
 			UserService.findUserById($rootScope.commentUserId).then(function (user) {
 				/*need to remove edit mode for viewing only user*/
 				console.log("view user from comment");
 				console.log(user);
 				model.user = user;
+				find();
 			});
 		}
 																																	
 		/*find current user's favorite songs, artists, and albums from database*/
-		UserService.findSongsByUserId(model.user._id).then(function (songs) {
-			model.user.songs = songs;
-			console.log("found user's favorite songs");
-			console.log(model.user.songs);
-		});
-		
-		UserService.findArtistsByUserId(model.user._id).then(function (artists) {
-			model.user.artists = artists;
-			console.log("found user's favorite artists");
-			console.log(model.user.artists);
-		});
-		
-		UserService.findAlbumsByUserId(model.user._id).then(function (albums) {
-			model.user.albums = albums;
-			console.log("found user's favorite albums");
-			console.log(model.user.albums);
-		});
+		function find() {
+			UserService.findSongsByUserId(model.user._id).then(function (songs) {
+				model.user.songs = songs;
+				console.log("found user's favorite songs");
+				console.log(model.user.songs);
+			});
+
+			UserService.findArtistsByUserId(model.user._id).then(function (artists) {
+				model.user.artists = artists;
+				console.log("found user's favorite artists");
+				console.log(model.user.artists);
+			});
+
+			UserService.findAlbumsByUserId(model.user._id).then(function (albums) {
+				model.user.albums = albums;
+				console.log("found user's favorite albums");
+				console.log(model.user.albums);
+			});
+		}
 		
 		model.deleteSong = function (song)
     {

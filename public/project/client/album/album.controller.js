@@ -108,6 +108,11 @@
 		
 		model.saveCommentUserId = function (userId) {
 			$rootScope.commentUserId = userId;
+			if ($rootScope.user != null && $rootScope.user._id == userId) {
+				$rootScope.viewOtherUser = false;
+			} else {
+				$rootScope.viewOtherUser = true;
+			}
 		}
 
 	}
