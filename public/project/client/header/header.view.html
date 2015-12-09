@@ -8,46 +8,23 @@
 	</button>
 	<a class="navbar-brand" href="#/home">Panda Music</a>
 </div>
-<div ng-switch on="model.loginMessage">	
-	<div ng-switch-when="no">
-		<div id="navbar" class="navbar-collapse collapse">
-		<ul class="nav navbar-nav navbar-right">
-			<li ng-class="{'active' : $location.url() == 'search'}"><a href="#/search">Search</a></li>
-			<li ng-class="{'active' : $location.url() == 'register'}"><a href="#/register">Register</a></li>
-			<li ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Login</a></li>
-		</ul>
-		</div>
-	</div>
-	<div ng-switch-when="yes">
-			<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li ng-class="{'active' : $location.url() == 'search'}"><a href="#/search">Search</a></li>
-				<li ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">{{model.user.username}}</a></li>
-				<li ng-class="{'active' : $location.url() == 'profile'}"><a href="#/profile">Profile</a></li>
-				<li ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Logout</a></li>
-			</ul>
-			</div>
-	</div>
-</div>
-	
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
-			<li ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">MyAccount {{model.user.username}}</a></li>
 			<li ng-class="{'active' : $location.url() == 'search'}"><a href="#/search">Search</a></li>
-			<li ng-class="{'active' : $location.url() == 'register'}"><a href="#/register">Register</a></li>
-			<li ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Login</a></li>
-			<li ng-class="{'active' : $location.url() == 'profile'}"><a href="#/profile">Profile</a></li>
-			<li ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Logout</a></li>
+			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">MyAccount {{model.user.username}}</a></li>
+			<li ng-show="!loginMessage" ng-class="{'active' : $location.url() == 'register'}"><a href="#/register">Register</a></li>
+			<li ng-show="!loginMessage" ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Login</a></li>
+			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'profile'}"><a href="#/profile">Profile</a></li>
+			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'logout'}"><a href="#/logout">Logout</a></li>
 		</ul>
-	</div>
 <!--
-	<form class="navbar-form navbar-right" role="search">
-		<div class="form-group">
-		<input type="text" class="form-control" placeholder="Search the album/artist/song you love!">
-		</div>
-		<a href="#/search">
+		<form class="navbar-form navbar-right">
+			<input type="text" class="form-control" ng-model="searchContent" placeholder="Search...">
+			<input ng-click="model.saveSearchContent()" class="btn btn-primary" value="Search" />
+			<a ng-click="model.saveSearchContent(content)" href="#/search">
 				<scan class="glyphicon glyphicon-search"></scan>
-		</a>
-	</form>
+			</a>
+		</form>
 -->
+	</div>
 </div>

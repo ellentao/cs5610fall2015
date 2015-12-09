@@ -20,13 +20,11 @@
 					</ul>
 				</ul>
 		</div>
-		<div ng-switch on="model.loginMessage">									
-		<div ng-switch-when="yes">
-				<button class="btn-info btn pull-right" ng-click="model.addArtistToUser()"><a href="#/user">like</a></button>
+		<div ng-show="loginMessage">
+				<button class="btn-info btn pull-right" ng-click="model.addAlbumToUser()"><a href="#/user">like</a></button>
 		</div>
-		<div ng-switch-when="no">
+		<div ng-show="!loginMessage">
 				<button class="btn-info btn pull-right" ng-click="model.saveLocation()"><a href="#/login">like</a></button>
-		</div>
 		</div>
 </div>
 
@@ -176,7 +174,12 @@
 							<input type="textarea" ng-model="content" class="form-control" placeholder="Your comment"/>
 						</div>
 						<div class="form-group">
-								<button ng-click="model.addComment(content)" class="btn btn-default">Add</button>
+							<div ng-show="loginMessage">
+								<button class="btn btn-default" ng-click="model.addComment(content)">Add</button>
+							</div>
+							<div ng-show="!loginMessage">
+								<button class="btn btn-default" ng-click="model.saveLocation()"><a href="#/login">Add</a></button>
+							</div>
 						</div>
 				</form>
 		</div>

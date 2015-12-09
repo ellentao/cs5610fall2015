@@ -23,12 +23,6 @@
 		model.$location = $location;
 		model.comments = [];
 		
-		if($rootScope.user != null) {
-			model.loginMessage = "yes";
-		} else {
-			model.loginMessage = "no";
-		}
-		
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
 			console.log($rootScope.album);

@@ -13,6 +13,12 @@
         controller: "LoginController",
 				controllerAs: "model"
       })
+		  .when("/logout",
+      {
+        templateUrl: "logout/logout.view.html",
+        controller: "LogoutController",
+				controllerAs: "model"
+      })
       .when("/register",
       {
         templateUrl: "register/register.view.html",

@@ -22,12 +22,6 @@
 		var model = this;
 		model.$location = $location;
 		
-		if($rootScope.user != null) {
-			model.loginMessage = "yes";
-		} else {
-			model.loginMessage = "no";
-		}
-		
 		if($rootScope.song != null) {
 			SearchService.findSongById($rootScope.song.id)
 				.then(function (result) {

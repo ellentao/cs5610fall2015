@@ -91,7 +91,7 @@
 						model.artists = result.artists.items;
 						console.log(model.artists);
 						if (model.artists != null) {
-							model.showArtist = "yes";	
+							model.showArtist = true;	
 						}
 					});
 			
@@ -101,7 +101,7 @@
 						model.albums = result.albums.items;
 						console.log(model.albums);
 						if (model.albums != null) {
-							model.showAlbum = "yes";	
+							model.showAlbum = true;	
 						}
 					});
 
@@ -111,7 +111,7 @@
 						model.songs = result.tracks.items;
 						console.log(model.songs);
 						if (model.songs != null) {
-							model.showSong = "yes";	
+							model.showSong = true;	
 						}
 					});
 			}

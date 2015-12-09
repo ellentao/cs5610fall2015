@@ -18,12 +18,6 @@
 		model.$location = $location;
 		model.albums = [];
 		
-		if($rootScope.user != null) {
-			model.loginMessage = "yes";
-		} else {
-			model.loginMessage = "no";
-		}
-		
 		if ($rootScope.artist != null) {
 			console.log("In artist page, current artist is: ");
 			console.log($rootScope.artist);

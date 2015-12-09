@@ -16,6 +16,7 @@
         if (user != null) {
           $rootScope.user = user;
 					model.loginDisplayMessage ="success";
+					$rootScope.loginMessage = true;
 					if ($rootScope.location != null) {
 						$location.url($rootScope.location);
 					} else {
