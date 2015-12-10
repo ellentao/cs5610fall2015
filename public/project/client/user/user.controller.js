@@ -14,10 +14,12 @@
 		var model = this;
 		model.$location = $location;
 		
-		model.user = $rootScope.user;
-		if (model.user != null) {
-			find();
-		}
+		if ($rootScope.user != null) {
+			UserService.findUserById($rootScope.user._id).then(function (user) {
+				model.user = user;
+				find();
+			});
+    }
 																																	
 		/*find current user's favorite songs, artists, and albums from database*/
 		function find() {

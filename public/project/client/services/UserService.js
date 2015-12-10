@@ -24,8 +24,10 @@
 			deleteAlbumFromUser : deleteAlbumFromUser,
 			findUserById : findUserById,
 			addfollowToUser: addfollowToUser,
-			findFollowingByUserId: findFollowingByUserId,
-			findFollowerByUserId: findFollowerByUserId
+			findFollowingByUserId : findFollowingByUserId,
+			findFollowerByUserId : findFollowerByUserId,
+			deleteFollowingFromUser : deleteFollowingFromUser,
+			deleteFollowerFromUser : deleteFollowerFromUser
 		};
 
 		return service;
@@ -237,6 +239,32 @@
 			$http
 				.get('/api/project/user/' + userId + '/follower')
 				.success(function(response) {
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function deleteFollowingFromUser(userId, followId)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/user/' + userId + '/following/' + followId)
+				.success(function(response) {
+					console.log("deleted a following from user");
+					console.log(response);
+					deferred.resolve(response);
+				});
+			return deferred.promise;
+		}
+		
+		function deleteFollowerFromUser(userId, followId)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/user/' + userId + '/follower/' + followId)
+				.success(function(response) {
+					console.log("deleted a follower from user");
+					console.log(response);
 					deferred.resolve(response);
 				});
 			return deferred.promise;

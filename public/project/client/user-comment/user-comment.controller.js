@@ -9,13 +9,13 @@
     var model = this;
 		model.$location = $location;
 
-		if ($rootScope.currentUserId != null) {
-			UserService.findUserById($rootScope.currentUserId).then(function (user) {
+		if ($rootScope.user != null) {
+			UserService.findUserById($rootScope.user._id).then(function (user) {
 				model.user = user;
 			});
 			
 			/*find current user's comments*/
-			CommentService.findAllCommentsByUserId($rootScope.currentUserId).then(function (comments) {
+			CommentService.findAllCommentsByUserId($rootScope.user._id).then(function (comments) {
 				model.comments = comments;
 				console.log("found user's comments");
 				console.log(model.comments);

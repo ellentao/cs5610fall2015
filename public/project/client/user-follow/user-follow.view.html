@@ -23,18 +23,24 @@
 <div class="col-sm-12">
 		<h2>My Following</h2>
 		<div class="col-sm-12">
-				<div class="col-sm-4" ng-repeat="following in user.following">
-						<a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.name}} image" width="200" height="200"></a>
-						<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.name}}</a></h4>
+				<div class="col-sm-4" ng-repeat="following in model.followings">
+					<a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.username}} image" width="200" height="200"></a>
+					<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.username}}</a></h4>
+					<a ng-click="model.deleteFollowing(following)" class="btn btn-danger">
+						<scan class="glyphicon glyphicon-remove"></scan>
+					</a>
 				</div>
 		</div>
 </div>
 <div class="col-sm-12">
 		<h2>My Followers</h2>
 		<div class="col-sm-12">
-				<div class="col-sm-4" ng-repeat="follower in user.followers">
-						<a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{follower.name}} image" width="200" height="200"></a>
-						<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)">{{follower.name}}</a></h4>
+				<div class="col-sm-4" ng-repeat="follower in model.followers">
+					<a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{follower.username}} image" width="200" height="200"></a>
+					<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)">{{follower.username}}</a></h4>
+					<a ng-click="model.deleteFollower(follower)" class="btn btn-danger">
+						<scan class="glyphicon glyphicon-remove"></scan>
+					</a>
 				</div>
 		</div>
 </div>

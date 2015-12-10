@@ -16,6 +16,8 @@ module.exports = function(app, model) {
 	app.post('/api/project/user/:userId/following', addFollowToUser);
 	app.get('/api/project/user/:userId/following', findFollowingByUserId);
 	app.get('/api/project/user/:userId/follower', findFollowerByUserId);
+	app.delete('/api/project/user/:userId/following/:followId', deleteFollowingFromUser);
+	app.delete('/api/project/user/:userId/follower/:followId', deleteFollowerFromUser);
 	
 	function createUser(req, res) {
 		model
@@ -177,6 +179,22 @@ module.exports = function(app, model) {
 	function findFollowerByUserId(req, res) {
 		model
 			.findFollowerByUserId(req.params.userId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function deleteFollowingFromUser(req, res) {
+		model
+			.deleteFollowingFromUser(req.params.userId, req.params.followId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function deleteFollowerFromUser(req, res) {
+		model
+			.deleteFollowerFromUser(req.params.userId, req.params.followId)
 			.then(function(result) {
 				res.json(result);
 			});

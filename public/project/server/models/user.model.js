@@ -23,7 +23,9 @@ module.exports = function(db, mongoose) {
 		deleteAlbumFromUser: deleteAlbumFromUser,
 		addFollowToUser: addFollowToUser,
 		findFollowingByUserId: findFollowingByUserId,
-		findFollowerByUserId: findFollowerByUserId
+		findFollowerByUserId: findFollowerByUserId,
+		deleteFollowingFromUser: deleteFollowingFromUser,
+		deleteFollowerFromUser: deleteFollowerFromUser
 	};
 	return api;
 	
@@ -403,6 +405,44 @@ module.exports = function(db, mongoose) {
 				console.log(user.followers);
 			}
 		});
+		return deferred.promise;
+	}
+	
+	function deleteFollowingFromUser(userId, followId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			var follows = user.following;
+			for (var i = 0; i < follows.length; i++) {
+				if (follows[i]._id == followId) {
+					user.following.splice(i, 1);
+					user.save(function(err, user){
+					deferred.resolve(user);
+				});
+				}
+			}
+		});
+		
+		return deferred.promise;
+	}
+	
+	function deleteFollowerFromUser(userId, followId)
+	{
+		var deferred = q.defer();
+
+		UserModel.findById(userId, function(err, user){
+			var follows = user.followers;
+			for (var i = 0; i < follows.length; i++) {
+				if (follows[i]._id == followId) {
+					user.followers.splice(i, 1);
+					user.save(function(err, user){
+					deferred.resolve(user);
+				});
+				}
+			}
+		});
+		
 		return deferred.promise;
 	}
 };

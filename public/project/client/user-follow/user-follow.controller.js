@@ -15,6 +15,8 @@
 		if ($rootScope.user != null) {
 			UserService.findUserById($rootScope.user._id).then(function (user) {
 				model.user = user;
+				model.followings = user.following;
+				model.followers = user.followers;
 			});
     }
 		
@@ -23,5 +25,31 @@
 			console.log(userId);
 			$rootScope.currentUserId = userId;
 		}
+		
+		model.deleteFollowing = function (following)
+    {
+      UserService.deleteFollowingFromUser(model.user._id, following._id).then(function (response) {
+				UserService
+					.findFollowingByUserId(model.user._id)
+					.then(function (result) {
+						model.followings = result;
+					  console.log("successfully deleted a following");
+        		console.log(model.followings);
+					});
+      });
+    }
+		
+		model.deleteFollower = function (follower)
+    {
+      UserService.deleteFollowerFromUser(model.user._id, follower._id).then(function (response) {
+				UserService
+					.findFollowerByUserId(model.user._id)
+					.then(function (result) {
+						model.followers = result;
+					  console.log("successfully deleted a follower");
+        		console.log(model.followers);
+					});
+      });
+    }
   }
 })();

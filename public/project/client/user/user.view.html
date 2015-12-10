@@ -9,12 +9,10 @@
 		</div>            
 		<div class="col-sm-5">
 				<h2>{{model.user.username}}</h2>
-		</div>
-		<div class="col-sm-5">
-				<h4>following: {{model.user.following.length}}</h4>
-		</div>
-		<div class="col-sm-5">
-				<h4>followers: {{model.user.followers.length}}</h4>
+				<ul>
+						<li>following: {{model.user.following.length}}</li>
+						<li>followers: {{model.user.followers.length}}</li>
+				</ul>
 		</div>
 </div>
 <h2>Favorite Artist</h2>
