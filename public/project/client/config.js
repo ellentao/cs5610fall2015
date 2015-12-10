@@ -85,6 +85,12 @@
         controller: "UserController",
 				controllerAs: "model"
       })
+			.when("/view-user",
+      {
+        templateUrl: "view-user/view-user.view.html",
+        controller: "ViewUserController",
+				controllerAs: "model"
+      })
 			.when("/user-guess",
       {
         templateUrl: "user-guess/user-guess.view.html",

@@ -22,7 +22,7 @@
 	</ul>
 </div>
 <div ng-show="loginMessage">
-		<button class="btn-info btn pull-right" ng-click="model.addAlbumToUser()"><a href="#/user">like</a></button>
+		<button class="btn-info btn pull-right" ng-click="model.addSongToUser()"><a href="#/user">like</a></button>
 </div>
 <div ng-show="!loginMessage">
 		<button class="btn-info btn pull-right" ng-click="model.saveLocation()"><a href="#/login">like</a></button>
@@ -40,7 +40,7 @@
 		<ul class="commentList" ng-repeat="comment in model.comments">
 				<li>
 						<div>
-						<a href="#/user" ng-click="model.saveCommentUserId(comment.userId)"><h5>{{comment.username}}: </h5></a>
+						<a href="#/view-user" ng-click="model.saveCommentUserId(comment.userId)"><h5>{{comment.username}}: </h5></a>
 						</div>                                    
 						<div class="commentText">
 								<p>{{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>

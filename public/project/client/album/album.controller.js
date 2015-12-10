@@ -23,6 +23,9 @@
 		model.$location = $location;
 		model.comments = [];
 		
+		console.log("current rootScope login message is");
+		console.log($rootScope.loginMessage);
+		
 		if ($rootScope.album != null) {
 			console.log("In album page, current album is: ");
 			console.log($rootScope.album);
@@ -108,11 +111,11 @@
 		
 		model.saveCommentUserId = function (userId) {
 			$rootScope.commentUserId = userId;
-			if ($rootScope.user != null && $rootScope.user._id == userId) {
-				$rootScope.viewOtherUser = false;
-			} else {
-				$rootScope.viewOtherUser = true;
-			}
+//			if ($rootScope.user != null && $rootScope.user._id == userId) {
+//				$rootScope.viewOtherUser = false;
+//			} else {
+//				$rootScope.viewOtherUser = true;
+//			}
 		}
 
 	}

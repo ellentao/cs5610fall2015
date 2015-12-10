@@ -7,16 +7,24 @@
 				return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
 		 };
 		})
-    .controller("UserController", UserController);
+    .controller("ViewUserController", ViewUserController);
     
-  function UserController($location, $rootScope, UserService)
+  function ViewUserController($location, $rootScope, UserService)
   {
 		var model = this;
 		model.$location = $location;
 		
-		model.user = $rootScope.user;
-		if (model.user != null) {
-			find();
+		if  ($rootScope.commentUserId != null) {
+			if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
+				$location.url("/user");
+			}
+			
+			UserService.findUserById($rootScope.commentUserId).then(function (user) {
+				console.log("view user");
+				console.log(user);
+				model.user = user;
+				find();
+			});
 		}
 																																	
 		/*find current user's favorite songs, artists, and albums from database*/
@@ -39,47 +47,6 @@
 				console.log(model.user.albums);
 			});
 		}
-		
-		model.deleteSong = function (song)
-    {
-      UserService.deleteSongFromUser(model.user._id, song._id).then(function (songs) {
-				UserService
-					.findSongsByUserId(model.user._id)
-					.then(function (result) {
-						model.user.songs = result;																								
-					});
-        console.log("successfully deleted song");
-        console.log(model.user.songs);
-      });
-    }
-		
-		model.deleteArtist = function (artist)
-    {
-			console.log("successfully deleted artist");
-      console.log(model.user.artists);
-      UserService.deleteArtistFromUser(model.user._id, artist._id).then(function (artists) {
-				UserService
-					.findArtistsByUserId(model.user._id)
-					.then(function (result) {
-						model.user.artists = result;																								
-					});
-        console.log("successfully deleted artist");
-        console.log(model.user.artists);
-      });
-    }
-		
-		model.deleteAlbum = function (album)
-    {
-      UserService.deleteAlbumFromUser(model.user._id, album._id).then(function (albums) {
-				UserService
-					.findAlbumsByUserId(model.user._id)
-					.then(function (result) {
-						model.user.albums = result;																								
-					});
-        console.log("successfully deleted album");
-        console.log(model.user.albums);
-      });
-    }
 		
 		model.millisToMinutesAndSeconds = function (millis) {
 			var minutes = Math.floor(millis / 60000);
@@ -111,12 +78,9 @@
 				console.log(result);
 			});
 		}
-				
-//		UserService.findArtistByUserId(model.user.id, $scope.profileUser).then(function (user) {
-//			$rootScope.user = user;
-//			$location.url("/profile");
-//			console.log("updated profile");
-//			console.log(user);
-//		});
+		
+		model.saveLocation = function () {
+			$rootScope.location = "/view-user";
+		}
   }
 })();

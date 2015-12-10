@@ -22,7 +22,8 @@
 			addAlbumToUser : addAlbumToUser,
 			findAlbumsByUserId : findAlbumsByUserId,
 			deleteAlbumFromUser : deleteAlbumFromUser,
-			findUserById : findUserById
+			findUserById : findUserById,
+			addfollowToUser: addfollowToUser
 		};
 
 		return service;
@@ -206,5 +207,15 @@
 			return deferred.promise;
 		}
 		
+		function addfollowToUser(userId, follow)
+		{
+			var deferred = $q.defer();
+			$http
+				.post('/api/project/user/'+ userId + '/follow', follow)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
 	}
 })();

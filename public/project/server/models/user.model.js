@@ -20,7 +20,8 @@ module.exports = function(db, mongoose) {
 		deleteArtistFromUser: deleteArtistFromUser,
 		addAlbumToUser: addAlbumToUser,
 		findAlbumsByUserId: findAlbumsByUserId,
-		deleteAlbumFromUser: deleteAlbumFromUser
+		deleteAlbumFromUser: deleteAlbumFromUser,
+		addFollowToUser: addFollowToUser
 	};
 	return api;
 	
@@ -329,6 +330,41 @@ module.exports = function(db, mongoose) {
 			}
 		});
 		
+		return deferred.promise;
+	}
+	
+	function addFollowToUser(userId, follow)
+	{
+		var deferred = q.defer();
+		console.log("add follow to user:");
+		console.log(follow._id);
+		var newFollowing = {
+			id: follow._id,
+			name: follow.name,
+		};
+		UserModel.findById(userId, function(err, user){
+			user.following.push(newFollowing);
+			console.log(user.following);
+			user.save(function(err, user){
+				deferred.resolve(user);
+				console.log("updatedUser, add new following");
+				console.log(user);
+				
+				var newFollower = {
+					id: userId,
+					name: user.username
+				}
+				UserModel.findById(follow._id, function(err, user){
+					user.followers.push(newFollower);
+					console.log(user.followers);
+					user.save(function(err, user){
+						deferred.resolve(user);
+						console.log("updatedUser, add new follower");
+						console.log(user);
+					});
+				});
+			});
+		});
 		return deferred.promise;
 	}
 };

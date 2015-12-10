@@ -13,6 +13,7 @@ module.exports = function(app, model) {
 	app.post('/api/project/user/:userId/album', addAlbumToUser);
 	app.get('/api/project/user/:userId/album', findAlbumsByUserId);
 	app.delete('/api/project/user/:userId/album/:albumId', deleteAlbumFromUser);
+	app.post('/api/project/user/:userId/follow', addFollowToUser);
 	
 	function createUser(req, res) {
 		model
@@ -150,6 +151,14 @@ module.exports = function(app, model) {
 	function deleteAlbumFromUser(req, res) {
 		model
 			.deleteAlbumFromUser(req.params.userId, req.params.albumId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function addFollowToUser(req, res) {
+		model
+			.addFollowToUser(req.params.userId, req.body)
 			.then(function(result) {
 				res.json(result);
 			});
