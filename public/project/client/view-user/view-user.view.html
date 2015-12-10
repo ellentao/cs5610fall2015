@@ -1,8 +1,3 @@
-<ul class="nav nav-tabs">
-	<li role="presentation" class="active"><a href="#">{{model.user.username}}'s Favorite</a></li>
-	<li role="presentation" ng-click="model.saveCurrentUserId()"><a href="#/user-comment">{{model.user.username}}'s Comments</a></li>
-	<li role="presentation" ng-click="model.saveCurrentUserId()"><a href="#/user-follow">{{model.user.username}}'s following</a></li>
-</ul>
 <div class="row">
 		<div class="col-sm-4">
 				<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
@@ -15,7 +10,12 @@
 		</div>
 		<div class="col-sm-3">
 			<div ng-show="loginMessage">
+				<div ng-show="!model.followStatus">
 				<button class="btn-info btn" ng-click="model.follow()">Follow</button>
+				</div>
+				<div ng-show="model.followStatus">
+					<button class="btn-info btn" ng-click="model.unfollow()">Unfollow</button>
+				</div>
 			</div>
 			<div ng-show="!loginMessage">
 				<button class="btn-info btn" ng-click="model.saveLocation()"><a href="#/login">Follow</a></button>

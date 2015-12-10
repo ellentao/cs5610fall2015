@@ -1,20 +1,25 @@
 <div class="col-sm-12">
-		<div class="col-sm-4">
-				<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
-		</div>            
-		<div class="col-sm-5">
-				<h2>{{model.user.username}}</h2>
+	<ul class="nav nav-tabs">
+	<li role="presentation"><a href="#/user">My Favorite</a></li>
+	<li role="presentation" class="active"><a href="#/user-comment">My Comments</a></li>
+	<li role="presentation"><a href="#/user-follow">My following</a></li>
+	</ul>
+	<div class="col-sm-4">
+			<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
+	</div>            
+	<div class="col-sm-5">
+			<h2>{{model.user.username}}</h2>
 <!--
-				<ul>
-						<li>About: </li>
-				</ul>
+			<ul>
+					<li>About: </li>
+			</ul>
 -->
-		</div>
-		<div class="col-sm-3">
-				<div class="text-right">
-				<button class="btn-info btn"><a href="#/login">Follow</a></button>
-				</div>
-		</div>
+	</div>
+	<div class="col-sm-3">
+			<div class="text-right">
+			<button class="btn-info btn"><a href="#/login">Follow</a></button>
+			</div>
+	</div>
 </div>
 <div class="col-sm-12">
 		<h2>Comments</h2>               

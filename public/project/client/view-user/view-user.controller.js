@@ -13,17 +13,30 @@
   {
 		var model = this;
 		model.$location = $location;
+		if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
+			$location.url("/user");
+		}
 		
 		if  ($rootScope.commentUserId != null) {
-			if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
-				$location.url("/user");
-			}
-			
+//			if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
+//				$location.url("/user");
+//			}
+//			
 			UserService.findUserById($rootScope.commentUserId).then(function (user) {
 				console.log("view user");
 				console.log(user);
 				model.user = user;
 				find();
+				if ($rootScope.user != null) {
+					var following = $rootScope.user.following;
+					for (var i; i < following.length; i++) {
+						var followed = following[i];
+						if (following.id == model.user._id) {
+							model.followStatus = true;
+						}
+					}
+					model.followStatus = false;
+				}
 			});
 		}
 																																	
@@ -66,10 +79,6 @@
 			console.log("saved current user id");
 			console.log(model.user._id);
 			$rootScope.currentUserId = model.user._id;
-		}
-		
-		model.saveLocation = function () {
-			$rootScope.location = "/user";
 		}
 		
 		model.follow = function() {

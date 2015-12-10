@@ -13,7 +13,9 @@ module.exports = function(app, model) {
 	app.post('/api/project/user/:userId/album', addAlbumToUser);
 	app.get('/api/project/user/:userId/album', findAlbumsByUserId);
 	app.delete('/api/project/user/:userId/album/:albumId', deleteAlbumFromUser);
-	app.post('/api/project/user/:userId/follow', addFollowToUser);
+	app.post('/api/project/user/:userId/following', addFollowToUser);
+	app.get('/api/project/user/:userId/following', findFollowingByUserId);
+	app.get('/api/project/user/:userId/follower', findFollowerByUserId);
 	
 	function createUser(req, res) {
 		model
@@ -159,6 +161,22 @@ module.exports = function(app, model) {
 	function addFollowToUser(req, res) {
 		model
 			.addFollowToUser(req.params.userId, req.body)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function findFollowingByUserId(req, res) {
+		model
+			.findFollowingByUserId(req.params.userId)
+			.then(function(result) {
+				res.json(result);
+			});
+	}
+	
+	function findFollowerByUserId(req, res) {
+		model
+			.findFollowerByUserId(req.params.userId)
 			.then(function(result) {
 				res.json(result);
 			});

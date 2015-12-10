@@ -82,7 +82,7 @@
 			.when("/user-follow",
       {
         templateUrl: "user-follow/user-follow.view.html",
-        controller: "UserController",
+        controller: "UserFollowController",
 				controllerAs: "model"
       })
 			.when("/view-user",

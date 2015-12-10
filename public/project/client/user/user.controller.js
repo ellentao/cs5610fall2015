@@ -111,12 +111,5 @@
 				console.log(result);
 			});
 		}
-				
-//		UserService.findArtistByUserId(model.user.id, $scope.profileUser).then(function (user) {
-//			$rootScope.user = user;
-//			$location.url("/profile");
-//			console.log("updated profile");
-//			console.log(user);
-//		});
   }
 })();

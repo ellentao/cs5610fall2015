@@ -1,11 +1,17 @@
 <div class="col-sm-12">
+		<ul class="nav nav-tabs">
+		<li role="presentation"><a href="#/user">My Favorite</a></li>
+		<li role="presentation"><a href="#/user-comment">My Comments</a></li>
+		<li role="presentation" class="active"><a href="#/user-follow">My following</a></li>
+		</ul>
 		<div class="col-sm-4">
 				<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
 				</div>            
 		<div class="col-sm-5">
-				<h2>Username</h2>
+				<h2>{{model.user.username}}</h2>
 				<ul>
-						<li>About: </li>
+						<li>following: {{model.user.following.length}}</li>
+						<li>followers: {{model.user.followers.length}}</li>
 				</ul>
 		</div>
 		<div class="col-sm-3">
@@ -15,31 +21,20 @@
 		</div>
 </div>
 <div class="col-sm-12">
-		<h2>Following users</h2>
+		<h2>My Following</h2>
 		<div class="col-sm-12">
-				<div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User1</a></h4>              
+				<div class="col-sm-4" ng-repeat="following in user.following">
+						<a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.name}} image" width="200" height="200"></a>
+						<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.name}}</a></h4>
 				</div>
-				<div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User2</a></h4>  
-				</div>
-				<div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User3</a></h4>  
-				</div>
-				 <div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User4</a></h4>              
-				</div>
-				<div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User5</a></h4>  
-				</div>
-				<div class="col-sm-4">
-						<a href="#/user"><img src="img/example.jpg" class="img-thumbnail" alt="user1" width="200" height="200"></a>
-						<h4><a href="#/user">User6</a></h4>  
+		</div>
+</div>
+<div class="col-sm-12">
+		<h2>My Followers</h2>
+		<div class="col-sm-12">
+				<div class="col-sm-4" ng-repeat="follower in user.followers">
+						<a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{follower.name}} image" width="200" height="200"></a>
+						<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)">{{follower.name}}</a></h4>
 				</div>
 		</div>
 </div>

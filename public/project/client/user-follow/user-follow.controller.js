@@ -6,15 +6,22 @@
     
   function UserFollowController($scope, $location, $rootScope, UserService)
   {
-    $scope.$location = $location;
+    var model = this;
+		model.$location = $location;
+		
+		console.log("current logged in user is: ")
+		console.log($rootScope.user);
 
-    $scope.update = function () {
-      UserService.updateUser($rootScope.user.id, $scope.profileUser).then(function (user) {
-        $rootScope.user = user;
-        $location.url("/profile");
-        console.log("updated profile");
-        console.log(user);
-      });
+		if ($rootScope.user != null) {
+			UserService.findUserById($rootScope.user._id).then(function (user) {
+				model.user = user;
+			});
     }
+		
+		model.saveCurrentUserId = function (userId) {
+			console.log("saved current user id");
+			console.log(userId);
+			$rootScope.currentUserId = userId;
+		}
   }
 })();
