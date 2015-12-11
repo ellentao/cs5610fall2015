@@ -19,6 +19,11 @@
 							$rootScope.user = user;
 							$rootScope.loginMessage = true;
 							model.message = "success";
+							
+							/*resgisted as admin*/
+							if (registerUser.username == "admin" && registerUser.password == "admin") {
+								model.loginAsAdmin = true;
+							}
 							$location.url("/profile");
 							console.log("current register user is ");
 							console.log($rootScope.user);
