@@ -8,6 +8,8 @@
 	{ 
 		var service = {
 			addComment : addComment,
+			findAllComments : findAllComments,
+			deleteCommentById : deleteCommentById,
 			findAllCommentsByAlbumId : findAllCommentsByAlbumId,
 			findAllCommentsByArtistId : findAllCommentsByArtistId,
 			findAllCommentsBySongId : findAllCommentsBySongId,
@@ -26,6 +28,30 @@
 					console.log(response);
 					deferred.resolve(response);	
 				});						 
+			return deferred.promise;
+		}
+		
+		function deleteCommentById(id)
+		{
+			var deferred = $q.defer();
+			$http
+				.delete('/api/project/comment/' + id)
+				.success(function(response) {
+					deferred.resolve(response);	
+				});						 
+			return deferred.promise;
+		}
+		
+		function findAllComments()
+		{
+			var deferred = $q.defer();
+			$http
+				.get('/api/project/comment/')
+				.success(function(response) {
+					console.log("in client services, find all comments");
+					console.log(response);
+					deferred.resolve(response);
+				});
 			return deferred.promise;
 		}
 		

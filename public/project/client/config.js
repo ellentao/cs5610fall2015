@@ -7,6 +7,12 @@
   function Config($routeProvider)
   {
     $routeProvider
+		  .when("/admin",
+      {
+        templateUrl: "admin/admin.view.html",
+        controller: "AdminController",
+				controllerAs: "model"
+      })
       .when("/login",
       {
         templateUrl: "login/login.view.html",

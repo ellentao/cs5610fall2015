@@ -17,6 +17,8 @@
 					} else {
 						UserService.createUser(registerUser).then(function (user) {
 							$rootScope.user = user;
+							$rootScope.loginMessage = true;
+							model.message = "success";
 							$location.url("/profile");
 							console.log("current register user is ");
 							console.log($rootScope.user);
@@ -27,11 +29,6 @@
 				model.message = "noFieldError";
 			} else if (registerUser.password != registerUser.password2) {
 				model.message = "passwordError";
-			} else {
-				model.message = "success";
-				console.log("successfully registered: ");
-				console.log(registerUser.username);
-				console.log(registerUser.password);
 			}
       
       UserService.findAllUsers().then(function (users){

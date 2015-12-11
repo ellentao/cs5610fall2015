@@ -214,11 +214,9 @@ body {
     padding: 20px;
 }
 */
-/*
 #search-form, .form-control {
     margin-bottom: 20px;
 }
-*/
 .cover {
     width: 300px;
     height: 300px;
@@ -233,3 +231,9 @@ body {
 }
 
 .repeat-glyphicon > li > .glyphicon { display: inline-block; }
+
+/* make table responsive*/
+.table-responsive
+{
+    overflow-x: auto;
+}

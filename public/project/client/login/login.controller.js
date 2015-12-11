@@ -17,6 +17,13 @@
           $rootScope.user = user;
 					model.loginDisplayMessage ="success";
 					$rootScope.loginMessage = true;
+					
+					/*login as Admin*/
+					if (user.username == "admin" && user.password == "admin") {
+						$rootScope.loginAsAdmin = true;
+					}
+					
+					/*redirect to previous location after login, or redirect to profile page*/
 					if ($rootScope.location != null) {
 						$location.url($rootScope.location);
 					} else {

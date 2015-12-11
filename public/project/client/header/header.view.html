@@ -11,7 +11,8 @@
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
 			<li ng-class="{'active' : $location.url() == 'search'}"><a href="#/search">Search</a></li>
-			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">MyAccount {{model.user.username}}</a></li>
+			<li ng-show="loginAsAdmin" ng-class="{'active' : $location.url() == 'admin'}"><a href="#/admin">Admin</a></li>
+			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">MyAccount</a></li>
 			<li ng-show="!loginMessage" ng-class="{'active' : $location.url() == 'register'}"><a href="#/register">Register</a></li>
 			<li ng-show="!loginMessage" ng-class="{'active' : $location.url() == 'login'}"><a href="#/login">Login</a></li>
 			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'profile'}"><a href="#/profile">Profile</a></li>
