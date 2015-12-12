@@ -23,24 +23,7 @@
 				console.log(user);
 				model.user = user;
 				find();
-				if ($rootScope.user != null) {
-					var followings = $rootScope.user.following;
-					console.log("login user's following");
-					console.log($rootScope.user.following);
-					console.log(model.user._id);
-					for (var i = 0; i < followings.length; i++) {
-						var follow = followings[i];
-						if (follow.id === model.user._id) {
-							console.log("found match follow");
-							model.followStatus = true;
-						}
-					}
-					if(model.followStatus != true) {
-						model.followStatus = false;	
-					}
-					console.log("show follow status: ");
-					console.log(model.followStatus);
-				}
+				setFollowStatus();
 			});
 		}
 																																	
@@ -65,6 +48,29 @@
 			});
 		}
 		
+		function setFollowStatus() {
+			if ($rootScope.user != null) {
+				UserService.findUserById($rootScope.user._id).then(function (user) {
+					$rootScope.user = user;
+					var followings = $rootScope.user.following;
+					console.log("login user's following");
+					console.log($rootScope.user.following);
+					console.log(model.user._id);
+					for (var i = 0; i < followings.length; i++) {
+						var follow = followings[i];
+						if (follow.id === model.user._id) {
+							console.log("found match follow");
+							model.followStatus = true;
+						}
+					}
+					if(model.followStatus != true) {
+						model.followStatus = false;	
+					}
+					console.log("show follow status: ");
+					console.log(model.followStatus);
+				});
+			}
+		}
 		model.millisToMinutesAndSeconds = function (millis) {
 			var minutes = Math.floor(millis / 60000);
 			var seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -86,19 +92,27 @@
 		}
 		
 		model.follow = function() {
-			model.followStatus = true;
+//			model.followStatus = true;
 			UserService.addfollowToUser($rootScope.user._id, model.user).then(function(result) {
 				console.log("successfully added a new following to current user");																																		
 				console.log(result);
+				UserService.findUserById($rootScope.currentUserId).then(function (user) {
+					model.user = user;
+					setFollowStatus();
+				});
 			});
 		}
 		
 		model.unfollow = function() {
-			model.followStatus = false;
+//			model.followStatus = false;
 			UserService.deleteFollowingFromUser($rootScope.user._id, model.user._id)
 				.then(function(result) {
-							console.log("delete following from the current login user")
-							console.log(result);																																									
+					console.log("delete following from the current login user")
+					console.log(result);
+					UserService.findUserById($rootScope.currentUserId).then(function (user) {
+						model.user = user;
+						setFollowStatus();
+					});
 				});
 			UserService.deleteFollowerFromUser(model.user._id, $rootScope.user._id)
 				.then(function(result) {
