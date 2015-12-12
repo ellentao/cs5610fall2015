@@ -28,7 +28,7 @@
 		
 		model.deleteFollowing = function (following)
     {
-      UserService.deleteFollowingFromUser(model.user._id, following._id).then(function (response) {
+      UserService.deleteFollowingFromUser(model.user._id, following.id).then(function (response) {
 				UserService
 					.findFollowingByUserId(model.user._id)
 					.then(function (result) {
@@ -38,14 +38,14 @@
 					});
       });
 			
-			UserService.deleteFollowerFromUser(following._id, model.user._id).then(function (response) {
+			UserService.deleteFollowerFromUser(following.id, model.user._id).then(function (response) {
 				console.log(response);
       });
     }
 		
 		model.deleteFollower = function (follower)
     {
-      UserService.deleteFollowerFromUser(model.user._id, follower._id).then(function (response) {
+      UserService.deleteFollowerFromUser(model.user._id, follower.id).then(function (response) {
 				UserService
 					.findFollowerByUserId(model.user._id)
 					.then(function (result) {
@@ -55,7 +55,7 @@
 					});
       });
 			
-			UserService.deleteFollowingFromUser(follower._id, model.user._id).then(function (response) {
+			UserService.deleteFollowingFromUser(follower.id, model.user._id).then(function (response) {
 				console.log(response);
       });
     }

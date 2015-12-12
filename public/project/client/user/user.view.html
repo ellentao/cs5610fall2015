@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
 	<li role="presentation" class="active"><a href="#">My Favorite</a></li>
-	<li role="presentation" ng-click="model.saveCurrentUserId()"><a href="#/user-comment">My Comments</a></li>
-	<li role="presentation" ng-click="model.saveCurrentUserId()"><a href="#/user-follow">My following</a></li>
+	<li role="presentation"><a href="#/user-comment">My Comments</a></li>
+	<li role="presentation"><a href="#/user-follow">My following</a></li>
 </ul>
 <div class="row">
 		<div class="col-sm-4">
@@ -99,7 +99,7 @@
 			<tbody>
 				<tr ng-repeat="song in model.user.songs">
 					<td>
-						<a href="#/song" ng-click="model.saveSong(song)">
+						<a href="#/song" ng-click="model.saveSong(song.id)">
 							{{song.name}}
 						</a>
 					</td>

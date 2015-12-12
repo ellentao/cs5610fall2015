@@ -97,10 +97,8 @@
 			$rootScope.artist = {id: artistId};
 		}
 		
-		model.saveCurrentUserId = function () {
-			console.log("saved current user id");
-			console.log(model.user._id);
-			$rootScope.currentUserId = model.user._id;
+		model.saveSong = function (songId) {
+			$rootScope.song = {id: songId};
 		}
 		
 		model.saveLocation = function () {
