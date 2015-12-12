@@ -87,6 +87,7 @@ module.exports = function(db, mongoose) {
 					lastName : user.lastName,
 					username : user.username,
 					password : user.password,
+					email : user.email
 				}, 
 			},
 			function(err, result) {
@@ -413,14 +414,16 @@ module.exports = function(db, mongoose) {
 		var deferred = q.defer();
 
 		UserModel.findById(userId, function(err, user){
-			var follows = user.following;
-			for (var i = 0; i < follows.length; i++) {
-				if (follows[i]._id == followId) {
-					user.following.splice(i, 1);
-					user.save(function(err, user){
-					deferred.resolve(user);
-				});
-				}
+			if (user != null) {
+				var follows = user.following;
+				for (var i = 0; i < follows.length; i++) {
+					if (follows[i].id == followId) {
+						user.following.splice(i, 1);
+						user.save(function(err, user){
+							deferred.resolve(user);
+						});
+					}
+				}	
 			}
 		});
 		
@@ -432,14 +435,16 @@ module.exports = function(db, mongoose) {
 		var deferred = q.defer();
 
 		UserModel.findById(userId, function(err, user){
-			var follows = user.followers;
-			for (var i = 0; i < follows.length; i++) {
-				if (follows[i]._id == followId) {
-					user.followers.splice(i, 1);
-					user.save(function(err, user){
-					deferred.resolve(user);
-				});
-				}
+			if (user != null){
+				var follows = user.followers;
+				for (var i = 0; i < follows.length; i++) {
+					if (follows[i].id == followId) {
+						user.followers.splice(i, 1);
+						user.save(function(err, user){
+							deferred.resolve(user);
+						});
+					}
+				}	
 			}
 		});
 		

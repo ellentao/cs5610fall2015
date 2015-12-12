@@ -8,6 +8,7 @@ module.exports = function(mongoose) {
 		lastName: String,
 		username: String,
 		password: String,
+		email: String,
 		favoriteSongs:[SongSchema],
 		favoriteArtists:[ArtistSchema],
 		favoriteAlbums:[AlbumSchema],

@@ -7,6 +7,12 @@
   function Config($routeProvider)
   {
     $routeProvider
+			.when("/search",
+      {
+        templateUrl: "search/search.view.html",
+        controller: "SearchController",
+				controllerAs: "model"
+      })
 		  .when("/admin",
       {
         templateUrl: "admin/admin.view.html",
@@ -55,18 +61,6 @@
         controller: "ArtistController",
 				controllerAs: "model"
       })
-			.when("/category",
-      {
-        templateUrl: "category/category.view.html",
-        controller: "CategoryController",
-				controllerAs: "model"
-      })
-			.when("/search",
-      {
-        templateUrl: "search/search.view.html",
-        controller: "SearchController",
-				controllerAs: "model"
-      })
 			.when("/song",
       {
         templateUrl: "song/song.view.html",
@@ -95,12 +89,6 @@
       {
         templateUrl: "view-user/view-user.view.html",
         controller: "ViewUserController",
-				controllerAs: "model"
-      })
-			.when("/user-guess",
-      {
-        templateUrl: "user-guess/user-guess.view.html",
-        controller: "UserGuessController",
 				controllerAs: "model"
       })
       .otherwise({

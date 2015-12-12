@@ -15,7 +15,7 @@
     model.update = function (profileUser) {
       UserService.updateUser($rootScope.user._id, profileUser).then(function (user) {
         $rootScope.user = user;
-        $location.url("/profile");
+        $location.url("/user");
         console.log("updated profile");
         console.log(user);
       });

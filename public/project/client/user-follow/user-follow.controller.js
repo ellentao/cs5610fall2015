@@ -37,6 +37,10 @@
         		console.log(model.followings);
 					});
       });
+			
+			UserService.deleteFollowerFromUser(following._id, model.user._id).then(function (response) {
+				console.log(response);
+      });
     }
 		
 		model.deleteFollower = function (follower)
@@ -49,6 +53,10 @@
 					  console.log("successfully deleted a follower");
         		console.log(model.followers);
 					});
+      });
+			
+			UserService.deleteFollowingFromUser(follower._id, model.user._id).then(function (response) {
+				console.log(response);
       });
     }
   }

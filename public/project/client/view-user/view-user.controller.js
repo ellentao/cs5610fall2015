@@ -13,29 +13,33 @@
   {
 		var model = this;
 		model.$location = $location;
-		if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
+		if ($rootScope.user != null && $rootScope.currentUserId == $rootScope.user._id) {
 			$location.url("/user");
 		}
 		
-		if  ($rootScope.commentUserId != null) {
-//			if ($rootScope.user != null && $rootScope.commentUserId == $rootScope.user._id) {
-//				$location.url("/user");
-//			}
-//			
-			UserService.findUserById($rootScope.commentUserId).then(function (user) {
+		if  ($rootScope.currentUserId != null) {
+			UserService.findUserById($rootScope.currentUserId).then(function (user) {
 				console.log("view user");
 				console.log(user);
 				model.user = user;
 				find();
 				if ($rootScope.user != null) {
-					var following = $rootScope.user.following;
-					for (var i; i < following.length; i++) {
-						var followed = following[i];
-						if (following.id == model.user._id) {
+					var followings = $rootScope.user.following;
+					console.log("login user's following");
+					console.log($rootScope.user.following);
+					console.log(model.user._id);
+					for (var i = 0; i < followings.length; i++) {
+						var follow = followings[i];
+						if (follow.id === model.user._id) {
+							console.log("found match follow");
 							model.followStatus = true;
 						}
 					}
-					model.followStatus = false;
+					if(model.followStatus != true) {
+						model.followStatus = false;	
+					}
+					console.log("show follow status: ");
+					console.log(model.followStatus);
 				}
 			});
 		}
@@ -82,10 +86,25 @@
 		}
 		
 		model.follow = function() {
+			model.followStatus = true;
 			UserService.addfollowToUser($rootScope.user._id, model.user).then(function(result) {
 				console.log("successfully added a new following to current user");																																		
 				console.log(result);
 			});
+		}
+		
+		model.unfollow = function() {
+			model.followStatus = false;
+			UserService.deleteFollowingFromUser($rootScope.user._id, model.user._id)
+				.then(function(result) {
+							console.log("delete following from the current login user")
+							console.log(result);																																									
+				});
+			UserService.deleteFollowerFromUser(model.user._id, $rootScope.user._id)
+				.then(function(result) {
+							console.log("delete follower from the view-user")
+							console.log(result);																																									
+				});
 		}
 		
 		model.saveLocation = function () {

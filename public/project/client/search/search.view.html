@@ -1,4 +1,40 @@
 <div ng-controller="SearchController">
+	
+<script>
+    $(function () { $(".carousel").carousel({ interval: 5000
+    }); });
+</script>
+<div class="carousel slide"  data-ride="carousel" data-interval="false">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active" style="background-color: YellowGreen">
+          <img src="img/katy-perry-prism-cover.jpg" alt="cover1" width="300" height="300">
+					<div class="carousel-caption">
+						<h2>Like your favorite artists, albums, and songs!</h2>
+					</div>
+        </div>
+        <div class="item" style="background-color: YellowGreen">
+          <img src="img/Maroon-5-Overexposed-Cover.jpg" alt="cover2" width="300" height="300">
+					<div class="carousel-caption">
+						<h2>Comment your interested artists, albums, and songs!</h2>
+					</div>
+        </div>
+        <div class="item" style="background-color: YellowGreen">
+          <img src="img/bruno-mars-cover.jpg" alt="cover3" width="300" height="300">
+					<div class="carousel-caption">
+						<h2>Follow the cool users!</h2>
+					</div>
+        </div>
+    </div>
+</div>
+
 <div>
 <h1>Search</h1>
 <p>Type an artist name or album name or song name, and click on "Search". Then, click on any artist or album or song from the results to see details. </p>
