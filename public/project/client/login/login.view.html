@@ -1,4 +1,10 @@
 <div ng-controller="LoginController">
+<div class="row">
+	<div class="pull-left">
+			<img src="img/hello panda.jpg" class="img-rounded" alt="logo" width="200" height="200">
+	</div>
+	<h1>Welcome to Panda Music!</h1>
+</div>
 <h2>Login</h2> 
 <h5>Please log in as admin, if you want to manage all users and comments.</h5>
 <h5>*For test purpose, the current admin's username: admin, password: admin</h5>
@@ -20,6 +26,15 @@
         <a ng-click="model.login(loginUser)" type="submit" class="btn btn-default btn-block active" Role="button">Login</a>
     </div>
     </div>
+		<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-5">
+		<h5>Don't have account yet? Please register here: </h5>
+		</div>
+		<div class="col-sm-5">
+        <a href="#/register" type="submit" class="btn btn-info btn-block active" Role="button">Register</a>
+    </div>
+    </div>
+		
 		<div ng-switch on="model.loginDisplayMessage">									
 		<div ng-switch-when="error">
 				<h5>Sorry, the username and password doesn't match, please try it again!</h5>

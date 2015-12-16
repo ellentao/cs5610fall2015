@@ -1,4 +1,10 @@
 <div ng-controller="RegisterController">
+<div class="row">
+	<div class="pull-left">
+			<img src="img/hello panda.jpg" class="img-rounded" alt="logo"  width="200" height="200">
+	</div>
+	<h1>Welcome to Panda Music!</h1>
+</div>
 <h2>Register</h2>
 <form class="form-horizontal">
 	<div class="form-group">
@@ -28,6 +34,14 @@
 	<div class="form-group">
 	<div class="col-sm-offset-2 col-sm-10">
 		<a ng-click="model.register(registerUser)" type="submit" class="btn btn-default btn-block active" Role="button">Register</a>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-5">
+	<h5>Already have account? Please login here: </h5>
+	</div>
+	<div class="col-sm-5">
+			<a href="#/login" type="submit" class="btn btn-info btn-block active" Role="button">Login</a>
 	</div>
 	</div>
 	<h5>The * fields are required to fill.</h5>
