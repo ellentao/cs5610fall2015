@@ -46,7 +46,12 @@
 								</div>     
 								<div>
 								<a href="#/{{comment.type}}"><h5 ng-click="model.saveId(comment.type, comment.id)">[{{comment.name}}]</h5></a>
-								</div>  
+								</div>
+								<div>
+									<a href="#/view-user" ng-click="model.saveCurrentUserId(comment.userId)">
+										{{comment.username}}
+									</a>
+								</div>
 								<div class="commentText">
 										<p>: {{comment.content}}</p> <span class="date sub-text">on {{comment.date}}</span>
 								</div>
