@@ -7,6 +7,12 @@
   function Config($routeProvider)
   {
     $routeProvider
+			.when("/home",
+      {
+        templateUrl: "home/home.view.html",
+        controller: "HomeController",
+				controllerAs: "model"
+      })
 			.when("/search",
       {
         templateUrl: "search/search.view.html",
@@ -92,7 +98,7 @@
 				controllerAs: "model"
       })
       .otherwise({
-        redirectTo: "/search"
+        redirectTo: "/home"
       })
   }
 })();
