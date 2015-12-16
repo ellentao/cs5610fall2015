@@ -75,82 +75,62 @@
 	</div>
 	<div ng-show="model.showSong" class="col-sm-12">
 			<h2>Songs</h2>
-			<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover table-condensed">
-						<thead>
-						<tr>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Song Name
-							</th>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Artist Name
-							</th>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Album Name
-							</th>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Time Duration
-							</th>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Preview
-							</th>
-							<th>
-								<a href="#">
-									<scan class="glyphicon glyphicon-triangle-bottom"></scan>
-								</a>
-								Popularity
-							</th>
-						</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="song in model.songs">
-								<td>
-									<a href="#/song" ng-click="model.saveSong(song)">
-										{{song.name}}
-									</a>
-								</td>
-								<td>
-									<ul ng-repeat="artist in song.artists">
-										<li><a href="#/artist" ng-click="model.saveArtist(artist)">{{artist.name}}</a></li>
-									</ul>
-								</td>
-								<td>
-									<a href="#/album" ng-click="model.saveAlbum(song.album)">
-										{{song.album.name}}
-									</a>
-								</td>
-								<td>
-									{{model.millisToMinutesAndSeconds(song.duration_ms)}}
-								</td>
-								<td>
-									<iframe ng-src="{{song.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-								</td>
-								<td>
-									<ul class="list-inline">
-										<li ng-repeat="n in [] | range: song.popularity">
-											<span class="glyphicon glyphicon-heart"></span>
-										</li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-			</div>
-	</div>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<thead>
+				<tr>
+					<th>
+						Song Name
+					</th>
+					<th>
+						Artist Name
+					</th>
+					<th>
+						Album Name
+					</th>
+					<th>
+						Time Duration
+					</th>
+					<th>
+						Preview
+					</th>
+					<th>
+						Popularity
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="song in model.songs">
+						<td>
+							<a href="#/song" ng-click="model.saveSong(song)">
+								{{song.name}}
+							</a>
+						</td>
+						<td>
+							<ul ng-repeat="artist in song.artists">
+								<li><a href="#/artist" ng-click="model.saveArtist(artist)">{{artist.name}}</a></li>
+							</ul>
+						</td>
+						<td>
+							<a href="#/album" ng-click="model.saveAlbum(song.album)">
+								{{song.album.name}}
+							</a>
+						</td>
+						<td>
+							{{model.millisToMinutesAndSeconds(song.duration_ms)}}
+						</td>
+						<td>
+							<iframe ng-src="{{song.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+						</td>
+						<td>
+							<ul class="list-inline">
+								<li ng-repeat="n in [] | range: song.popularity">
+									<span class="glyphicon glyphicon-heart"></span>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 </div>
 </div>
