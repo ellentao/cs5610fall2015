@@ -10,6 +10,7 @@
     model.$location = $location;
 		$rootScope.user = null;
 		$rootScope.loginMessage = false;
+		$rootScope.loginAsAdmin = false;
 		console.log("successfully logout");
 		console.log($rootScope.user);
 		console.log($rootScope.loginMessage);
