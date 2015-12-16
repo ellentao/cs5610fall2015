@@ -13,6 +13,7 @@
 </div>
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
+			<li><a href="https://docs.google.com/document/d/1vW1rmkVXcppyz0dkXbpK4zP4j3PvGJNOZZ1lfOH_WBw/edit?usp=sharing">Documentation</a></li>
 			<li ng-class="{'active' : $location.url() == 'search'}"><a href="#/search">Search</a></li>
 			<li ng-show="loginAsAdmin" ng-class="{'active' : $location.url() == 'admin'}"><a href="#/admin">Admin</a></li>
 			<li ng-show="loginMessage" ng-class="{'active' : $location.url() == 'user'}"><a href="#/user">{{user.username}}'s Activity</a></li>
