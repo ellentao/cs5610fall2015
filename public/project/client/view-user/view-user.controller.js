@@ -92,7 +92,6 @@
 		}
 		
 		model.follow = function() {
-//			model.followStatus = true;
 			UserService.addfollowToUser($rootScope.user._id, model.user).then(function(result) {
 				console.log("successfully added a new following to current user");																																		
 				console.log(result);
@@ -104,7 +103,6 @@
 		}
 		
 		model.unfollow = function() {
-//			model.followStatus = false;
 			UserService.deleteFollowingFromUser($rootScope.user._id, model.user._id)
 				.then(function(result) {
 					console.log("delete following from the current login user")

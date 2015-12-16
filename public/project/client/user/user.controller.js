@@ -44,7 +44,7 @@
 		
 		model.deleteSong = function (song)
     {
-      UserService.deleteSongFromUser(model.user._id, song._id).then(function (songs) {
+      UserService.deleteSongFromUser(model.user._id, song.id).then(function (songs) {
 				UserService
 					.findSongsByUserId(model.user._id)
 					.then(function (result) {
@@ -59,7 +59,7 @@
     {
 			console.log("successfully deleted artist");
       console.log(model.user.artists);
-      UserService.deleteArtistFromUser(model.user._id, artist._id).then(function (artists) {
+      UserService.deleteArtistFromUser(model.user._id, artist.id).then(function (artists) {
 				UserService
 					.findArtistsByUserId(model.user._id)
 					.then(function (result) {
@@ -72,7 +72,7 @@
 		
 		model.deleteAlbum = function (album)
     {
-      UserService.deleteAlbumFromUser(model.user._id, album._id).then(function (albums) {
+      UserService.deleteAlbumFromUser(model.user._id, album.id).then(function (albums) {
 				UserService
 					.findAlbumsByUserId(model.user._id)
 					.then(function (result) {

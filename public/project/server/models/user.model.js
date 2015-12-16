@@ -205,7 +205,7 @@ module.exports = function(db, mongoose) {
 		UserModel.findById(userId, function(err, user){
 			var songs = user.favoriteSongs;
 			for (var i = 0; i < songs.length; i++) {
-				if (songs[i]._id == songId) {
+				if (songs[i].id == songId) {
 					user.favoriteSongs.splice(i, 1);
 					user.save(function(err, user){
 						deferred.resolve(user);
@@ -266,7 +266,7 @@ module.exports = function(db, mongoose) {
 		UserModel.findById(userId, function(err, user){
 			var artists = user.favoriteArtists;
 			for (var i = 0; i < artists.length; i++) {
-				if (artists[i]._id == artistId) {
+				if (artists[i].id == artistId) {
 					user.favoriteArtists.splice(i, 1);
 					user.save(function(err, user){
 					deferred.resolve(user);
@@ -326,7 +326,7 @@ module.exports = function(db, mongoose) {
 		UserModel.findById(userId, function(err, user){
 			var albums = user.favoriteAlbums;
 			for (var i = 0; i < albums.length; i++) {
-				if (albums[i]._id == albumId) {
+				if (albums[i].id == albumId) {
 					user.favoriteAlbums.splice(i, 1);
 					user.save(function(err, user){
 						deferred.resolve(user);

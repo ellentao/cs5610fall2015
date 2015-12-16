@@ -21,7 +21,12 @@
 				</ul>
 		</div>
 		<div ng-show="loginMessage">
+			<div ng-show="!model.likeStatus">
 				<button class="btn-info btn pull-right" ng-click="model.addArtistToUser()"><a href="#/user">like</a></button>
+			</div>
+			<div ng-show="model.likeStatus">
+				<button class="btn-info btn pull-right" ng-click="model.deleteArtistFromUser()"><a href="#/user">unlike</a></button>
+			</div>
 		</div>
 		<div ng-show="!loginMessage">
 				<button class="btn-info btn pull-right" ng-click="model.saveLocation()"><a href="#/login">like</a></button>
@@ -81,7 +86,7 @@
 								</div>
 						</li>
 				</ul>
-		<input ng-model="content" class="form-control" type="textarea" placeholder="Your comments" />
+		<input ng-model="content" class="form-control" type="textarea" placeholder="add your comments" />
 		<button ng-show="loginMessage" class="btn btn-info" ng-click="model.addComment(content)">Add</button>
 		<button ng-show="!loginMessage" class="btn btn-info" ng-click="model.saveLocation()"><a href="#/login">Add</a></button>
 		</div>
